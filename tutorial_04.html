@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
     <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
     <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
     <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
@@ -25,12 +24,16 @@
                         .range([0, canvasW]);
         var color = d3.scaleLinear()
                     .domain([0, 60])
-                    .range([ '#CEF6F5', '#aaa', '#ccc', '#db0db0'])                        
+                    .range([ '#CEF6F5', '#aaa', '#ccc', '#db0db0']);
+        var axis = d3.axisBottom(widthScale).ticks(5);
 
         var canvas = d3.select('#graph01')
                     .append('svg')
                     .attr('width', canvasW)
-                    .attr('height', canvasH);
+                    .attr('height', canvasH)
+                    .append('g')
+                    .attr('transform', 'translate(20,0)')
+
         var bar = canvas.selectAll('rect')
                         .data(dataArray)
                         .enter()
@@ -38,8 +41,11 @@
                             .attr('width', function(d) { return widthScale(d) })
                             .attr('height', 50)
                             .attr('fill', function(d) { return color(d) })
-                            .attr('y', function(d, i) { return i * 100 ; })
-
+                            .attr('y', function(d, i) { return i * 60 ; })
+        canvas.append('g')
+                .append('g')
+                .attr('transform', 'translate(0,400)')
+                .call(axis);
     </script>
 </body>
 
