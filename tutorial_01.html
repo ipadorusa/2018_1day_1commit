@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <script src="./js/d3.min.js"></script>
+</head>
+
+<body>
+    <div id="graph01"></div>
+    <script>
+        var canvas = d3.select('#graph01')
+                    .append('svg')
+                    .attr('width', 500)
+                    .attr('height', 500);
+        var circle = canvas.append('circle')
+                    .attr('cx', 250)
+                    .attr('cy', 250)
+                    .attr('r', 50)               
+                    .attr('fill', 'red');
+        var rect = canvas.append('rect')
+                    .attr('width', 10)
+                    .attr('height',100);
+        var line = canvas.append('line')
+                    .attr('x1',0)
+                    .attr('y1',100)
+                    .attr('x2',400)
+                    .attr('y2',400)
+                    .attr('stroke',"green")
+                    .attr('stroke-width',10);
+
+    </script>
+</body>
+
+</html>
