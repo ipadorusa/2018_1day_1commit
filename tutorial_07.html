@@ -25,113 +25,35 @@
             font-size: 11px;
             fill: white;
         }
+        .vertical_bar {
+            border:1px solid #ddd;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 
 <body>
-    <div class="gwrap">
-        <div class="chart" id="vbar"></div>
-    </div>
+    
 
-    <p>
-        <a id='chart_restore' href="javascript:">original</a>
-        <a id='chart_randomize' href="javascript:">randomize original</a>
-    </p>
 
     <script>
         var dataset = [
-            5, 10, 13, 19, 21, 25, 22, 18,
-            11, 12, 15, 20, 18, 17, 16, 18
+            { "month": "1년차", "to": 4, "from": -3 },
+            { "month": "2년차", "to": 5, "from": -2 },
+            { "month": "3년차", "to": 10, "from": 2 },
+            { "month": "4년차", "to": 16, "from": 7 }
         ];
+        var cMargin = {top: 50, right: 50, bottom: 50, left: 50},
+            canW = 900 - cMargin.left - cMargin.right,
+            canH = 500 - cMargin.top - cMargin.bottom;
+        var svg = d3.select('body')
+                    .append('svg')
+                    .attr('width', canW + cMargin.left + cMargin.right)
+                    .attr('height', canH + cMargin.top + cMargin.bottom)
+                    .attr('class','vertical_bar');
 
-        // Margins
-        var margin = { top: 20, right: 20, bottom: 20, left: 20 };
 
-        // Drawing area = svg dimensions - margins
-        var w = 600 - margin.left - margin.right;
-        var h = 400 - margin.top - margin.bottom;
 
-        var xScale = d3.scaleBand()
-            .domain(d3.range(dataset.length))
-            .rangeRound([0, w])
-            .padding(0.05);
-
-        var yScale = d3.scaleLinear()
-            .domain([0, d3.max(dataset)])
-            .range([h, 0]);
-
-        var hScale = d3.scaleLinear()
-            .domain([0, d3.max(dataset)])
-            .range([0, h]);
-
-        var svg = d3.select('#vbar').append('svg')
-            .attr('width', w)
-            .attr('height', h);
-
-        function update_chart(arr) {
-            // nodes to modify   
-            var bars = svg.selectAll('rect')
-                .data(arr)
-                .attr('x', function (d, i) { return xScale(i); })
-                .attr('y', function (d) { return yScale(d); })
-                .attr('width', xScale.bandwidth())
-                .attr('height', function (d) { return hScale(d); })
-
-            // nodes to add
-            bars.enter().append('rect')
-                .attr("x", function (d, i) { return xScale(i); })
-                .attr("y", function (d) { return yScale(d); })
-                .attr("width", xScale.bandwidth())
-                .attr("height", function (d) { return hScale(d); })
-                .attr('class', 'bar');
-
-            // nodes to remove
-            bars.exit().remove();
-
-            // nodes to modify
-            var labels = svg.selectAll("text")
-                .data(arr)
-                //.transition()   // interpolate over time
-                //.duration(1000) // ms
-                .text(function (d) { return d; })
-                .attr('class', 'bar-label')
-                .attr('x', function (d, i) {
-                    // x-pos of bar + (bar width) / 2
-                    return xScale(i) + xScale.bandwidth() / 2;
-                })
-                .attr('y', function (d) { return yScale(d) + 14; });
-
-            // nodes to add
-            labels.enter().append('text')
-                .text(function (d) { return d; })
-                .attr('class', 'bar-label')
-                // center text horizontally at assigned x value
-                .attr("text-anchor", "middle")
-                .attr('x', function (d, i) {
-                    // x-pos of bar + (bar width) / 2
-                    return xScale(i) + xScale.bandwidth() / 2;
-                })
-                .attr('y', function (d) { return yScale(d) + 14; });
-
-            // nodes to remove
-            labels.exit().remove();
-        }
-
-        d3.select('#chart_randomize').on('click', function () {
-            var arr = dataset.concat().sort(function () {
-                return Math.random() - .5;
-            });
-
-            xScale.domain(d3.range(arr.length));
-            update_chart(arr);
-        });
-
-        d3.select('#chart_restore').on('click', function () {
-            xScale.domain(d3.range(dataset.length));
-            update_chart(dataset);
-        });
-
-        update_chart(dataset);
 
     </script>
 </body>
