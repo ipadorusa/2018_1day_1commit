@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <script src="/js/d3.min.js"></script>
+    <style>
+        .chart-gauge {
+            width: 100px;
+        }
+
+        .chart-filled {
+            fill: steelblue;
+        }
+
+        .chart-empty {
+            fill: #dedede;
+        }
+
+        .needle,
+        .needle-center {
+            fill: #464A4F;
+        }
+
+        svg {
+            font: 10px sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chart-gauge"></div>
+    <script type="text/javascript" src="d3_gauge.js"></script>
+    <script>
+        needle.moveTo(0.25);
+    </script>
+</body>
+
+</html>
