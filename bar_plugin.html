@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <script src="./js/d3.min.js"></script>
+    <style>
+        #vbar {
+            width:500px;
+            height:500px;
+            padding:20px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+        }
+
+        .bar {
+            fill: steelblue;
+        }
+
+        .bar-label {
+            font-family: sans-serif;
+            font-size: 11px;
+            fill: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gwrap">
+        <div class="chart" id="vbar"></div>
+    </div>
+
+    <script>
+        var dataset = [
+            5, 10, 13, 19
+        ];
+
+        
+
+        // Drawing area = svg dimensions - margins
+        /* var w = svg.node().offsetWidth;
+        var h = svg.node().offsetHeight;
+ */
+      
+        var svg = d3.select('#vbar');
+
+        console.log(svg.node().offsetWidth,svg.node().offsetHeight)
+      
+
+    </script>
+</body>
+
+</html>
