@@ -13,46 +13,69 @@
     <script src="./js/d3.min.js"></script>
     <style>
         #vbar {
-            width:500px;
-            height:500px;
-            padding:20px;
+            width: 500px;
+            height: 500px;
             box-sizing: border-box;
             border: 1px solid #ddd;
+            position: relative;
         }
 
-        .bar {
-            fill: steelblue;
-        }
-
-        .bar-label {
-            font-family: sans-serif;
-            font-size: 11px;
-            fill: white;
+        .vBar {
+            position: absolute;
+            left: 20px;
+            top: 20px;
         }
     </style>
 </head>
 
 <body>
     <div class="gwrap">
-        <div class="chart" id="vbar"></div>
+        <div class="chart" id="vbar">
+        </div>
     </div>
 
     <script>
         var dataset = [
-            5, 10, 13, 19
+            {
+                "name": "Andy",
+                "score": 37
+            },
+            {
+                "name": "Beth",
+                "score": 39
+            },
+            {
+                "name": "Craig",
+                "score": 31
+            },
+            {
+                "name": "Diane",
+                "score": 35
+            },
+            {
+                "name": "Evelyn",
+                "score": 38
+            }
         ];
 
+        //option
+        var margin = { top: 20, right: 20, bottom: 20, left: 20 };
+        var el = d3.select('#vbar'),
+            ww = el.node().offsetWidth - (margin.left + margin.right),
+            hh = el.node().offsetHeight - (margin.top + margin.bottom);
+
+        el.append('svg')
+            .attr('width', ww)
+            .attr('height', hh)
+            .classed('vBar', true)
+            .append('g')
+            .selectAll('rect')
+            .data(dataset, function (d) { return d.name })
+            .enter()
+            .append('rect')
+            .classed('row', true);
         
 
-        // Drawing area = svg dimensions - margins
-        /* var w = svg.node().offsetWidth;
-        var h = svg.node().offsetHeight;
- */
-      
-        var svg = d3.select('#vbar');
-
-        console.log(svg.node().offsetWidth,svg.node().offsetHeight)
-      
 
     </script>
 </body>
