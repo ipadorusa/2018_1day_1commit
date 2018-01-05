@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <script src="/js/d3.min.js"></script>
+</head>
+
+<body>
+    <div id="graph01">
+    
+    </div>
+    <script>
+        var data = [15, 50, 22, 8, 100, 10];
+        var canvas = d3.select('#graph01')
+                    .append('svg')
+                    .attr('width', 500)
+                    .attr('height', 500);
+        var maxaxisX = d3.max(data);
+
+        var bar = canvas.selectAll('rect')
+                        .data(data)
+                        .enter()
+                            .append('rect')
+                            .attr("width", 10)
+                            .attr("height", function(d) { return d; })
+                            .style('fill', 'blue')
+                            .style('stroke', 'red')
+                            .style('stroke-width', '1px')
+                            .style("opacity", .25)
+                            .attr('x', function(d,i) { return i * 10})
+                            .attr('y', function(d) { return maxaxisX - d; });
+    </script>
+</body>
+
+</html>
