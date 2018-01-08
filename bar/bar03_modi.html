@@ -13,8 +13,16 @@
     <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
     <script src="/js/d3.min.js"></script>
     <style>
-        .bar {
-            fill: steelblue;
+        .bar00 {
+            fill: #dfdfdf;
+        }
+
+        .bar01 {
+            fill: #70ddcc;
+        }
+
+        .bar02 {
+            fill: #a6b3f7;
         }
 
         .curreny {
@@ -22,10 +30,17 @@
         }
 
         .grid line {
-            stroke: #dbdbdb;
-            stroke-opacity: 0.7;
+            stroke: #ebebeb;
+            stroke-opacity: 0.5;
             shape-rendering: crispEdges;
         }
+        .axis_yline line {
+            visibility: hidden;
+        }
+        .axis_xline line {
+            visibility: hidden;
+        }
+
     </style>
 </head>
 
@@ -41,7 +56,7 @@
         // set the ranges
         var x = d3.scaleBand()
             .range([0, width])
-            .padding(0.5);
+            .padding(0.7);
         var y = d3.scaleLinear()
             .range([height, 0]);
 
@@ -64,20 +79,18 @@
             data.forEach(function (d) {
                 d.sales = +d.sales;
             });
-            
+
             // Scale the range of the data in the domains
             x.domain(data.map(function (d) { return d.salesperson; }));
-            y.domain([0, d3.max(data, function (d) { return d.sales; })]);
+            y.domain([0, d3.max(data, function (d) { return 100 + d.sales; })]);
             // append the rectangles for the bar chart
-            
-            svg.append("g")
-                .attr("class", "grid")
-                .call(make_y_gridlines().ticks(3).tickSize(-width).tickFormat(""));
+
+
 
             svg.selectAll(".bar")
                 .data(data)
                 .enter().append("rect")
-                .attr("class", "bar")
+                .attr("class", function (d, i) { return "bar0" + i })
                 .attr("x", function (d) { return x(d.salesperson); })
                 .attr("width", x.bandwidth())
                 .attr("y", function (d) { return y(d.sales); })
@@ -85,12 +98,14 @@
 
             // add the x Axis
             svg.append("g")
+                .classed('axis_xline', true)
                 .attr("transform", "translate(0," + height + ")")
                 .call(d3.axisBottom(x));
 
             // add the y Axis
             svg.append("g")
-                .call(d3.axisLeft(y).ticks(3));
+                .classed('axis_yline', true)
+                .call(d3.axisLeft(y).ticks(4));
             svg.append('text')
                 .attr("transform", "translate(-35," + (height + 20) + ")")
                 .classed('curreny', true)
@@ -99,7 +114,9 @@
             function make_y_gridlines() {
                 return d3.axisLeft(y)
             }
-            
+            svg.append("g")
+                .attr("class", "grid")
+                .call(make_y_gridlines().ticks(4).tickSize(-width).tickFormat(""));
 
         });
 
