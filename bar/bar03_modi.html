@@ -34,13 +34,37 @@
             stroke-opacity: 0.5;
             shape-rendering: crispEdges;
         }
+
         .axis_yline line {
             visibility: hidden;
         }
+
         .axis_xline line {
             visibility: hidden;
         }
 
+        .axis_xline .domain,
+        .axis_yline .domain,
+        .grid .domain {
+            visibility: hidden;
+        }
+
+        .avgline {
+            fill: none;
+            stroke: #afafaf;
+            stroke-width: 1px;
+        }
+
+        .dot {
+            fill: #fff;
+            stroke: #6e6e6e;
+            stroke-width: 2px;
+        }
+        .label_txt {
+            font-size: 11px;
+            fill: #000;
+            text-anchor: middle;
+        }
     </style>
 </head>
 
@@ -64,12 +88,11 @@
         // append the svg object to the body of the page
         // append a 'group' element to 'svg'
         // moves the 'group' element to the top left margin
-        var svg = d3.select("body").append("svg")
+        var svg = d3.select("#wrapper").append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
-            .attr("transform",
-            "translate(" + margin.left + "," + margin.top + ")");
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         // get the data
         d3.csv("../sales.csv", function (error, data) {
@@ -82,9 +105,8 @@
 
             // Scale the range of the data in the domains
             x.domain(data.map(function (d) { return d.salesperson; }));
-            y.domain([0, d3.max(data, function (d) { return 100 + d.sales; })]);
+            y.domain([parseInt(d3.min(data, function (d) { return d.sales; }) / 500) * 500 - 500, d3.max(data, function (d) { return d.sales; })]);
             // append the rectangles for the bar chart
-
 
 
             svg.selectAll(".bar")
@@ -106,18 +128,47 @@
             svg.append("g")
                 .classed('axis_yline', true)
                 .call(d3.axisLeft(y).ticks(4));
+
+            // add label currency
             svg.append('text')
-                .attr("transform", "translate(-35," + (height + 20) + ")")
                 .classed('curreny', true)
+                .attr("transform", "translate(-35," + (height + 20) + ")")
                 .text('(만원)');
 
             function make_y_gridlines() {
                 return d3.axisLeft(y)
             }
             svg.append("g")
-                .attr("class", "grid")
+                .classed("grid", true)
                 .call(make_y_gridlines().ticks(4).tickSize(-width).tickFormat(""));
 
+            var valueline = d3.line()
+                .x(function (d) { return x(d.salesperson) + x.bandwidth() / 2; })
+                .y(function (d) { return y(d.sales); });
+
+            svg.append('path')
+                .data([data])
+                .attr('class', 'avgline')
+                .attr('d', valueline);
+
+            svg.selectAll('.dot')
+                .data(data)
+                .enter().append('circle') // Uses the enter().append() method
+                .attr('class', 'dot') // Assign a class for styling
+                .attr('cx', function (d) { return x(d.salesperson) + x.bandwidth() / 2 })
+                .attr('cy', function (d) { return y(d.sales) })
+                .attr('r', 3);
+
+            svg.selectAll('.label_txt')
+                .data(data)
+                .enter().append('text')
+                .text(function (d) {
+                    var formatComma = d3.format(",");
+                    return formatComma(d.sales);
+                })
+                .attr('class', 'label_txt')
+                .attr('x', function (d) { return x(d.salesperson) + x.bandwidth() / 2 })
+                .attr('y', function (d) { return y(d.sales) - 10 });
         });
 
     </script>
