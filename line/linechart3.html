@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <script src="/js/d3.min.js"></script>
+    <style>
+        svg {
+            width: 100%;
+            height: 100%;
+            position: center;
+        }
+
+        body {
+            background-color: lightgrey;
+        }
+
+        .line:hover {
+            fill: none;
+            stroke-width: 5;
+        }
+
+        .axis--x path {
+            fill: none;
+            display: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="960" height="500"></svg>
+    <script>
+        var margin = { top: 30, right: 60, bottom: 50, left: 60 };
+        var width = 960 - margin.left - margin.right;
+        var height = 500 - margin.top - margin.bottom;
+        var parseTime = d3.timeParse("%b-%y");
+        var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+        var g = d3.select("svg")
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var xRange = d3.scaleTime()
+            .rangeRound([0, width]);
+
+        var yRange = d3.scaleLinear()
+            .range([height, 0]);
+
+        var line = d3.line()
+            .x(function (d) { return xRange(d.Date); })
+            .y(function (d) { return yRange(d.market_share); })
+            .curve(d3.curveMonotoneX);
+
+        d3.csv("browser_statistics.csv", function (d, i, columns) {
+            d.Date = parseTime(d.Date);
+            for (var i = 1, n = columns.length, c; i < n; ++i) d[c = columns[i]] = +d[c];
+            return d;
+        },
+            function (error, data) {
+                if (error) throw error;
+                var browsers = data.columns.slice(1).map(function (id) {
+                    return {
+                        id: id,
+                        values: data.map(function (d) {
+                            return { Date: d.Date, market_share: d[id] };
+                        })
+                    };
+                });
+
+                xRange.domain(d3.extent(data, function (d) { return d.Date; }));
+
+                yRange.domain([
+                    d3.min(browsers, function (c) { return d3.min(c.values, function (d) { return d.market_share; }); }),
+                    d3.max(browsers, function (c) { return d3.max(c.values, function (d) { return d.market_share; }); })
+                ]);
+
+                color.domain(browsers.map(function (c) { return c.id; }));
+
+                g.append("g")
+                    .attr("class", "axis")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(d3.axisBottom(xRange))
+                    .style("text-anchor", "middle")
+                    .attr("dx", "-.1em");
+
+                g.append("g")
+                    .attr("class", "axis")
+                    .call(d3.axisLeft(yRange))
+                    .append("text")
+                    .attr("x", 2)
+                    .attr("y", 6)
+                    .attr("dy", "0.71em")
+                    .attr("fill", "#000")
+                    .attr("text-anchor", "start")
+                    .text("Market Share, %");
+
+                var browser = g.selectAll(".browsers")
+                    .data(browsers)
+                    .enter()
+                    .append("g")
+                    .attr("class", "browser");
+
+                browser.append("path")
+                    .style("fill", "none")
+                    .attr("class", "line")
+                    .attr("d", function (d) { return line(d.values); })
+                    .style("stroke", function (d) { return color(d.id); });
+
+                browser.append("text")
+                    .datum(function (d) { return { id: d.id, value: d.values[0] }; })
+                    .attr("transform", function (d) { return "translate(" + xRange(d.value.Date) + "," + yRange(d.value.market_share) + ")"; })
+                    .attr("x", 3)
+                    .attr("dy", "0.35em")
+                    .style("font", "10px sans-serif")
+                    .text(function (d) { return d.id; });
+
+            });
+
+    </script>
+</body>
+
+
+</html>

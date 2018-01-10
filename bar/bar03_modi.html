@@ -96,7 +96,7 @@
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         // get the data
-        d3.csv("../sales.csv", function (error, data) {
+        d3.csv('../sales.csv', function (error, data) {
             if (error) throw error;
 
             // format the data
@@ -110,38 +110,38 @@
             // append the rectangles for the bar chart
 
 
-            svg.selectAll(".bar")
+            svg.selectAll('.bar')
                 .data(data)
-                .enter().append("rect")
-                .attr("class", function (d, i) { return "bar0" + i })
-                .attr("x", function (d) { return x(d.salesperson); })
-                .attr("width", x.bandwidth())
-                .attr("y", function (d) { return y(d.sales); })
-                .attr("height", function (d) { return height - y(d.sales); });
+                .enter().append('rect')
+                .attr('class', function (d, i) { return 'bar0' + i })
+                .attr('x', function (d) { return x(d.salesperson); })
+                .attr('width', x.bandwidth())
+                .attr('y', function (d) { return y(d.sales); })
+                .attr('height', function (d) { return height - y(d.sales); });
 
             // add the x Axis
-            svg.append("g")
+            svg.append('g')
                 .classed('axis_xline', true)
-                .attr("transform", "translate(0," + height + ")")
+                .attr('transform', 'translate(0,' + height + ')')
                 .call(d3.axisBottom(x));
 
             // add the y Axis
-            svg.append("g")
+            svg.append('g')
                 .classed('axis_yline', true)
                 .call(d3.axisLeft(y).ticks(4));
 
             // add label currency
             svg.append('text')
                 .classed('curreny', true)
-                .attr("transform", "translate(-35," + (height + 20) + ")")
+                .attr('transform', 'translate(-35,' + (height + 20) + ')')
                 .text('(만원)');
 
             function make_y_gridlines() {
                 return d3.axisLeft(y)
             }
-            svg.append("g")
-                .classed("grid", true)
-                .call(make_y_gridlines().ticks(4).tickSize(-width).tickFormat(""));
+            svg.append('g')
+                .classed('grid', true)
+                .call(make_y_gridlines().ticks(4).tickSize(-width).tickFormat(''));
 
             var valueline = d3.line()
                 .x(function (d) { return x(d.salesperson) + x.bandwidth() / 2; })
