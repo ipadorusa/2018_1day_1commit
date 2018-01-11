@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <script src="/js/d3.min.js"></script>
+    <script src="/js/billboard.min.js"></script>
+    <link rel="stylesheet" href="/css/billboard.min.css">
+</head>
+
+<body>
+    <div id="LineChart"></div>
+    <script>
+        var chart = bb.generate({
+            'data': {
+                xs: {
+                    '2015': 'x1',
+                    '2016': 'x2',
+                    '2017': 'x3'
+                },
+                columns: [
+                    ['x1', 26, 27, 28, 29, 30, 31, 32, 33, 34, 35],
+                    ['x2', 26, 27, 28, 29, 30, 31, 32, 33, 34, 35],
+                    ['x3', 26, 27, 28, 29, 30, 31, 32, 33, 34, 35],
+                    ['2015', 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900],
+                    ['2016', 1050, 1150, 1250, 1350, 1450, 1550, 1650, 1750, 1850, 1950],
+                    ['2017', 1200, 1300, 1500, 1700, 1800, 1900, 2100, 2200, 2500, 2900]
+                ]
+            },
+            color: {
+                pattern: ['#ddd', '#aec7e8', '#ff7f0e']
+            },
+
+            'size': {
+                'width': 400,
+                'height': 325
+            },
+            'padding': {
+                'top': 20,
+                'bottom': 20,
+                'right': 20,
+                'left': 40
+            },
+            axis: {
+                x: {
+                    tick: {
+                        culling: {
+                            max: 12
+                        }
+                    }
+                }
+            },
+            bindto: "#LineChart"
+        });
+    </script>
+</body>
+
+
+</html>
