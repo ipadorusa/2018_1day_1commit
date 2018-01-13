@@ -20,7 +20,7 @@
     <div id="LineChart"></div>
     <script>
         var chart = bb.generate({
-            'data': {
+            data: {
                 xs: {
                     '2015': 'x1',
                     '2016': 'x2',
@@ -60,6 +60,15 @@
             },
             bindto: "#LineChart"
         });
+        setTimeout(function () {
+            chart.load({
+                url: 'data2.json',
+                mimeType: 'json',
+                keys: {
+                    value: ['2015','2017']
+                }
+            });
+        }, 3000);
     </script>
 </body>
 

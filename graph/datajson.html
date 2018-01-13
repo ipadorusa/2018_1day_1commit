@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <script src="/js/d3.min.js"></script>
+    <script src="/js/billboard.min.js"></script>
+    <link rel="stylesheet" href="/css/billboard.min.css">
+</head>
+
+<body>
+    <div id="LineChart"></div>
+    <script>
+        var chart = bb.generate({
+            data: {
+                url: 'data.csv'
+            },
+            bindto: "#LineChart"
+        });
+        setTimeout(function () {
+            chart.load({
+                url: 'data.json',
+                mimeType: 'json',
+                keys: {
+                    value: ['data1', 'data2']
+                }
+            });
+        }, 3000);
+    </script>
+</body>
+
+
+</html>
