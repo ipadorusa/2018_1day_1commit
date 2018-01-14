@@ -115,8 +115,14 @@
                 .enter().append('rect')
                 .attr('class', function (d, i) { return 'bar0' + i })
                 .attr('x', function (d) { return x(d.salesperson); })
+                .attr('height',0)
                 .attr('width', x.bandwidth())
-                .attr('y', function (d) { return y(d.sales); })
+                .attr('y', height)
+                //.attr('y', function (d) { return y(d.sales); })
+                .transition()
+                .ease(d3.easeLinear)
+                .duration(3000)
+                .attr('y', function(d,i) { return y(d.sales)})
                 .attr('height', function (d) { return height - y(d.sales); });
 
             // add the x Axis
