@@ -121,7 +121,7 @@
                 //.attr('y', function (d) { return y(d.sales); })
                 .transition()
                 .ease(d3.easeLinear)
-                .duration(3000)
+                .duration(1000)
                 .attr('y', function(d,i) { return y(d.sales)})
                 .attr('height', function (d) { return height - y(d.sales); });
 

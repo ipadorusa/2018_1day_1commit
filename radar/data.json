@@ -1,0 +1,18 @@
+[
+    [
+      {"area": "평균연봉 ", "value": 50},
+      {"area": "위치", "value": 40},
+      {"area": "매출액", "value": 100},
+      {"area": "연봉증감율", "value": 90},
+      {"area": "자본금", "value": 60},
+      {"area": "자본금2", "value": 60}
+    ],
+    [
+      {"area": "평균연봉", "value": 100},
+      {"area": "위치", "value": 60},
+      {"area": "매출액", "value": 40},
+      {"area": "연봉증감율", "value": 90},
+      {"area": "자본금", "value": 10},
+      {"area": "자본금2", "value": 10}
+  	]
+  ]
