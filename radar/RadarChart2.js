@@ -1,6 +1,22 @@
 var RadarChart = {
     draw: function (id, d, options) {
-       
+
+        var data = d;
+        var d = [];
+        for (var i = 0; i < data.length; i++) {
+            var area = data[i].area;
+            var area_keys = Object.keys(area);
+            
+            var tmp = [];
+            for (var j = 0; j < area_keys.length; j++) {
+                tmp.push({"area": area_keys[j], "value": area[area_keys[j]]});
+            }
+
+            d.push(tmp);
+        }
+        console.log(d)
+        
+
         var cfg = {
             radius: 5,
             w: 300,
@@ -18,7 +34,7 @@ var RadarChart = {
             ExtraWidthY: 100,
             color: d3.scaleOrdinal().range(["#6f257f", "#ca0d59"])
         };
-
+        
         if ('undefined' !== typeof options) {
             for (var i in options) {
                 if ('undefined' !== typeof options[i]) {
@@ -29,11 +45,11 @@ var RadarChart = {
 
         cfg.maxValue = 100;
 
-        console.log(d)
+
         var allAxis = (d[0].map(function (i, j) {
             return i.area
         }));
-        console.log('b',d)
+
 
         var total = allAxis.length;
         var radius = cfg.factor * Math.min(cfg.w / 2, cfg.h / 2);
