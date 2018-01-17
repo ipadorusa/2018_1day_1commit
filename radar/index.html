@@ -78,7 +78,8 @@
     <script>
         (function radarChart() {
             var width = 200,
-                height = 200;
+                height = 200,
+                colorRange = ['#d0d0d0','#CA0D59'];
 
             // Config for the Radar chart
             var config = {
@@ -86,7 +87,8 @@
                 h: height,
                 maxValue: 100,
                 levels: 5,
-                ExtraWidthX: 300
+                ExtraWidthX: 300,
+                color:colorRange
             };
 
             //Call function to draw the Radar chart

@@ -13,7 +13,6 @@ var RadarChart = {
             }
             d.push(tempArry);
         }
-        var colorRange = ['#6F257F','#CA0D59']
         var cfg = {
             radius: 5,
             w: 300,
@@ -28,7 +27,7 @@ var RadarChart = {
             TranslateY: 30,
             ExtraWidthX: 100,
             ExtraWidthY: 100,
-            color: colorRange
+            color: []
         };
         if ('undefined' !== typeof options) {
             for (var i in options) {
@@ -39,18 +38,13 @@ var RadarChart = {
         }
 
         cfg.maxValue = 100;
-
-
         var allAxis = (d[0].map(function (i, j) {
             return i.area
         }));
-
-
         var total = allAxis.length;
         var radius = cfg.factor * Math.min(cfg.w / 2, cfg.h / 2);
         var Format = d3.format('%');
         d3.select(selector).select("svg").remove();
-
         var g = d3.select(selector)
             .append("svg")
             .attr("width", cfg.w + cfg.ExtraWidthX)
