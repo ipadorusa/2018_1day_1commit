@@ -1,6 +1,6 @@
 var RadarChart = {
     draw: function (selector, d, options) {
-       
+
         var reformatData = d;
         var d = [];
         for (var i = 0; i < reformatData.length; i++) {
@@ -13,6 +13,7 @@ var RadarChart = {
             }
             d.push(tempArry);
         }
+        console.log('a',d)
         var cfg = {
             radius: 5,
             w: 300,
@@ -37,7 +38,6 @@ var RadarChart = {
             }
         }
 
-        cfg.maxValue = 100;
         var allAxis = (d[0].map(function (i, j) {
             return i.area
         }));
