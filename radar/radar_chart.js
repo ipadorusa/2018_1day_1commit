@@ -1,6 +1,6 @@
 var RadarChart = {
     draw: function (selector, d, options) {
-
+       
         var reformatData = d;
         var d = [];
         for (var i = 0; i < reformatData.length; i++) {
