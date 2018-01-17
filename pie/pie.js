@@ -1,6 +1,6 @@
 var PieChart = {
     draw: function (selector, d, options) {
-
+        
         
         var cfg = {
             
