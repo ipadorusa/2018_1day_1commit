@@ -13,58 +13,10 @@
     <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
     <script src="//www.saraminimage.co.kr/js/libs/jquery-1.11.1.min.js"></script>
     <script src="/js/d3.min.js"></script>
-    <script src="RadarChart.js"></script>
+    <script src="radar_chart.js"></script>
     <style>
-        .axis {
-            font-size: 15px;
-        }
+        
 
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: #D4D8DA;
-            stroke-width: 2px;
-            shape-rendering: crispEdges;
-        }
-
-        #chart {
-            position: absolute;
-            top: 50px;
-            left: 100px;
-        }
-
-        .toolTip {
-            pointer-events: none;
-            position: absolute;
-            display: none;
-            min-width: 50px;
-            height: auto;
-            background: none repeat scroll 0 0 #ffffff;
-            padding: 9px 14px 6px 14px;
-            border-radius: 2px;
-            text-align: center;
-            line-height: 1.3;
-            color: #5B6770;
-            box-shadow: 0px 3px 9px rgba(0, 0, 0, .15);
-        }
-
-        .toolTip:after {
-            content: "";
-            width: 0;
-            height: 0;
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
-            border-top: 12px solid white;
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            margin-left: -12px;
-        }
-
-        .toolTip span {
-            font-weight: 500;
-            color: #081F2C;
-        }
     </style>
 </head>
 
@@ -73,27 +25,54 @@
     </div>
 
 
-    <div id="chart"></div>
-    <button class="changedata">변경하자</button>
-
+    <div class="chart"></div>
     <script>
-       var width = 200,
-            height = 200;
+        (function radarChart() {
+            var width = 200,
+                height = 200,
+                colorRange = ['#d0d0d0', '#CA0D59'];
 
-        // Config for the Radar chart
-        var config = {
-            w: width,
-            h: height,
-            maxValue: 100,
-            levels: 5,
-            ExtraWidthX: 300
-        };
-
-        //Call function to draw the Radar chart
-        d3.json("data.json", function (error, data) {
-            if (error) throw error;
-            RadarChart.draw("#chart", data, config);
-        })
+            // Config for the Radar chart
+            var config = {
+                w: width,
+                h: height,
+                maxValue: 8,
+                levels: 5,
+                ExtraWidthX: 300,
+                color: colorRange
+            };
+            var data = [
+                {
+                    "idx": "삼성",
+                    "area": {
+                        "학점": 8,
+                        "봉사활동": 7,
+                        "해외활동": 5,
+                        "인턴": 5,
+                        "수상내역": 1,
+                        "자격증": 2,
+                        "오픽": 8,
+                        "토스": 8,
+                        "토익": 8
+                    }
+                },
+                {
+                    "idx": "나",
+                    "area": {
+                        "학점": 5,
+                        "봉사활동": 5,
+                        "해외활동": 5,
+                        "인턴": 6,
+                        "수상내역": 5,
+                        "자격증": 3,
+                        "오픽": 2,
+                        "토스": 1,
+                        "토익": 1
+                    }
+                }
+            ];
+            RadarChart.draw('.chart', data, config);
+        }());
 
     </script>
 </body>

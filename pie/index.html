@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <script src="/js/d3.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="circle"></div>
+    </div>
+    <script>
+        (function radarChart() {
+            var width = 200,
+                height = 200,
+                colorRange = ['#d0d0d0', '#CA0D59'];
+
+            // Config for the Radar chart
+            var config = {
+                w: width,
+                h: height,
+                maxValue: 8,
+                levels: 5,
+                ExtraWidthX: 300,
+                color: colorRange
+            };
+            var data = [];
+            RadarChart.draw('.circle', data, config);
+        }());
+    </script>
+</body>
+
+</html>
