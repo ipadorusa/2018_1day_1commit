@@ -1,0 +1,72 @@
+<!DOCTYPE>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Pie Chart</title>
+
+    <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
+    <!-- JavaScript Libraries //-->
+    <script src="/js/d3.min.js"></script>
+    <script type="text/javascript" src="test.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .pie_tooltip {
+            background: #eee;
+            box-shadow: 0 0 5px #999999;
+            color: #333;
+            font-size: 12px;
+            left: 130px;
+            padding: 10px;
+            position: absolute;
+            text-align: center;
+            top: 95px;
+            width: 80px;
+            z-index: 10;
+            display: block;
+            opacity: 0;
+        }
+
+        .legend {
+            font-size: 12px;
+        }
+
+        rect {
+            cursor: pointer;
+            /* NEW */
+            stroke-width: 2;
+        }
+
+        rect.disabled {
+            /* NEW */
+            fill: transparent !important;
+            /* NEW */
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin:75px;" id="chart"></div>
+</body>
+<script>
+
+    var inputData = [
+        { label: "North America", value: 1546 },
+        { label: "Europe", value: 409 },
+        { label: "Asia", value: 49 },
+        { label: "South America", value: 25 },
+        { label: "Oceania", value: 24 },
+        { label: "korea", value: 904 }
+    ];
+
+    var colorScheme = ["#E57373", "#BA68C8", "#7986CB", "#A1887F", "#90A4AE", "#AED581", "#9575CD", "#FF8A65", "#4DB6AC", "#FFF176", "#64B5F6", "#00E676"];
+    renderPieChart(inputData, "#chart", colorScheme);
+</script>
+
+</html>
