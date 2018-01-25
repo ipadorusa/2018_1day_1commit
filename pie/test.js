@@ -4,7 +4,7 @@ function renderPieChart(dataset, dom_element_to_append_to, colorScheme) {
     var width = 500 - margin.left - margin.right,
         height = width + 100,
         radius = Math.min(width, height) / 2;
-    var donutWidth = 100;
+    var donutWidth = 120;
     var legendRectSize = 18;
     var legendSpacing = 4;
 
@@ -23,6 +23,7 @@ function renderPieChart(dataset, dom_element_to_append_to, colorScheme) {
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
     var arc = d3.arc()
+        .padAngle(0.01)
         .outerRadius(radius - 10)
         .innerRadius(radius - donutWidth);
 
