@@ -12,7 +12,7 @@ function renderPieChart(dataset, dom_element_to_append_to, colorScheme) {
         item.enabled = true;
     });
 
-    var color = d3.scaleOrdinal()
+    var color = d3.scale.ordinal()
         .range(colorScheme);
 
     var svg = d3.select(dom_element_to_append_to)
@@ -22,12 +22,12 @@ function renderPieChart(dataset, dom_element_to_append_to, colorScheme) {
         .append("g")
         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-    var arc = d3.arc()
+    var arc = d3.svg.arc()
         .padAngle(0.01)
         .outerRadius(radius - 10)
         .innerRadius(radius - donutWidth);
 
-    var pie = d3.pie()
+    var pie = d3.layout.pie()
         .sort(function(a,b){
             return b.value - a.value
         })
