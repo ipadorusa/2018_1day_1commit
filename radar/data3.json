@@ -1,0 +1,25 @@
+{
+  "id": "Raphael Varane",
+  "data": [
+    {
+      "skill": "Defending",
+      "count": 16
+    },
+    {
+      "skill": "Physical",
+      "count": 14
+    },
+    {
+      "skill": "Speed",
+      "count": 12
+    },
+    {
+      "skill": "Creativity",
+      "count": 10
+    },
+    {
+      "skill": "Attacking",
+      "count": 10
+    }
+  ]
+}

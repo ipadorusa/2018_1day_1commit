@@ -22,11 +22,11 @@
     </div>
     <script>
         var data = [
+            { "letter": "3a", "presses": 50 },
             { "letter": "q", "presses": 500 },
             { "letter": "w", "presses": 50 },
             { "letter": "e", "presses": 150 },
             { "letter": "e1", "presses": 50 },
-            { "letter": "a", "presses": 50 },
         ];
 
 
@@ -35,8 +35,11 @@
             // Think back to 5th grade. Radius is 1/2 of the diameter. What is the limiting factor on the diameter? Width or height, whichever is smaller 
             radius = Math.min(width, height) / 2;
         var color = d3.scaleOrdinal()
-            .range(["#2C93E8", "#838690", "#F56C4E", '#d0d0d0']);
+            .range(["red", "black", "blue", '#f2f2f2','#dbdbdb']);
         var pie = d3.pie()
+            .sort(function(a,b){
+                return b.presses - a.presses;
+            })
             .value(function (d) { return d.presses; })(data);
 
         var arc = d3.arc()

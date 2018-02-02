@@ -28,7 +28,9 @@ function renderPieChart(dataset, dom_element_to_append_to, colorScheme) {
         .innerRadius(radius - donutWidth);
 
     var pie = d3.pie()
-        .sort(null)
+        .sort(function(a,b){
+            return b.value - a.value
+        })
         .value(function (d) { return d.value; });
 
     var tooltip = d3.select(dom_element_to_append_to)
@@ -138,10 +140,4 @@ function renderPieChart(dataset, dom_element_to_append_to, colorScheme) {
         .attr('y', legendRectSize - legendSpacing)
         .text(function (d) { return d; })
 
-    svg.append('text')
-        .attr('x', 0)
-        .attr('y', -(450 / 2))
-        .text("Bitcoin ATMs By Continent")
-        .style("text-anchor", "middle")
-        .style("font-size", "20px")
 };
