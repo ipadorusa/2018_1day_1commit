@@ -2,16 +2,42 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>Pie Chart</title>
-
-    <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
-    <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
-    <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
-    <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
-    <!-- JavaScript Libraries //-->
-    <script src="//www.saraminimage.co.kr/js/libs/d3-v3.5.17/d3.min.js"></script>
-    <script type="text/javascript" src="test.js"></script>
+        <title>합격스펙 - 사람중심 취업사이트 사람인</title>    <meta http-equiv="X-UA-Compatible" content="IE=Edge" >
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+        <meta http-equiv="Content-Language" content="ko-KR" >
+        <meta name="Description" content="합격스펙" >    <meta property="og:title" content="합격스펙 - 사람중심 취업사이트 사람인" >
+        <meta property="og:image" content="http://www.saraminimage.co.kr/logo/saraminlogo.png" >
+        <meta property="og:site_name" content="사람중심 취업사이트 - 사람인" >
+        <meta property="og:type" content="website" >
+        <meta property="og:locale" content="ko_KR" >
+        <meta property="fb:app_id" content="1593727887570039" >
+        <meta property="og:image:width" content="200" >
+        <meta property="og:image:height" content="200" >
+        <link href="//www.saramin.co.kr/sri_css/layout.css?v=20180118_1" media="all" rel="stylesheet" type="text/css" >
+        <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20180118_1" media="all" rel="stylesheet" type="text/css" >
+        <link href="//www.saramin.co.kr/sri_css/components.css?v=20180118_1" media="all" rel="stylesheet" type="text/css" >
+        
+        <link href="//www.saraminimage.co.kr/favicon.ico" rel="favicon" >
+        <link href="//www.saraminimage.co.kr/favicon.ico" rel="icon" type="image/x-icon" >
+        <link href="//www.saraminimage.co.kr/favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/prototype-1.6.1.js"></script>
+        <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/effects.js"></script>
+        <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="//www.saraminimage.co.kr/jquery/ui/jquery-ui-1.11.4/jquery-ui.min.js?vs=20180118_1"></script><!-- WMG-16845 -->
+        <script type="text/javascript" src="//www.saramin.co.kr/js/libs/saramin/common.js?v=20180118_1"></script>
+        <!-- WMG-16845 -->
+        <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/d3-v3.5.17/d3.min.js"></script>
+        <script type="text/javascript" src="sri_donut.js"></script>
+        <!-- //WMG-16845 -->
+        <script type="text/javascript">
+            //<!--
+            var $j = jQuery.noConflict();
+            //-->
+        </script>
+        <!--[if lt IE 9]> <script type="text/javascript" src="//www.saramin.co.kr/js/html5shiv.min.js"></script><![endif]-->
+        <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery.tinyscrollbar.min.js"></script>
+        <script type="text/javascript" src="//www.saramin.co.kr/js/ui-component.js?v=20180118_1"></script>
+        <script type="text/javascript" src="//www.saramin.co.kr/js/layout/default-layout.js?v=20180118_1"></script>
     <style>
         body {
             text-align: center;
@@ -32,7 +58,10 @@
             display: block;
             opacity: 0;
         }
-
+        .label {
+            fill:#fff;
+            font-size:15;
+        }
         .legend {
             font-size: 12px;
         }
@@ -42,7 +71,9 @@
             /* NEW */
             stroke-width: 2;
         }
-
+        g {
+            position: relative
+        }
         rect.disabled {
             /* NEW */
             fill: transparent !important;
@@ -52,20 +83,34 @@
 </head>
 
 <body>
-    <div style="margin:75px;" id="chart"></div>
+    <div style="margin:75px;border:1px solid #ddd;position: relative" id="chart"></div>
+    <div style="margin:75px;border:1px solid #ddd;position: relative" id="chart1"></div>
 </body>
 <script>
+    (function ($, window) {
 
-    var inputData = [
-        { label: "A", value: 7 },
-        { label: "B", value: 25 },
-        { label: "C", value: 42 },
-        { label: "D", value: 12},
-        { label: "E", value: 4 }
-    ];
+        (function donutChart() {
+            var width = 500,
+                height = 500,
+                colorScheme = ["#81d4fa", "#c5cae9", "#7c90f2", "#8a90b6", "#4dd0e1"];
 
-    var colorScheme = ["#92c7ed", "#e2e6ff", "#a0b0ff", "#c5cae9", "#83e5f2"];
-    renderPieChart(inputData, "#chart", colorScheme);
+            // Config for the Radar chart
+            var config = {
+                w: width,
+                h: height,
+                TranslateX: 200,
+                TranslateY: 200
+            };
+            var data = [
+                { label: "600점미만/없음", value: 25 },
+                { label: "600점대", value: 45 },
+                { label: "700점대", value: 42 },
+                { label: "800점대", value: 12 },
+                { label: "900점대", value: 4 }
+            ];
+            DonutChart.draw('#chart', data, config, colorScheme);
+        }());
+    })(jQuery, window);
 </script>
 
 </html>
