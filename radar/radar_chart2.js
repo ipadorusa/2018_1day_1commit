@@ -14,7 +14,7 @@ var RadarChart = {
             d.push(tempArry);
         }
         var cfg = {
-            radius: 5,
+            radius: 3,
             w: 300,
             h: 300,
             factor: 1,
@@ -62,11 +62,11 @@ var RadarChart = {
                 .attr("y1", function (d, i) { return levelFactor * (1 - cfg.factor * Math.cos(i * cfg.radians / total)); })
                 .attr("x2", function (d, i) { return levelFactor * (1 - cfg.factor * Math.sin((i + 1) * cfg.radians / total)); })
                 .attr("y2", function (d, i) { return levelFactor * (1 - cfg.factor * Math.cos((i + 1) * cfg.radians / total)); })
-                .attr("class", "line")
-                .style("stroke", cfg.lineColor)
+                .attr("class", "line" + j)
                 .style("stroke-opacity", "0.75")
                 .style("stroke-width", "1px")
                 .attr("transform", "translate(" + (cfg.w / 2 - levelFactor) + ", " + (cfg.h / 2 - levelFactor) + ")");
+                console.log(j)
         }
 
         //Text indicating at what % each level is
@@ -137,6 +137,31 @@ var RadarChart = {
                         .transition(200)
                         .style("fill-opacity", '0.5');
                 });
+            series++;
+        });
+        series = 0;
+        d.forEach(function (y, x) {
+            g.selectAll(".nodes")
+                .data(y).enter()
+                .append("svg:circle")
+                .attr("class", "radar-chart-serie" + series)
+                .attr('r', cfg.radius)
+                .attr("alt", function (j) { return Math.max(j.value, 0) })
+                .attr("cx", function (j, i) {
+                    dataValues.push([
+                        cfg.w / 2 * (1 - (parseFloat(Math.max(j.value, 0)) / cfg.maxValue) * cfg.factor * Math.sin(i * cfg.radians / total)),
+                        cfg.h / 2 * (1 - (parseFloat(Math.max(j.value, 0)) / cfg.maxValue) * cfg.factor * Math.cos(i * cfg.radians / total))
+                    ]);
+                    return cfg.w / 2 * (1 - (Math.max(j.value, 0) / cfg.maxValue) * cfg.factor * Math.sin(i * cfg.radians / total));
+                })
+                .attr("cy", function (j, i) {
+                    return cfg.h / 2 * (1 - (Math.max(j.value, 0) / cfg.maxValue) * cfg.factor * Math.cos(i * cfg.radians / total));
+                })
+                .attr("data-id", function (j) { return j.area })
+                .style("fill", "#fff")
+                .style("stroke-width", "1")
+                .style("stroke", cfg.color[series])
+                .style("fill-opacity", .9)
             series++;
         });
     }
