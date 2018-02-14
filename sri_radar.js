@@ -6,7 +6,7 @@ var RadarChart = {
         for (var i = 0; i < reformatData.length; i++) {
             var area = reformatData[i].area;
             var area_keys = Object.keys(area);
-            
+
             var tempArry = [];
             for (var j = 0; j < area_keys.length; j++) {
                 tempArry.push({"area": area_keys[j], "value": area[area_keys[j]]});
@@ -14,7 +14,7 @@ var RadarChart = {
             d.push(tempArry);
         }
         var cfg = {
-            radius: 3,
+            radius: 2,
             w: 300,
             h: 300,
             factor: 1,
@@ -62,11 +62,10 @@ var RadarChart = {
                 .attr("y1", function (d, i) { return levelFactor * (1 - cfg.factor * Math.cos(i * cfg.radians / total)); })
                 .attr("x2", function (d, i) { return levelFactor * (1 - cfg.factor * Math.sin((i + 1) * cfg.radians / total)); })
                 .attr("y2", function (d, i) { return levelFactor * (1 - cfg.factor * Math.cos((i + 1) * cfg.radians / total)); })
-                .attr("class", "line" + j)
+                .attr("class", "line line" + j)
                 .style("stroke-opacity", "0.75")
                 .style("stroke-width", "1px")
                 .attr("transform", "translate(" + (cfg.w / 2 - levelFactor) + ", " + (cfg.h / 2 - levelFactor) + ")");
-                console.log(j)
         }
 
         //Text indicating at what % each level is
@@ -89,12 +88,11 @@ var RadarChart = {
         axis.append("text")
             .attr("class", "legend")
             .text(function (d) { return d })
-            .style("font-size", "11px")
             .attr("text-anchor", "middle")
             .attr("dy", "1.5em")
-            .attr("transform", function (d, i) { return "translate(0, -10)" })
-            .attr("x", function (d, i) { return cfg.w / 2 * (1 - cfg.factorLegend * Math.sin(i * cfg.radians / total)) - 60 * Math.sin(i * cfg.radians / total); })
-            .attr("y", function (d, i) { return cfg.h / 2 * (1 - Math.cos(i * cfg.radians / total)) - 20 * Math.cos(i * cfg.radians / total); });
+            .attr("transform", function (d, i) { return "translate(-5, -7)" })
+            .attr("x", function (d, i) { return cfg.w / 2 * (1 - cfg.factorLegend * Math.sin(i * cfg.radians / total)) - 66 * Math.sin(i * cfg.radians / total); })
+            .attr("y", function (d, i) { return cfg.h / 2 * (1 - Math.cos(i * cfg.radians / total)) - 22 * Math.cos(i * cfg.radians / total); });
 
 
         d.forEach(function (y, x) {
@@ -106,13 +104,14 @@ var RadarChart = {
                         cfg.h / 2 * (1 - (parseFloat(Math.max(j.value, 0)) / cfg.maxValue) * cfg.factor * Math.cos(i * cfg.radians / total))
                     ]);
                 });
+
             dataValues.push(dataValues[0]);
             g.selectAll(".area")
                 .data([dataValues])
                 .enter()
                 .append("polygon")
                 .attr("class", "radar-chart-serie" + series)
-                .style("stroke-width", "2px")
+                .style("stroke-width", "1")
                 .style("stroke", cfg.color[series])
                 .attr("points", function (d) {
                     var str = "";
@@ -122,7 +121,7 @@ var RadarChart = {
                     return str;
                 })
                 .style("fill", function (j, i) { return cfg.color[series] })
-                .style("fill-opacity", '0.5')
+                .style("fill-opacity", '0.3')
                 .on('mouseover', function (d) {
                     z = "polygon." + d3.select(this).attr("class");
                     g.selectAll("polygon")
@@ -158,10 +157,9 @@ var RadarChart = {
                     return cfg.h / 2 * (1 - (Math.max(j.value, 0) / cfg.maxValue) * cfg.factor * Math.cos(i * cfg.radians / total));
                 })
                 .attr("data-id", function (j) { return j.area })
-                .style("fill", "#fff")
+                .style("fill", cfg.color[series])
                 .style("stroke-width", "1")
                 .style("stroke", cfg.color[series])
-                .style("fill-opacity", .9)
             series++;
         });
     }

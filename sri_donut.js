@@ -18,6 +18,7 @@ var DonutChart = {
         dataset.forEach(function (item) {
             item.enabled = true;
         });
+
         var color = d3.scaleOrdinal()
             .range(colorScheme);
 
@@ -29,15 +30,14 @@ var DonutChart = {
                 .attr("height", cfg.h)
                 .append("g")
                 .attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
+
         var arc = d3.arc()
             .padAngle(cfg.padAngle)
             .outerRadius(cfg.outerRadius)
             .innerRadius(cfg.innerRadius);
 
         var pie = d3.pie()
-            .sort(function (a, b) {
-                return b.value - a.value
-            })
+            .sort(null)
             .value(function (d) { return d.value; });
 
         var tooltip = d3.select(selector)
@@ -80,8 +80,7 @@ var DonutChart = {
                 return 'translate(' + arc.centroid(d) + ')';
             });
 
-
-        d3.select('.dounut_chart').on('mouseover', function (d) {
+        labels.on('mouseover', function (d) {
             var total = d3.sum(dataset.map(function (d) {
                 return (d.enabled) ? d.value : 0;
             }));
@@ -92,17 +91,14 @@ var DonutChart = {
         });
 
 
-        d3.select('.dounut_chart').on('mousemove', function () {
-            console.log(d3.select(this))
-            /*var toolW = tooltip.node().offsetWidth
-            tooltip.style('top', (d3.event.layerY - 60) + 'px')
-                .style('left', (d3.event.layerX) + 'px');*/
+        labels.on('mousemove', function (d) {
+            var _tooltip = jQuery(tooltip.node());
+            _tooltip.css('transform','translate('+ arc.centroid(d)[0] + 'px,' + arc.centroid(d)[1] + 'px)');
         });
 
         labels.on('mouseout', function () {
             tooltip.style('display','none');
         });
-
 
     }
 };
