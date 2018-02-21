@@ -14,6 +14,6 @@ var BarCombieChart = {
         dataset.forEach(function (item) {
             item.enabled = true;
         });
-
+        
 
 };
