@@ -11,9 +11,11 @@ var BarCombieChart = {
                 }
             }
         }
-        dataset.forEach(function (item) {
-            item.enabled = true;
+        dataset.forEach(function (d) {
+            d.salary = +d.salary;
+            d.ave = +d.ave;
+            return d.salray;
         });
-        
-
+        console.log(d.salary);
+    }
 };
