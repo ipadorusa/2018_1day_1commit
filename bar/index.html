@@ -11,7 +11,9 @@
     <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
     <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
     <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
-    <script src="/js/d3.min.js"></script>
+    <script src="//www.saraminimage.co.kr/js/libs/jquery-1.11.1.min.js"></script>
+    <script src="//www.saraminimage.co.kr/js/libs/d3.v4.min.js"></script>
+    <script src="sri_combie_barline.js"></script>
     <style>
         .bar00 {
             fill: #dfdfdf;
@@ -69,111 +71,33 @@
 </head>
 
 <body>
-    <div id="wrapper">
-    </div>
+<div id="wrapper">
+    <div id="bar"></div>
+</div>
+<script>
+    (function($, window) {
+        (function barcombieChart() {
+            var width = 558,
+                height = 215,
+                colorScheme = ["#868bb2", "#7289f8", "#c5cae9", "#81d4fa"];
 
-    <script>
-        
-        var margin = { top: 20, right: 20, bottom: 30, left: 40 },
-            width = 500 - margin.left - margin.right,
-            height = 250 - margin.top - margin.bottom;
+            // Config for the Radar chart
+            var config = {
+                w: width,
+                h: height,
+                TranslateX: 239,
+                TranslateY: 100
+            };
 
-        // set the ranges
-        var x = d3.scaleBand()
-            .range([0, width])
-            .padding(0.7);
-        var y = d3.scaleLinear()
-            .range([height, 0]);
-
-
-        // append the svg object to the body of the page
-        // append a 'group' element to 'svg'
-        // moves the 'group' element to the top left margin
-        var svg = d3.select("#wrapper").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-        // get the data
-        d3.csv('../sales.csv', function (error, data) {
-            if (error) throw error;
-
-            // format the data
-            data.forEach(function (d) {
-                d.sales = +d.sales;
-            });
-
-            // Scale the range of the data in the domains
-            x.domain(data.map(function (d) { return d.salesperson; }));
-            y.domain([parseInt(d3.min(data, function (d) { return d.sales; }) / 500) * 500 - 500, d3.max(data, function (d) { return d.sales + 500; })]);
-            // append the rectangles for the bar chart
-
-
-            svg.selectAll('.bar')
-                .data(data)
-                .enter().append('rect')
-                .attr('class', function (d, i) { return 'bar0' + i })
-                .attr('x', function (d) { return x(d.salesperson); })
-                .attr('height',0)
-                .attr('width', x.bandwidth())
-                .attr('y', height)
-                //.attr('y', function (d) { return y(d.sales); })
-                .transition()
-                .delay(1000)
-                .ease(d3.easeLinear)
-                .duration(1000)
-                .attr('y', function(d,i) { return y(d.sales)})
-                .attr('height', function (d) { return height - y(d.sales); });
-
-            // add the x Axis
-            svg.append('g')
-                .classed('axis_xline', true)
-                .attr('transform', 'translate(0,' + height + ')')
-                .call(d3.axisBottom(x));
-
-            // add the y Axis
-            svg.append('g')
-                .classed('axis_yline', true)
-                .call(d3.axisLeft(y).ticks(4));
-
-            function make_y_gridlines() {
-                return d3.axisLeft(y)
-            }
-            svg.append('g')
-                .classed('grid', true)
-                .call(make_y_gridlines().ticks(4).tickSize(-width).tickFormat(''));
-
-            var valueline = d3.line()
-                .x(function (d) { return x(d.salesperson) + x.bandwidth() / 2; })
-                .y(function (d) { return y(d.sales); });
-
-            svg.append('path')
-                .data([data])
-                .attr('class', 'avgline')
-                .attr('d', valueline);
-
-            svg.selectAll('.dot')
-                .data(data)
-                .enter().append('circle') // Uses the enter().append() method
-                .attr('class', 'dot') // Assign a class for styling
-                .attr('cx', function (d) { return x(d.salesperson) + x.bandwidth() / 2 })
-                .attr('cy', function (d) { return y(d.sales) })
-                .attr('r', 3);
-
-            svg.selectAll('.label_txt')
-                .data(data)
-                .enter().append('text')
-                .text(function (d) {
-                    var formatComma = d3.format(",");
-                    return formatComma(d.sales);
-                })
-                .attr('class', 'label_txt')
-                .attr('x', function (d) { return x(d.salesperson) + x.bandwidth() / 2 })
-                .attr('y', function (d) { return y(d.sales) - 10 });
-        });
-
-    </script>
+            var data1 = [
+                {year: "2015", salary: 3000, ave: 3400 },
+                {year: "2016", salary: 4000, ave: 4400 },
+                {year: "2017", salary: 5000, ave: 4890 }
+            ];
+            BarCombieChart.draw('#bar', data1, config, colorScheme);
+        }());
+    })(jQuery, window);
+</script>
 </body>
 
 </html>
