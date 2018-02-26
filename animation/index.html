@@ -2153,7 +2153,7 @@
 
             <style>
                 .average_box {padding:48px 0 50px 60px}
-                .average_box .list {width:840px;box-sizing:border-box}
+                .average_box #average_list {width:840px;box-sizing:border-box}
                 .average_box .head_list_range {height:36px;line-height:34px;border-bottom:1px solid #f0f0f0;box-sizing:border-box}
                 .average_box .list_range .row {height:65px;line-height:63px;border-bottom:1px solid #f0f0f0;box-sizing:border-box}
                 .average_box .list_range .row:after {display:table;clear:both;content:"";table-layout:fixed}
@@ -2177,7 +2177,7 @@
 
             <h3>직급별 연봉통계</h3>
             <div class="average_box">
-                <div class="list">
+                <div id="average_list">
                     <div class="head_list_range">
                         <dl class="row">
                             <dt class="title">직급</dt>
@@ -2205,7 +2205,7 @@
                                         <span class="max"><em>최고</em> 4,500</span>
                                     </div>
                                     <span class="human">
-                                        <canvas id="runningman"></canvas>
+                                        <canvas class="runningman"></canvas>
                                     </span>
                                 </div>
                             </dd>

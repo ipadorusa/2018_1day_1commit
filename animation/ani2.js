@@ -30,18 +30,17 @@ jQuery(document).ready(function(){
                 || clearTimeout;
         }
         var runningHuman = {
-            //초기화 selector, data
-            draw: function(selector, dataset){
-                var coin,
-                    coinImage,
-                    canvas;
-            }
             //준비
             //달리기
             //도착
             //마우스오버
             //remove
         };
-
+        function runInit(selector) {
+            jQuery(selector).remove();
+        }
+        functin runActive() {
+            
+        }
     }());
 });
