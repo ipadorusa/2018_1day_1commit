@@ -456,7 +456,27 @@
     <script type="text/javascript" src="//www.saraminimage.co.kr/jquery/ui/jquery-ui-1.11.4/jquery-ui.min.js?20180228"></script>
     <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery.jcarousel.min.js?20180228"></script>
     <script type="text/javascript" src="//www.saramin.co.kr/js/ui-component.js?v=20180228"></script>
-    <script type="text/javascript" src="//www.saramin.co.kr/js/salaries/salaries.js?v=20180228"></script>
+    <!--<script type="text/javascript" src="//www.saramin.co.kr/js/salaries/salaries.js?v=20180228"></script> wmg-16700 해당 js는 필요없음-->
+    <!-- WMG-16700 -->
+    <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/d3.v4.min.js"></script>
+
+    <!--<script>
+        jQuery(document).redady(function(){
+            function combieChart(){
+                var data = [
+                    { year: "2015", salary: 3000, aver: 2500},
+                    { year: "2016", salary: 3500, aver: 3800},
+                    { year: "2017", salary: 4100, aver: 4000}
+                ];
+                RadarChart.draw('.radarchart1', data, config);
+            }
+            combieChart()
+
+        });
+
+    </script>-->
+
+    <!-- //WMG-16700 -->
     <script type="text/javascript">
         //<!--
         jQuery.noConflict()
@@ -2859,12 +2879,67 @@
                     <li><a href="#tab_years_salary">연차별</a></li>
                     <li><a href="#tab_age_salary">연령별</a></li>
                 </ul>
-                <div id="tab_avg_salary" class="tabcontents">
+                <div id="tab_avg_salary" class="tab_avg_salary">
                     <div class="wrap_average">
-                        <p>2017년 평균연봉</p>
+                        <p class="info_title">2017년 평균연봉</p>
+                        <div class="salaryinfo">
+                            <p class="average_currency"><em>5,776</em> 만원</p>
+                            <div class="aver_bar">
+                                <span class="min">최저</span>
+                                <span class="min_txt"><em>2,320</em>만원</span>
+                                <span class="max">최고</span>
+                                <span class="max_txt"><em>9,320</em>만원</span>
+                            </div>
+                        </div>
+                        <div class="textinfo">
+                            <dl class="info">
+                                <dt>2016년 대비</dt>
+                                <dd class="point"><span class="spr_salary downpoint"></span> <em>7.8</em>%</dd><!-- up일경우 uppoint -->
+                            </dl>
+                            <dl class="info">
+                                <dt>제조/화학업계</dt>
+                                <dd class="rank"><em>12</em>위</dd>
+                            </dl>
+                            <dl class="info">
+                                <dt>
+                                    연봉정보 신뢰도
+                                    <button type="button" class="spr_salary tooltip" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>연봉정보 신뢰도</span></button>
+                                    <div class="sri_tooltip size_wide" style="width:294px;margin:-214px 0px 0px -189px; display:none;">
+                                        <span class="tail_bottom_right"></span>
+                                        <div class="tooltip_inner txt_left">
+                                            <p class="tit">연봉정보 신뢰도 기준</p>
+                                            <ul class="list">
+                                                <li><span class="legend highest">매우높음</span>: 등록 이력서 <strong>50건 이상</strong></li>
+                                                <li><span class="legend high">높음</span>: 등록 이력서 <strong>30건 이상 ~ 50건 미만</strong></li>
+                                                <li><span class="legend medium">보통</span>: 기초데이터 <strong>2건</strong></li>
+                                                <li><span class="legend low">낮음</span>: 기초데이터 <strong>1건</strong></li>
+                                                <li><span class="legend lower">매우낮음</span>: 기초데이터 <strong>없음</strong></li>
+                                            </ul>
+                                            <p class="noti">※ 기초데이터 : 국민연금, 고용보험, 금감원, 알리오 정보 등을
+                                                기반으로 한 데이터
+                                            </p>
+                                        </div>
+                                    </div>
+                                </dt>
+                                <dd class="reliability">
+                                    <span class="gauge lower">매우<br>낮음</span>
+                                </dd>
+                            </dl>
+                        </div>
                     </div>
-                    <div class="wrap_graph combie_graph">
+                    <div class="sri_graph combie_graph">
+                        <ul class="graph_wrap_legend">
+                            <li><span class="legend"></span> 사람인HR</li>
+                            <li><span class="spr_salary legend"></span> 제조/화학업</li>
+                            <li class="currency">
+                                (단위:만원)
+                            </li>
+                        </ul>
+                        <div class="wrap_graph">
+                            <div id="combie">
 
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <h3 class="title">맞춤 연봉정보</h3>
@@ -3007,10 +3082,10 @@
                     <h4 class="tit_recruit">진행중인 채용 공고 <span class="value"><em>22</em>건</span></h4>
                     <table class="tbl_recruit" width="100%" cellspacing="0" cellpadding="0" border="0">
                         <colgroup>
-                            <col width="446">
-                            <col width="88">
-                            <col width="120">
-                            <col width="120">
+                            <col width="635">
+                            <col width="80">
+                            <col width="148">
+                            <col width="97">
                         </colgroup>
                         <tbody>
                         <tr>
@@ -3090,9 +3165,125 @@
 
                 </div>
                 <h4 class="list_title">(주)사람인에이치알과 평균연봉 비슷한기업</h4>
+                <div class="salary_matching_list">
+                    <div class="item_list">
+                        <div class="company_name">
+                            <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
+                                <span class="tail_bottom_center"></span>
+                                <div class="tooltip_inner align_center">
+                                    <strong class="title">관심기업 등록</strong>
+                                </div>
+                            </div>
+                        </div>
 
+                        <span class="business">제조/화학업</span>
+                        <span class="ava_salary">매출액 13조 8,927억원</span>
+                        <dl class="company_average">
+                            <dt>평균연봉</dt>
+                            <dd><em>4,000</em> 만원</dd>
+                        </dl>
+                    </div>
+                    <div class="item_list">
+                        <div class="company_name">
+                            <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
+                                <span class="tail_bottom_center"></span>
+                                <div class="tooltip_inner align_center">
+                                    <strong class="title">관심기업 등록</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="business">제조/화학업</span>
+                        <span class="ava_salary">매출액 13조 8,927억원</span>
+                        <dl class="company_average">
+                            <dt>평균연봉</dt>
+                            <dd><em>4,000</em> 만원</dd>
+                        </dl>
+                    </div>
+                    <div class="item_list">
+                        <div class="company_name">
+                            <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
+                                <span class="tail_bottom_center"></span>
+                                <div class="tooltip_inner align_center">
+                                    <strong class="title">관심기업 등록</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="business">제조/화학업</span>
+                        <span class="ava_salary">매출액 13조 8,927억원</span>
+                        <dl class="company_average">
+                            <dt>평균연봉</dt>
+                            <dd><em>4,000</em> 만원</dd>
+                        </dl>
+                    </div>
+                </div>
                 <h4 class="list_title">많이 본 연봉 정보</h4>
+                <div class="salary_matching_list">
+                    <div class="item_list">
+                        <div class="company_name">
+                            <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
+                                <span class="tail_bottom_center"></span>
+                                <div class="tooltip_inner align_center">
+                                    <strong class="title">관심기업 등록</strong>
+                                </div>
+                            </div>
+                        </div>
 
+                        <span class="business">제조/화학업</span>
+                        <span class="ava_salary">매출액 13조 8,927억원</span>
+                        <dl class="company_average">
+                            <dt>평균연봉</dt>
+                            <dd><em>4,000</em> 만원</dd>
+                        </dl>
+                    </div>
+                    <div class="item_list">
+                        <div class="company_name">
+                            <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
+                                <span class="tail_bottom_center"></span>
+                                <div class="tooltip_inner align_center">
+                                    <strong class="title">관심기업 등록</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="business">제조/화학업</span>
+                        <span class="ava_salary">매출액 13조 8,927억원</span>
+                        <dl class="company_average">
+                            <dt>평균연봉</dt>
+                            <dd><em>4,000</em> 만원</dd>
+                        </dl>
+                    </div>
+                    <div class="item_list">
+                        <div class="company_name">
+                            <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
+                                <span class="tail_bottom_center"></span>
+                                <div class="tooltip_inner align_center">
+                                    <strong class="title">관심기업 등록</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="business">제조/화학업</span>
+                        <span class="ava_salary">매출액 13조 8,927억원</span>
+                        <dl class="company_average">
+                            <dt>평균연봉</dt>
+                            <dd><em>4,000</em> 만원</dd>
+                        </dl>
+                    </div>
+                </div>
                 <script type="text/javascript">
                 </script>
                 <!-- 아래 레이어는 사용하지 않아서 삭제 해야할 돔 요소임 -->
@@ -3383,5 +3574,6 @@
         </div>
     </footer>
 </div>
+<script type="text/javascript" src="combie.js"></script>
 </body>
 </html>
