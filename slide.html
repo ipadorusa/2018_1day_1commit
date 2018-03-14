@@ -459,22 +459,60 @@
     <!--<script type="text/javascript" src="//www.saramin.co.kr/js/salaries/salaries.js?v=20180228"></script> wmg-16700 해당 js는 필요없음-->
     <!-- WMG-16700 -->
     <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/d3.v4.min.js"></script>
+    <script type="text/javascript" src="sri_combination.js"></script>
+    <script type="text/javascript" src="sri_stackedarea.js"></script>
+    <script>
+        jQuery(document).ready(function(){
+            (function combinationChart() {
+                var width = 360,
+                    height = 240,
+                    colorScheme = ["#acd9f8", "#acd9f8", "#4fa4f9"];
 
-    <!--<script>
-        jQuery(document).redady(function(){
-            function combieChart(){
+                // Config for the Radar chart
+                var config = {
+                    w: width,
+                    h: height,
+                    mTop: 40,
+                    mRight: 20,
+                    mBottom: 20,
+                    mLeft: 40
+                };
+
                 var data = [
-                    { year: "2015", salary: 3000, aver: 2500},
-                    { year: "2016", salary: 3500, aver: 3800},
-                    { year: "2017", salary: 4100, aver: 4000}
+                    {year: "2015", salary: 3000, aver: 3200},
+                    {year: "2016", salary: 3500, aver: 3800},
+                    {year: "2017", salary: 4100, aver: 4000}
                 ];
-                RadarChart.draw('.radarchart1', data, config);
-            }
-            combieChart()
+                var dataRange = {min: 2500, max: 4500};
+                CombinationChart.draw('#combie', data, dataRange, config, colorScheme);
+            }());
+            (function stackedChart() {
+                var width = 360,
+                    height = 240,
+                    colorScheme = ["#acd9f8", "#acd9f8", "#4fa4f9"];
+
+                // Config for the Radar chart
+                var config = {
+                    w: width,
+                    h: height,
+                    mTop: 40,
+                    mRight: 20,
+                    mBottom: 20,
+                    mLeft: 40
+                };
+
+                var data = [
+                    {year: "2015", salary: 3000, aver: 3200},
+                    {year: "2016", salary: 3500, aver: 3800},
+                    {year: "2017", salary: 4100, aver: 4000}
+                ];
+                var dataRange = {min: 2500, max: 4500};
+                StackedAreaChart.draw('#stacked_area', data, dataRange, config, colorScheme);
+            }());
 
         });
 
-    </script>-->
+    </script>
 
     <!-- //WMG-16700 -->
     <script type="text/javascript">
@@ -3012,7 +3050,7 @@
                     </div>
                 </div>
 
-                <h3 class="title">연차별초임</h3>
+                <h3 class="title" id="tab_years_salary">연차별 연봉통계</h3>
                 <div class="category_slide">
                     <div class="category_head">
                         <a href="##" class="btn_all on">전체</a>
@@ -3036,7 +3074,11 @@
                         </div>
                     </div>
                     <div class="category_contents">
+                        <div class="wrap_graph">
+                            <div id="stacked_area">
 
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <h3 class="title">연령별 연봉통계</h3>
@@ -3574,6 +3616,5 @@
         </div>
     </footer>
 </div>
-<script type="text/javascript" src="combie.js"></script>
 </body>
 </html>

@@ -604,6 +604,9 @@
 .tab_avg_salary .graph_wrap_legend:after {display:table;clear:both;content:"";table-layout:fixed}
 .tab_avg_salary .combie_chart .grid .domain {visibility:hidden}
 .tab_avg_salary .combie_chart .axis_yline .domain {visibility:hidden}
+.tab_avg_salary .combie_chart .label_txt {font-size:11px}
+.tab_avg_salary .combie_chart .dot {fill:#fff;stroke:#666;stroke-width:2px}
+.tab_avg_salary .combie_chart .avgline {fill: none;stroke: #666;stroke-width: 1px;}
 
 .salary_view_wrap .content_gird .txt_notice01 {color:#444;font-size:20px;letter-spacing:-1px;text-align:center}
 .salary_view_wrap .content_gird .txt_notice02 {color:#666;font-size:14px;letter-spacing:-1px;text-align:center}
