@@ -461,6 +461,7 @@
     <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/d3.v4.min.js"></script>
     <script type="text/javascript" src="sri_combination.js"></script>
     <script type="text/javascript" src="sri_stackedarea.js"></script>
+    <script type="text/javascript" src="sri_line.js"></script>
     <script>
         jQuery(document).ready(function(){
             (function combinationChart() {
@@ -473,22 +474,22 @@
                     w: width,
                     h: height,
                     mTop: 40,
-                    mRight: 20,
+                    mRight: 0,
                     mBottom: 20,
-                    mLeft: 40
+                    mLeft: 22
                 };
 
                 var data = [
-                    {year: "2015", salary: 3000, aver: 3200},
-                    {year: "2016", salary: 3500, aver: 3800},
-                    {year: "2017", salary: 4100, aver: 4000}
+                    {year: "2015", salary: 3500, aver: 3700},
+                    {year: "2016", salary: 4500, aver: 4000},
+                    {year: "2017", salary: 5100, aver: 4500}
                 ];
-                var dataRange = {min: 2500, max: 4500};
+                var dataRange = {min: 3000, max: 5500};
                 CombinationChart.draw('#combie', data, dataRange, config, colorScheme);
             }());
             (function stackedChart() {
-                var width = 360,
-                    height = 240,
+                var width = 838,
+                    height = 330,
                     colorScheme = ["#acd9f8", "#acd9f8", "#4fa4f9"];
 
                 // Config for the Radar chart
@@ -496,20 +497,89 @@
                     w: width,
                     h: height,
                     mTop: 40,
-                    mRight: 20,
+                    mRight: 0,
                     mBottom: 20,
-                    mLeft: 40
+                    mLeft: 28
                 };
 
                 var data = [
-                    {year: "2015", salary: 3000, aver: 3200},
-                    {year: "2016", salary: 3500, aver: 3800},
-                    {year: "2017", salary: 4100, aver: 4000}
+                    {year: "1년차", salary: 2500},
+                    {year: "2년차", salary: 3800},
+                    {year: "3년차", salary: 4000},
+                    {year: "4년차", salary: 4550},
+                    {year: "5년차", salary: 5210},
+                    {year: "6년차", salary: 5500},
+                    {year: "7년차", salary: 6500},
+                    {year: "8년차", salary: 7250},
+                    {year: "9년차", salary: 7595},
+                    {year: "10년차↑", salary: 9200}
                 ];
-                var dataRange = {min: 2500, max: 4500};
+                var dataRange = {min: 1000, max: 10000};
                 StackedAreaChart.draw('#stacked_area', data, dataRange, config, colorScheme);
             }());
+            (function lineChart() {
+                var width = 838,
+                    height = 330,
+                    colorScheme = ["#acd9f8", "#acd9f8", "#4fa4f9"];
 
+                // Config for the Radar chart
+                var config = {
+                    w: width,
+                    h: height,
+                    mTop: 40,
+                    mRight: 0,
+                    mBottom: 20,
+                    mLeft: 28
+                };
+                var data = {
+                    "salary_2017" : [1900,2000,2200,2400,2600,2800,3000,3200,3400,3600,3800,4000,4200,4400,4600,4800,5000,5200,5400,5600,5800,6000,6200,6400,6600,6800,7000,7200,7400,7600,7800],
+                    "salary_2016" : [2100,2500,2700,2900,3100,3300,3500,3700,3900,4100,4300,4500,4700,4900,5100,5300,5500,5700,5900,6100,6300,6500,6700,6900,7100,7300,7500,7700,7900,8100,8300],
+                    "salary_2015" : [2200,3000,3250,3500,3750,4000,4250,4500,4750,5000,5250,5500,5750,6000,6250,6500,6750,7000,7250,7500,7750,8000,8250,8500,8750,9000,9250,9500,9750,10000,10250]
+                };
+                var dataRange = {min: 0, max: 10500};
+                LineChart.draw('#linechart_area', data, dataRange, config, colorScheme);
+            }());
+            jQuery('#wing-info-list .btn_expand').on("click",function(){
+                jQuery('#wing-info-list').toggleClass('on');
+            });
+
+            (function headerScrEvent(){
+                var offsetTop = [];
+
+                function fixedheader() {
+                    var obj = jQuery('#spy_header'),
+                        defineH = obj.offset().top + obj.outerHeight() / 3,
+                        navObj = jQuery('.tab li',obj),
+                        scrollContents = jQuery('.spy_contents');
+
+                    scrollContents.each(function(i){
+                        offsetTop[i] = jQuery('.spy_contents').eq(i).offset().top - defineH;
+                    });
+
+                    jQuery(window).on('scroll',function(){
+                        var sc = jQuery(window).scrollTop();
+                        console.log(sc,offsetTop,scrollContents.index())
+                        if(sc >= defineH){
+                            obj.addClass('on');
+                        }else {
+                            obj.removeClass('on');
+                        }
+                    });
+
+                    navObj.find("a").on('click',function(){
+                        var href = jQuery.attr(this, 'href');
+                        jQuery('html').animate({
+                            scrollTop: jQuery(href).offset().top - 120
+                        }, {
+                            duration: 500,
+                            easing: 'linear',
+                            queue: false
+                        });
+                        return false;
+                    });
+                }
+                fixedheader();
+            }());
         });
 
     </script>
@@ -2879,7 +2949,7 @@
             </script>
             <!-- WMG-16700 -->
             <div class="salary_view_wrap">
-                <div class="salary_company_info">
+                <div class="salary_company_info spy_contents">
                     <h1 class="title">(주)사람인에이치알</h1>
                     <div class="sri_layer_tooltip wrap_interested_corp">
                         <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');" mcom_idx="7509705" del_fl="n"><span>관심기업 등록</span></button>
@@ -2908,15 +2978,16 @@
                     <span class="company_txt">업력 55년</span>
                     <span class="company_txt">매출액 13조 8,927억원</span>
                 </div>
-
-                <ul class="tab sep_six"><!-- tab갯수 class sep_two,sep_three,sep_four,sep_five,sep_six -->
-                    <li class="on"><a href="#tab_avg_salary">평균연봉</a></li>
-                    <li><a href="#tab_custom_salary">맞춤연봉</a></li>
-                    <li><a href="#tab_univ_salary">대졸초임</a></li>
-                    <li><a href="#tab_rank_salary">직급별</a></li>
-                    <li><a href="#tab_years_salary">연차별</a></li>
-                    <li><a href="#tab_age_salary">연령별</a></li>
-                </ul>
+                <div id="spy_header" class="fixed_tab">
+                    <ul class="quick tab sep_six"><!-- tab갯수 class sep_two,sep_three,sep_four,sep_five,sep_six -->
+                        <li class="on"><a href="#tab_avg_salary" class="link">평균연봉</a></li>
+                        <li><a href="#tab_custom_salary" class="link">맞춤연봉</a></li>
+                        <li><a href="#tab_univ_salary" class="link">대졸초임</a></li>
+                        <li><a href="#tab_rank_salary" class="link">직급별</a></li>
+                        <li><a href="#tab_years_salary" class="link">연차별</a></li>
+                        <li><a href="#tab_age_salary" class="link">연령별</a></li>
+                    </ul>
+                </div>
                 <div id="tab_avg_salary" class="tab_avg_salary">
                     <div class="wrap_average">
                         <p class="info_title">2017년 평균연봉</p>
@@ -2977,11 +3048,14 @@
                             <div id="combie">
 
                             </div>
+                            <p class="info_txt">
+                              2017년 동종업계 평균 대비 <strong class="uppoint">21% 높은 수준</strong><!-- uppoint,downpoint-->
+                            </p>
                         </div>
                     </div>
                 </div>
-                <h3 class="title">맞춤 연봉정보</h3>
-                <div class="content_gird">
+                <h3 id="tab_custom_salary" class="title">맞춤 연봉정보</h3>
+                <div class="content_gird spy_contents">
                     <p class="txt_notice01">연봉 통계 데이터를 분석하여 <em>맞춤 연봉정보</em>를 제공해드립니다.</p>
                     <p class="txt_notice02">아래 정보를 입력하신 후 맞춤 연봉정보 보기를 눌러주세요. <a href="" class="link">로그인</a>하시면 저장된 정보를 불러옵니다.</p>
                     <div class="wrap_select">
@@ -3010,8 +3084,8 @@
                         <li>맞춤 연봉정보는 해당 기업의 여러 연봉 자료를 기반으로 분석한 것으로 기업의 실제 연봉과는 차이가 있을 수 있으므로 참고용으로만  활용하시기 바랍니다.</li>
                     </ul>
                 </div>
-                <h3 class="title">대졸초임</h3>
-                <div class="content_gird univ">
+                <h3 id="tab_univ_salary" class="title">대졸초임</h3>
+                <div class="content_gird univ spy_contents">
                     <div class="wrap_graph">
 
                     </div>
@@ -3022,8 +3096,8 @@
                         <p>이기업의 대졸초임은 2016년 대비 <span class="up">21% 상승</span>했습니다.</p>
                     </div>
                 </div>
-                <h3 class="title">직급별 연봉통계</h3>
-                <div class="category_slide">
+                <h3 id="tab_rank_salary" class="title">직급별 연봉통계</h3>
+                <div class="category_slide spy_contents">
                     <div class="category_head">
                         <a href="##" class="btn_all on">전체</a>
                         <div class="wrap_slide">
@@ -3050,8 +3124,8 @@
                     </div>
                 </div>
 
-                <h3 class="title" id="tab_years_salary">연차별 연봉통계</h3>
-                <div class="category_slide">
+                <h3  id="tab_years_salary" class="title">연차별 연봉통계</h3>
+                <div class="category_slide spy_contents">
                     <div class="category_head">
                         <a href="##" class="btn_all on">전체</a>
                         <div class="wrap_slide">
@@ -3075,14 +3149,18 @@
                     </div>
                     <div class="category_contents">
                         <div class="wrap_graph">
-                            <div id="stacked_area">
+                            <ul class="graph_wrap_legend">
+                                <li><span class="spr_salary legend"></span>평균연봉</li>
+                                <li class="currency">(단위:만원)</li>
+                            </ul>
+                            <div class="stacked_area" id="stacked_area">
 
                             </div>
                         </div>
                     </div>
                 </div>
-                <h3 class="title">연령별 연봉통계</h3>
-                <div class="category_slide">
+                <h3 id="tab_age_salary" class="title">연령별 연봉통계</h3>
+                <div class="category_slide spy_contents">
                     <div class="category_head">
                         <a href="##" class="btn_all on">전체</a>
                         <div class="wrap_slide">
@@ -3105,7 +3183,17 @@
                         </div>
                     </div>
                     <div class="category_contents">
+                        <div class="wrap_graph">
+                            <ul class="graph_wrap_legend">
+                                <li><span class="spr_salary legend"></span>2017</li>
+                                <li><span class="legend years_2016"></span>2016</li>
+                                <li><span class="legend years_2015"></span>2015</li>
+                                <li class="currency">(단위:만원)</li>
+                            </ul>
+                            <div class="linechart_area" id="linechart_area">
 
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -3326,8 +3414,6 @@
                         </dl>
                     </div>
                 </div>
-                <script type="text/javascript">
-                </script>
                 <!-- 아래 레이어는 사용하지 않아서 삭제 해야할 돔 요소임 -->
                 <div id="modify_layer" class="salary_layer modify_layer" style="display:none;">
                     <div class="inner_layer">
@@ -3521,23 +3607,203 @@
                     </div>
                 </div>
                 <div class="company_grade">
-                    <span class="spr_salary bg_radar"></span>
-                    <p class="grade_info">종합지수 <em>2.5</em></p>
-                    <div class="star_ratings small_blue">
-                        <span class="inner_ratings" style="width:48%"></span>
+                    <div class="contract_contents">
+                        <span class="spr_salary bg_radar"></span>
+                        <p class="grade_info">종합지수 <em>2.5</em></p>
+                        <div class="star_ratings small_blue">
+                            <span class="inner_ratings" style="width:48%"></span><!-- 지수 퍼센트로 넣어주세요 -->
+                        </div>
                     </div>
+
+
+                    <div class="expand_contents">
+                        <!-- 비교 대상이 없을때 -->
+                        <div class="view view_type01">
+                            <div class="grid_txtinfo">
+                                <div class="title">
+                                    $(주)사람인에이치알$
+                                </div>
+                                <div class="company_name">
+                                    <dl class="company1">
+                                        <dt><span class="blind">$(주)사람인에이치알$</span>종합지수</dt>
+                                        <dd class="point">2.5<span>점</span></dd>
+                                        <dd>
+                                            <div class="star_ratings small_blue">
+                                                <span class="inner_ratings" style="width:48%"></span><!-- 지수 퍼센트로 넣어주세요 -->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="company_spec">
+                                    <div class="wrap_spec_info">
+                                        <strong class="blind">$(주)사람인에이치알$ 종합지수</strong>
+                                        <dl class="spec_point">
+                                            <dt>평균연봉(전체)</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                            </dd>
+                                        </dl>
+                                        <dl class="spec_point">
+                                            <dt>평균연봉(직무)</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                            </dd>
+                                        </dl>
+                                        <dl class="spec_point">
+                                            <dt>자본금</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                            </dd>
+                                        </dl>
+                                        <dl class="spec_point">
+                                            <dt>매출액</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                            </dd>
+                                        </dl>
+                                        <dl class="spec_point">
+                                            <dt>연봉증감율</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                            </dd>
+                                        </dl>
+                                        <dl class="spec_point">
+                                            <dt>위치</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="notice_box">
+                                    기업지수는 연봉정보 서비스 내 기업 중 각 항목에<br>상위 비례에 따라 임의로 부여하는 지수입니다.
+                                </div>
+                            </div>
+                            <div class="wrap_graph">
+                                <div class="company_name">
+                                    <p><span class="target_circle"></span> (주)사람인에이치알</p>
+                                </div>
+                                <div id="radar_graph" class="radar_graph">
+
+                                </div>
+                                <ul class="notice_list">
+                                    <li>ㆍ위치 : 내 주소(없을 경우 내 희망 지역)와의 거리</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- // 비교 대상이 없을때 -->
+                        <!-- 비교 대상이 있을때 -->
+                        <div class="view view_type02" style="display:none">
+                            <div class="grid_txtinfo">
+                                <div class="title">
+                                    <strong>기업지수 비교</strong>
+                                    <button type="reset" class="btn_smaller_type01"><span class="spr_salary reset"></span> 비교 해제</button>
+                                </div>
+                                <div class="company_name">
+                                    <dl class="company1">
+                                        <dt>$(주)사람인에이치알$</dt>
+                                        <dd class="point">2.5</dd>
+                                        <dd>
+                                            <div class="star_ratings small_blue">
+                                                <span class="inner_ratings" style="width:48%"></span><!-- 지수 퍼센트로 넣어주세요 -->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="company2">
+                                        <dt>$(주)삼성전자고려고려고려$</dt>
+                                        <dd class="point">2.0</dd>
+                                        <dd>
+                                            <div class="star_ratings small_green">
+                                                <span class="inner_ratings" style="width:48%"></span><!-- 지수 퍼센트로 넣어주세요 -->
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="company_spec">
+                                    <div class="wrap_spec_info">
+                                        <strong class="blind">$(주)사람인에이치알$ : $(주)삼성전자고려고려고려$ 기업지수 비교</strong>
+                                        <dl class="spec_point">
+                                            <dt>평균연봉(전체)</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                                <span class="blind">:</span>
+                                                <span class="company2">3.5</span>
+                                            </dd>
+                                        </dl>
+                                        <dl class="spec_point">
+                                            <dt>평균연봉(직무)</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                                <span class="blind">:</span>
+                                                <span class="company2">3.5</span>
+                                            </dd>
+                                        </dl>
+                                        <dl class="spec_point">
+                                            <dt>자본금</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                                <span class="blind">:</span>
+                                                <span class="company2">3.5</span>
+                                            </dd>
+                                        </dl>
+                                        <dl class="spec_point">
+                                            <dt>매출액</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                                <span class="blind">:</span>
+                                                <span class="company2">3.5</span>
+                                            </dd>
+                                        </dl>
+                                        <dl class="spec_point">
+                                            <dt>연봉증감율</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                                <span class="blind">:</span>
+                                                <span class="company2">3.5</span>
+                                            </dd>
+                                        </dl>
+                                        <dl class="spec_point">
+                                            <dt>위치</dt>
+                                            <dd>
+                                                <span class="company1">3.5</span>
+                                                <span class="blind">:</span>
+                                                <span class="company2">3.5</span>
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="notice_box">
+                                    기업지수는 연봉정보 서비스 내 기업 중 각 항목에<br>상위 비례에 따라 임의로 부여하는 지수입니다.
+                                </div>
+                            </div>
+                            <div class="wrap_graph">
+                                <div class="company_name">
+                                    <p><span class="target_circle"></span> (주)사람인에이치알</p>
+                                    <p><span class="target_triangle"></span> (주)삼성전자고려고려고려</p>
+                                </div>
+                                <div id="radar_graph" class="radar_graph">
+
+                                </div>
+                                <ul class="notice_list">
+                                    <li>ㆍ위치 : 내 주소(없을 경우 내 희망 지역)와의 거리</li>
+                                    <li>ㆍ평균연봉(직무) : 해당 지무의 전체 평균 기준</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- // 비교 대상이 있을때 -->
+                    </div>
+
                 </div>
                 <div class="company_diff_list">
                     <h4>
                         최근 본 기업과 비교하기
                     </h4>
-                    <ul>
-                        <li><a href="">삼성전자</a></li>
+                    <ul class="current_list">
+                        <li class="on"><a href="">삼성전자</a></li>
                         <li><a href="">삼성전자고리고리</a></li>
                         <li><a href="">삼성전자</a></li>
                         <li><a href="">위니아만도</a></li>
                         <li><a href="">현대모비스</a></li>
-                        <li><a href="">현대자동차</a></li>
                     </ul>
                 </div>
                 <button class="spr_salary btn_expand"><span class="blind">기업비교하기</span></button>
