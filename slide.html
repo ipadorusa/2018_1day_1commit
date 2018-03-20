@@ -514,7 +514,7 @@
                     {year: "10년차↑", salary: 9200}
                 ];
                 var dataRange = {min: 1000, max: 10000};
-                StackedAreaChart.draw('#stacked_area', data, dataRange, config, colorScheme);
+                //StackedAreaChart.draw('#stacked_area', data, dataRange, config, colorScheme);
             }());
             (function lineChart() {
                 var width = 838,
@@ -536,7 +536,7 @@
                     "salary_2015" : [2200,3000,3250,3500,3750,4000,4250,4500,4750,5000,5250,5500,5750,6000,6250,6500,6750,7000,7250,7500,7750,8000,8250,8500,8750,9000,9250,9500,9750,10000,10250]
                 };
                 var dataRange = {min: 0, max: 10500};
-                LineChart.draw('#linechart_area', data, dataRange, config, colorScheme);
+                //LineChart.draw('#linechart_area', data, dataRange, config, colorScheme);
             }());
 
             (function salaryViewEvent(){
@@ -598,8 +598,9 @@
                             totalW = 0;
 
                         function calWidth() {
-                            var slideNumb = $slide.length;
-                            $slideWrap.width(slideW * slideNumb);
+                            var slideCount = $slide.length;
+                            totalW = slideW * slideCount;
+                            $slideWrap.width(totalW);   
                         }
                         function slideInit() {
                             calWidth();
@@ -611,24 +612,30 @@
                             console.log(currentIdx)
                             $slide.eq(currentIdx).addClass('on').siblings().removeClass('on');
                             if( currentIdx == 5 ) {
-                                $slideWrap.stop().animate({
-                                    left: - (slideW * 4) + "px"
-                                },{
-                                    duration: 200,
-                                    easing: 'linear',
-                                    queue: false
-                                });
+                                moveRight();
                             }else if ( currentIdx == 9 ) {
-                                $slideWrap.stop().animate({
-                                    left: - (slideW * 8) + "px"
-                                },{
-                                    duration: 200,
-                                    easing: 'linear',
-                                    queue: false
-                                });
+                                moveLeft();
                             }
-                            return currentIdx ;
+                            return currentIdx;
                         });
+                        function moveLeft(currentIdx) {
+                            $slideWrap.stop().animate({
+                                left: + (slideW * currentIdx) + "px"
+                            },{
+                                duration: 200,
+                                easing: 'linear',
+                                queue: false
+                            });
+                        }
+                        function moveRight() {
+                            $slideWrap.stop().animate({
+                                left: - (slideW * currentIdx) + "px"
+                            },{
+                                duration: 200,
+                                easing: 'linear',
+                                queue: false
+                            });
+                        }
                         btnAll.on("click",function(e){
                             e.preventDefault();
                             $slide.removeClass('on');
