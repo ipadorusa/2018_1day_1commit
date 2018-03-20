@@ -443,8 +443,7 @@
     <link href="//www.saraminimage.co.kr/favicon.ico" rel="icon" type="image/x-icon">
     <link href="//www.saraminimage.co.kr/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/prototype-1.6.1.js"></script>
-    <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/effects.js"></script>
-    <script type="text/javascript" src="//www.saramin.co.kr/js/libs/carousel.js"></script>
+    <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/effects.js"></script>`
     <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery-1.11.1.min.js"></script>
     <script type="text/javascript">var $j = jQuery.noConflict()</script>
     <script type="text/javascript" src="//www.saramin.co.kr/js/libs/saramin/common.js?v=20180228"></script>
@@ -539,47 +538,175 @@
                 var dataRange = {min: 0, max: 10500};
                 LineChart.draw('#linechart_area', data, dataRange, config, colorScheme);
             }());
-            jQuery('#wing-info-list .btn_expand').on("click",function(){
-                jQuery('#wing-info-list').toggleClass('on');
-            });
 
-            (function headerScrEvent(){
-                var offsetTop = [];
+            (function salaryViewEvent(){
+                var domClass = {
+                    body : jQuery('html, body'),
+                    snsList : jQuery('#expand_sns').next('.snslist'),
+                    wingWrap : jQuery('#wing-info-list'),
+                    sriSection : jQuery('#sri_section'),
+                    sri_banner : jQuery('#sri_banner'),
+                    btnTop : jQuery('#btn_go_top')
+                };
 
-                function fixedheader() {
-                    var obj = jQuery('#spy_header'),
-                        defineH = obj.offset().top + obj.outerHeight() / 3,
-                        navObj = jQuery('.tab li',obj),
-                        scrollContents = jQuery('.spy_contents');
+                var expandTrue = false;
+                function expandWing(selector) {
+                    expandTrue = true;
+                    domClass.btnTop.hide();
+                    jQuery(selector).closest(domClass.wingWrap).addClass('on');
+                    domClass.sri_banner.css('z-index',150);
+                    domClass.sriSection.append("<div class='sri_wing_dimmed'></div>");
+                    return expandTrue;
+                }
+                function contractWing(selector) {
+                    expandTrue = false;
+                    domClass.btnTop.show();
+                    jQuery(selector).closest(domClass.wingWrap).removeClass('on');
+                    domClass.sri_banner.css('z-index',"");
+                    domClass.sriSection.find('.sri_wing_dimmed').remove();
+                    return expandTrue;
+                }
+                jQuery("#btn_expand").on('click', function() {
+                    if(!expandTrue) {
+                        expandWing(jQuery(this));
+                    }else if(expandTrue){
+                        contractWing(jQuery(this));
+                    }
+                });
+                jQuery('#expand_sns').on("click", function() {
+                    domClass.snsList.toggleClass('on');
+                });
+                function viewInit() {
+                    domClass.snsList.removeClass('on');
+                }
 
-                    scrollContents.each(function(i){
-                        offsetTop[i] = jQuery('.spy_contents').eq(i).offset().top - defineH;
-                    });
 
-                    jQuery(window).on('scroll',function(){
-                        var sc = jQuery(window).scrollTop();
-                        console.log(sc,offsetTop,scrollContents.index())
-                        if(sc >= defineH){
-                            obj.addClass('on');
-                        }else {
-                            obj.removeClass('on');
+                jQuery.fn.categoryCarosel = function() {
+                    return this.each(function(){
+                        var $this = jQuery(this),
+                            $slideWrap = jQuery('.slide',$this),
+                            $slide = jQuery('li',$slideWrap),
+                            $item = jQuery('>a',$slide),
+                            btnPrev = jQuery('.btn_prev', $this),
+                            btnNext = jQuery('.btn_next', $this),
+                            btnAll = jQuery('.btn_all',$this),
+                            currentIdx = 0,
+                            oldIdx = 0,
+                            pageNow = 0,
+                            pageTotal = 0,
+                            slideW = 109,
+                            totalW = 0;
+
+                        function calWidth() {
+                            var slideNumb = $slide.length;
+                            $slideWrap.width(slideW * slideNumb);
                         }
-                    });
-
-                    navObj.find("a").on('click',function(){
-                        var href = jQuery.attr(this, 'href');
-                        jQuery('html').animate({
-                            scrollTop: jQuery(href).offset().top - 120
-                        }, {
-                            duration: 500,
-                            easing: 'linear',
-                            queue: false
+                        function slideInit() {
+                            calWidth();
+                        }
+                        $item.on("click",function(e){
+                            e.preventDefault();
+                            btnAll.removeClass('on');
+                            currentIdx = jQuery(this).closest($slide).index();
+                            console.log(currentIdx)
+                            $slide.eq(currentIdx).addClass('on').siblings().removeClass('on');
+                            if( currentIdx == 5 ) {
+                                $slideWrap.stop().animate({
+                                    left: - (slideW * 4) + "px"
+                                },{
+                                    duration: 200,
+                                    easing: 'linear',
+                                    queue: false
+                                });
+                            }else if ( currentIdx == 9 ) {
+                                $slideWrap.stop().animate({
+                                    left: - (slideW * 8) + "px"
+                                },{
+                                    duration: 200,
+                                    easing: 'linear',
+                                    queue: false
+                                });
+                            }
+                            return currentIdx ;
                         });
-                        return false;
+                        btnAll.on("click",function(e){
+                            e.preventDefault();
+                            $slide.removeClass('on');
+                            btnAll.addClass('on');
+                            $slideWrap.stop().animate({
+                                left: 0 + "px"
+                            },{
+                                duration: 200,
+                                easing: 'linear',
+                                queue: false
+                            });
+                        });
+
+
+                        slideInit();
+
                     });
                 }
-                fixedheader();
+                jQuery(".category_head").categoryCarosel();
+
             }());
+
+            /*(function headerScrEvent(){
+                var html = jQuery('html');
+                var viewport = jQuery(window);
+                var viewportHeight = viewport.height();
+                var scrollWrap = jQuery('#spy_header');
+                var scrollMenu = jQuery('#spy_header .tab li');
+                /////// bind
+                var sectionsHeight = {},
+                    viewportheight, i = 0;
+                var scrollItem = jQuery('.spy_contents');
+                var bannerHeight;
+
+                function sectionListen() {
+                    viewportHeight = viewport.height();
+                    bannerHeight = (viewportHeight);
+                    scrollItem.each(function() {
+                        sectionsHeight[jQuery(this).data("title")] = jQuery(this).offset().top;
+                    });
+                }
+                sectionListen();
+                viewport.resize(sectionListen);
+
+
+
+                scrollMenu.find('a').click(function() {
+                    var href = jQuery.attr(this, 'href');
+                    jQuery('html').animate({
+                        scrollTop: jQuery(href).offset().top - 120
+                    },{
+                        duration: 500,
+                        easing: 'linear',
+                        queue: false
+                    });
+                    return false;
+                });
+
+                function menuListen() {
+                    var pos = jQuery(this).scrollTop();
+                    pos = pos + viewportHeight * 0.625;
+                    for (i in sectionsHeight) {
+                        if (sectionsHeight[i] < pos) {
+                            console.log('a',sectionsHeight[i],i,pos)
+                        } else {
+                            jQuery('#spy_header .tab li').eq(i).removeClass('on');
+                        }
+                    }
+                }
+                function scrollHandler() {
+                    menuListen();
+                }
+                scrollHandler();
+                viewport.on('scroll', function() {
+                    scrollHandler();
+                });
+
+            }());*/
         });
 
     </script>
@@ -2949,7 +3076,7 @@
             </script>
             <!-- WMG-16700 -->
             <div class="salary_view_wrap">
-                <div class="salary_company_info spy_contents">
+                <div class="salary_company_info">
                     <h1 class="title">(주)사람인에이치알</h1>
                     <div class="sri_layer_tooltip wrap_interested_corp">
                         <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');" mcom_idx="7509705" del_fl="n"><span>관심기업 등록</span></button>
@@ -2961,7 +3088,7 @@
                         </div>
                     </div>
                     <div class="sns_wrap">
-                        <button type="button" class="spr_salary btn_sns"><span class="blind">sns공유하기</span></button>
+                        <button type="button" id="expand_sns" class="spr_salary btn_sns"><span class="blind">sns공유하기</span></button>
                         <ul class="snslist">
                             <li class="sns_facebook"><button type="button" class="sns"><span class="blind">facebook공유하기</span></button></li>
                             <li class="sns_twitter"><button type="button" class="sns"><span class="blind">twitter공유하기</span></button></button></li>
@@ -2979,7 +3106,7 @@
                     <span class="company_txt">매출액 13조 8,927억원</span>
                 </div>
                 <div id="spy_header" class="fixed_tab">
-                    <ul class="quick tab sep_six"><!-- tab갯수 class sep_two,sep_three,sep_four,sep_five,sep_six -->
+                    <ul class="tab sep_six"><!-- tab갯수 class sep_two,sep_three,sep_four,sep_five,sep_six -->
                         <li class="on"><a href="#tab_avg_salary" class="link">평균연봉</a></li>
                         <li><a href="#tab_custom_salary" class="link">맞춤연봉</a></li>
                         <li><a href="#tab_univ_salary" class="link">대졸초임</a></li>
@@ -2988,7 +3115,7 @@
                         <li><a href="#tab_age_salary" class="link">연령별</a></li>
                     </ul>
                 </div>
-                <div id="tab_avg_salary" class="tab_avg_salary">
+                <div id="tab_avg_salary" class="tab_avg_salary spy_contents" data-title="spy_contents_01">
                     <div class="wrap_average">
                         <p class="info_title">2017년 평균연봉</p>
                         <div class="salaryinfo">
@@ -3054,8 +3181,9 @@
                         </div>
                     </div>
                 </div>
+
                 <h3 id="tab_custom_salary" class="title">맞춤 연봉정보</h3>
-                <div class="content_gird spy_contents">
+                <div class="content_gird spy_contents" data-title="spy_contents_02">
                     <p class="txt_notice01">연봉 통계 데이터를 분석하여 <em>맞춤 연봉정보</em>를 제공해드립니다.</p>
                     <p class="txt_notice02">아래 정보를 입력하신 후 맞춤 연봉정보 보기를 눌러주세요. <a href="" class="link">로그인</a>하시면 저장된 정보를 불러옵니다.</p>
                     <div class="wrap_select">
@@ -3084,8 +3212,9 @@
                         <li>맞춤 연봉정보는 해당 기업의 여러 연봉 자료를 기반으로 분석한 것으로 기업의 실제 연봉과는 차이가 있을 수 있으므로 참고용으로만  활용하시기 바랍니다.</li>
                     </ul>
                 </div>
+
                 <h3 id="tab_univ_salary" class="title">대졸초임</h3>
-                <div class="content_gird univ spy_contents">
+                <div class="content_gird univ spy_contents" data-title="spy_contents_03">
                     <div class="wrap_graph">
 
                     </div>
@@ -3096,22 +3225,23 @@
                         <p>이기업의 대졸초임은 2016년 대비 <span class="up">21% 상승</span>했습니다.</p>
                     </div>
                 </div>
+
                 <h3 id="tab_rank_salary" class="title">직급별 연봉통계</h3>
-                <div class="category_slide spy_contents">
+                <div class="category_slide spy_contents" data-title="spy_contents_04">
                     <div class="category_head">
                         <a href="##" class="btn_all on">전체</a>
                         <div class="wrap_slide">
-                            <ul class="slide" style="width: 1421px;">
+                            <ul class="slide">
                                 <li><a href="">IT/인터넷</a></li>
                                 <li><a href="">경영/사무</a></li>
                                 <li><a href="">영업/제휴</a></li>
-                                <li><a href="">서비스/고객지원</a></li>
-                                <li><a href="">마케팅/홍보</a></li>
+                                <li><a href="">마케팅&middot;홍보</a></li>
+                                <li><a href="">마케팅&middot;홍보</a></li>
                                 <li><a href="">생산/제조</a></li>
                                 <li><a href="">IT/인터넷2</a></li>
                                 <li><a href="">경영/사무2</a></li>
                                 <li><a href="">영업/제휴2</a></li>
-                                <li><a href="">서비스/고객지원2</a></li>
+                                <li><a href="">마케팅&middot;홍보</a></li>
                                 <li><a href="">마케팅/홍보2</a></li>
                                 <li><a href="">생산/제조2</a></li>
                             </ul>
@@ -3125,21 +3255,21 @@
                 </div>
 
                 <h3  id="tab_years_salary" class="title">연차별 연봉통계</h3>
-                <div class="category_slide spy_contents">
+                <div class="category_slide spy_contents" data-title="spy_contents_05">
                     <div class="category_head">
                         <a href="##" class="btn_all on">전체</a>
                         <div class="wrap_slide">
-                            <ul class="slide" style="width: 1421px;">
+                            <ul class="slide">
                                 <li><a href="">IT/인터넷</a></li>
                                 <li><a href="">경영/사무</a></li>
                                 <li><a href="">영업/제휴</a></li>
-                                <li><a href="">서비스/고객지원</a></li>
+                                <li><a href="">경영∙기획</a></li>
                                 <li><a href="">마케팅/홍보</a></li>
                                 <li><a href="">생산/제조</a></li>
                                 <li><a href="">IT/인터넷2</a></li>
                                 <li><a href="">경영/사무2</a></li>
                                 <li><a href="">영업/제휴2</a></li>
-                                <li><a href="">서비스/고객지원2</a></li>
+                                <li><a href="">경영∙기획2</a></li>
                                 <li><a href="">마케팅/홍보2</a></li>
                                 <li><a href="">생산/제조2</a></li>
                             </ul>
@@ -3159,22 +3289,23 @@
                         </div>
                     </div>
                 </div>
+
                 <h3 id="tab_age_salary" class="title">연령별 연봉통계</h3>
-                <div class="category_slide spy_contents">
+                <div class="category_slide spy_contents" data-title="spy_contents_06">
                     <div class="category_head">
                         <a href="##" class="btn_all on">전체</a>
                         <div class="wrap_slide">
-                            <ul class="slide" style="width: 1421px;">
+                            <ul class="slide">
                                 <li><a href="">IT/인터넷</a></li>
                                 <li><a href="">경영/사무</a></li>
                                 <li><a href="">영업/제휴</a></li>
-                                <li><a href="">서비스/고객지원</a></li>
+                                <li><a href="">경영∙기획</a></li>
                                 <li><a href="">마케팅/홍보</a></li>
                                 <li><a href="">생산/제조</a></li>
-                                <li><a href="">IT/인터넷2</a></li>
-                                <li><a href="">경영/사무2</a></li>
-                                <li><a href="">영업/제휴2</a></li>
-                                <li><a href="">서비스/고객지원2</a></li>
+                                <li><a href="">IT/인터넷</a></li>
+                                <li><a href="">경영/사무</a></li>
+                                <li><a href="">영업/제휴</a></li>
+                                <li><a href="">경영∙기획</a></li>
                                 <li><a href="">마케팅/홍보2</a></li>
                                 <li><a href="">생산/제조2</a></li>
                             </ul>
@@ -3806,7 +3937,7 @@
                         <li><a href="">현대모비스</a></li>
                     </ul>
                 </div>
-                <button class="spr_salary btn_expand"><span class="blind">기업비교하기</span></button>
+                <button id="btn_expand" class="spr_salary btn_expand"><span class="blind">기업비교하기</span></button>
                 <a href="#" id="btn_go_top" class="sri_lnb_icon btn_go_top"><span class="blind">브라우저상단으로 이동</span></a>
             </div>
         </div>
