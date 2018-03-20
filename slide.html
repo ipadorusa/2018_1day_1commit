@@ -597,10 +597,10 @@
                             slideW = 109,
                             totalW = 0;
 
-                        function calWidth() {
+                        var calWidth = function () {
                             var slideCount = $slide.length;
                             totalW = slideW * slideCount;
-                            $slideWrap.width(totalW);   
+                            $slideWrap.width(totalW);
                         }
                         function slideInit() {
                             calWidth();
