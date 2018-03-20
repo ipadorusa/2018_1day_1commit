@@ -614,13 +614,13 @@
                             if( currentIdx == 5 ) {
                                 moveRight();
                             }else if ( currentIdx == 9 ) {
-                                moveLeft();
+                                moveRight();
                             }
                             return currentIdx;
                         });
                         function moveLeft(currentIdx) {
                             $slideWrap.stop().animate({
-                                left: + (slideW * currentIdx) + "px"
+                                left: + slideW * (currentIdx-1) + "px"
                             },{
                                 duration: 200,
                                 easing: 'linear',
@@ -629,7 +629,7 @@
                         }
                         function moveRight() {
                             $slideWrap.stop().animate({
-                                left: - (slideW * currentIdx) + "px"
+                                left: - slideW * (currentIdx-1) + "px"
                             },{
                                 duration: 200,
                                 easing: 'linear',
