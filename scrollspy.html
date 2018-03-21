@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#sec1">sec1</a>
+      <a href="#sec2">sec2</a>
+      <a href="#sec3">sec3</a>
+      <a href="#sec4">sec4</a>
+      <a href="#sec5">sec5</a>  
+    </nav>
+  </header>
+
+  <section id="sec1"></section>
+  <section id="sec2"></section>
+  <section id="sec3"></section>
+  <section id="sec4"></section>
+  <section id="sec5"></section>
+
+  <style>
+    header {
+      height: 20px;
+      background-color: #fff;
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+    nav a {
+      color: #000;
+    }
+    nav a.active {
+      color: red;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+    }
+    
+    section {
+      height: 100vh;
+    }
+    #sec1 { background-color: cyan; }
+    #sec2 { background-color: purple; }
+    #sec3 { background-color: green; }
+    #sec4 { background-color: violet; }
+    #sec5 { background-color: brown; }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script type="text/javascript">
+  
+     //scrollSpy function
+    function scrollSpy() {
+      var sections = ['sec1', 'sec2', 'sec3', 'sec4', 'sec5'];
+      var current;
+      for (var i = 0; i < sections.length; i++) {
+        if ( $('#'+sections[i]).offset().top <= $(window).scrollTop() ) {
+            
+          current = sections[i];
+          console.log(current)
+        }
+      }
+      $("nav a[href='#"+current+"']").addClass('active');
+      $("nav a").not("a[href='#"+current+"']").removeClass('active');      
+    }
+    // smooth scrolling navigation
+    $("nav a").click( function() {
+      var target = $(this).attr("href");
+      $("body, html").animate({
+        scrollTop: $(target).offset().top
+      }, 300);
+      return false;
+    });
+    //scrollSpy call
+    $(document).ready( function() {
+      scrollSpy();
+    });
+    $(window).scroll( function() {
+      scrollSpy();
+    });
+  </script>
+</body>
+</html>
