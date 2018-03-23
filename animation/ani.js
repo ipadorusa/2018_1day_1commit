@@ -28,9 +28,19 @@ jQuery(document).ready(function(){
                 var tt = TweenMax.to(_movingObj.eq(i), 1, {
                     css: {'background-position': '' + ', -37px'}
                 });
-
-
             }
+
+            function moveFnc() {
+                startIdx++;
+                if(startIdx < totalPage) {
+                    console.log('startIdx',leftPosition)
+                    leftPosition -= shiftLenth;
+                    _movingObj.css("background-position", leftPosition + "px 0px" );
+                    var t = setTimeout(moveFnc,100);
+                }
+            }
+
+
             // 바그래프업
             function barFadeUp(i) {
                 return function() {
