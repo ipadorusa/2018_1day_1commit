@@ -699,13 +699,16 @@
 .category_contents .average_salary .statistics .ruler {display:inline-block;position:relative;width:20%;height:36px;font-size:10px;text-align:center}
 .category_contents .average_salary .statistics .ruler:after {display:block;position:absolute;bottom:0;left:50%;margin-left:-1px;width:1px;height:5px;background:#dbdbdb;content:""}
 .category_contents .row .wrap_animation {position:absolute;top:14px;left:64px;width:450px;height:35px;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/bg_salary_average.gif) bottom left repeat-x}
-.category_contents .row .wrap_animation .innerbar {display:none;position:absolute;bottom:0;height:8px;background:#a4d5ff}
-.category_contents .row .wrap_animation .innerbar.on {display:block;color:#888;font-size:13px}
+.category_contents .row .wrap_animation .innerbar {opacity:0;position:absolute;bottom:0;height:8px;color:#888;font-size:13px;background:#a4d5ff;animation-duration: .5s}
+.category_contents .row .wrap_animation .innerbar.on {opacity:1;animation-name: fadeInUp;}
 .category_contents .row .wrap_animation .innerbar em {display:block;color:#666;font-size:12px}
 .category_contents .row .wrap_animation .innerbar .min {position:absolute;bottom:11px;left:-28px;height:20px;font-size:10px;font-weight:bold;line-height:1;text-align:right}
 .category_contents .row .wrap_animation .innerbar .max {position:absolute;right:-28px;bottom:11px;height:20px;font-size:10px;font-weight:bold;line-height:1;text-align:left}
-.runningman {display:block;position:absolute;bottom:0;left:0;width:28px;height:37px;overflow:hidden;transition: left 1s linear;}
-.runningman .run {display:block;position:absolute;left:0;}
+.runningman {display:block;position:absolute;bottom:0;left:0;width:28px;height:37px;overflow:hidden;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/spr_ani_run.png) no-repeat;background-position:0 0;}
+.runningman.ready {background-position:0 0;}
+.runningman.run {background-position:0 -37px;}
+.runningman.fisish {background-position:0 -74px;}
+.runningman.active {background-position:0 -111px;}
 
 .category_slide .category_contents .stacked_area {width:100%;height:330px}
 .category_slide .category_contents .stacked_area .stack_chart .dot {fill:#fff;stroke:#7289f8;stroke-width:2px}
@@ -858,3 +861,32 @@
 .list_wing_count .expand_contents .view_type01 .spec_point dt {text-align:left}
 .list_wing_count .expand_contents .view_type01 .spec_point dd .company1 {position:absolute;right:30px;left:auto}
 #sri_section .sri_wing_dimmed {position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background-color:rgba(0,0,0,0.5)}
+
+
+@-webkit-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
