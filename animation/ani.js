@@ -16,7 +16,6 @@ jQuery(document).ready(function(){
             function movingAct() {
                 _movingObj.each(function(i){
                     tl.to(_movingObj[i], 1.1, {
-                        left:jQuery(this).data("average") + '%',
                         ease:Bounce,
                         onStart: aniStart(i),
                         onComplete: barFadeUp(i)
@@ -25,9 +24,17 @@ jQuery(document).ready(function(){
             }
 
             function aniStart(i) {
-                var tt = TweenMax.to(_movingObj.eq(i), 1, {
-                    css: {'background-position': '' + ', -37px'}
-                });
+                tl.to(
+                    _movingObj.eq(i),
+                     5, {
+                        left:_movingObj.eq(i).data("average") + '%',
+                        backgroundPosition:"-392px -37px",
+                        ease:Bounce
+                        
+                    }).set(_movingObj.eq(i),
+                     {
+                        backgroundPosition:"0 -37px"
+                   })
             }
 
             function moveFnc() {
@@ -44,7 +51,7 @@ jQuery(document).ready(function(){
             // 바그래프업
             function barFadeUp(i) {
                 return function() {
-                    _movingObj.eq(i).addClass('fisish');
+                    _movingObj.eq(i).addClass('fisish').css('backgroundPosition', '0 -74px');
                     jQuery(".innerbar").eq(i).addClass('on');
                 }
             }
