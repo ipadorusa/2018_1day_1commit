@@ -705,10 +705,7 @@
 .category_contents .row .wrap_animation .innerbar .min {position:absolute;bottom:11px;left:-28px;height:20px;font-size:10px;font-weight:bold;line-height:1;text-align:right}
 .category_contents .row .wrap_animation .innerbar .max {position:absolute;right:-28px;bottom:11px;height:20px;font-size:10px;font-weight:bold;line-height:1;text-align:left}
 .runningman {display:block;position:absolute;bottom:0;left:0;width:28px;height:37px;overflow:hidden;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/spr_ani_run.png) no-repeat;background-position:0 0;}
-.runningman.ready {background-position:0 -37px;}
-.runningman.run {background-position:0 -37px;}
-.runningman.fisish {background-position:0 -74px;}
-.runningman.active {background-position:0 -111px;}
+.runningman.ready {background-position:0 0}
 
 .category_slide .category_contents .stacked_area {width:100%;height:330px}
 .category_slide .category_contents .stacked_area .stack_chart .dot {fill:#fff;stroke:#7289f8;stroke-width:2px}
