@@ -28,32 +28,32 @@
 .company_info .info_item dd {overflow:hidden;padding:0 7px 2px;color:#555;font-size:13px;text-overflow:ellipsis;white-space:nowrap}
 .company_info .info_item .txt_emph {color:#ff6e51}
 /* 그래프 */
-.graph_info {display:block;overflow:hidden;padding:28px 0 0 35px;background:url(//www.saraminimage.co.kr/ui/salaries/2017/bg_graph.png) 0 23px no-repeat}
-.graph_info .wrap_graph {float:left;position:relative;padding-bottom:38px;width:58px;height:100px;text-align:center}
-.graph_info .tit_graph {position:absolute;right:0;bottom:0;left:0;height:30px;color:#666;font-size:12px;line-height:15px}
-.graph_info .graph {display:block;position:relative;margin:0 auto;width:18px;height:100px}
-.graph_info .graph .inner_graph {position:absolute;bottom:0;left:0;width:18px;height:4px}
-.graph_info .txt_g {position:absolute;top:-20px;left:50%;margin-left:-20px;width:41px;height:20px;font-size:12px;letter-spacing:0;line-height:20px}
-.graph_info .txt_avg {top:-28px;left:0;margin-left:0;border-radius:2px;color:#fff;font-weight:bold;box-shadow:0 2px 0 rgba(0, 0, 0, 0.1)}
-.graph_info .txt_avg:after {position:absolute;top:19px;left:0;width:5px;height:7px;background:url(//www.saraminimage.co.kr/ui/salaries/2017/ico_avg_arr.png) no-repeat;content:""}
+.salary_list_wrap .graph_info {display:block;overflow:hidden;padding:28px 0 0 35px;background:url(//www.saraminimage.co.kr/ui/salaries/2017/bg_graph.png) 0 23px no-repeat}
+.salary_list_wrap .graph_info .wrap_graph {float:left;position:relative;padding-bottom:38px;width:58px;height:100px;text-align:center}
+.salary_list_wrap .graph_info .tit_graph {position:absolute;right:0;bottom:0;left:0;height:30px;color:#666;font-size:12px;line-height:15px}
+.salary_list_wrap .graph_info .graph {display:block;position:relative;margin:0 auto;width:18px;height:100px}
+.salary_list_wrap .graph_info .graph .inner_graph {position:absolute;bottom:0;left:0;width:18px;height:4px}
+.salary_list_wrap .graph_info .txt_g {position:absolute;top:-20px;left:50%;margin-left:-20px;width:41px;height:20px;font-size:12px;letter-spacing:0;line-height:20px}
+.salary_list_wrap .graph_info .txt_avg {top:-28px;left:0;margin-left:0;border-radius:2px;color:#fff;font-weight:bold;box-shadow:0 2px 0 rgba(0, 0, 0, 0.1)}
+.salary_list_wrap .graph_info .txt_avg:after {position:absolute;top:19px;left:0;width:5px;height:7px;background:url(//www.saraminimage.co.kr/ui/salaries/2017/ico_avg_arr.png) no-repeat;content:""}
 /* 평균, 최근년도 */
-.graph_info .color01 .inner_graph {background-color:#4fa4f9}
-.graph_info .color01 .inner_graph .txt_avg {background-color:#4fa4f9}
+.salary_list_wrap .graph_info .color01 .inner_graph {background-color:#4fa4f9}
+.salary_list_wrap .graph_info .color01 .inner_graph .txt_avg {background-color:#4fa4f9}
 /* 최저 */
-.graph_info .color02 .inner_graph {background-color:#d8c2fc}
-.graph_info .color02 .inner_graph .txt_g {color:#b794f9}
+.salary_list_wrap .graph_info .color02 .inner_graph {background-color:#d8c2fc}
+.salary_list_wrap .graph_info .color02 .inner_graph .txt_g {color:#b794f9}
 /* 최고 */
-.graph_info .color03 .inner_graph {background-color:#c3c2fc}
-.graph_info .color03 .inner_graph .txt_g {color:#9594f9}
+.salary_list_wrap .graph_info .color03 .inner_graph {background-color:#c3c2fc}
+.salary_list_wrap .graph_info .color03 .inner_graph .txt_g {color:#9594f9}
 /* 전년도 */
-.graph_info .color04 .inner_graph {background-color:#c2dffc}
-.graph_info .color04 .inner_graph .txt_g {color:#77afed}
+.salary_list_wrap .graph_info .color04 .inner_graph {background-color:#c2dffc}
+.salary_list_wrap .graph_info .color04 .inner_graph .txt_g {color:#77afed}
 /* 남자 */
-.graph_info .color05 .inner_graph {background-color:#aec4f4}
-.graph_info .color05 .inner_graph .txt_g {color:#7797e9}
+.salary_list_wrap .graph_info .color05 .inner_graph {background-color:#aec4f4}
+.salary_list_wrap .graph_info .color05 .inner_graph .txt_g {color:#7797e9}
 /* 여자 */
-.graph_info .color06 .inner_graph {background-color:#fcc2d0}
-.graph_info .color06 .inner_graph .txt_g {color:#f994aa}
+.salary_list_wrap .graph_info .color06 .inner_graph {background-color:#fcc2d0}
+.salary_list_wrap .graph_info .color06 .inner_graph .txt_g {color:#f994aa}
 /* 페이징 */
 .default_paging2 {padding:30px 0;text-align:center;vertical-align:middle}
 .default_paging2 .prev,
@@ -560,14 +560,14 @@
 .spr_salary.redstar {display:inline-block;width:7px;height:7px;background-position:-40px -20px}
 .spr_salary.downpoint {display:inline-block;width:12px;height:9px;background-position:0 -20px}
 .spr_salary.uppoint {display:inline-block;width:12px;height:9px;background-position:-20px -20px}
-.spr_salary.legend {display:inline-block;width:20px;height:12px;background-position:-20px 0}
+.spr_salary.legend {display:inline-block;width:22px;height:10px;background-position:-70px -160px}
 .spr_salary.reset {display:inline-block;width:14px;height:13px;background-position:-40px 0}
 .spr_salary.human {display:inline-block;width:12px;height:13px;background-position:-60px 0}
 
 
 .salary_view_wrap h3.title {margin:60px 0 20px 0;color:#444;font-size:24px;letter-spacing:-2px}
 .salary_view_wrap .content_gird {padding:30px;border:1px solid #ebebeb;border-top:1px solid #444}
-.salary_view_wrap .content_gird.univ {padding:50px 0 50px 90px}
+.salary_view_wrap .content_gird.univ {padding:50px 70px 50px 90px}
 .salary_view_wrap .tab_avg_salary {padding:45px 60px;border:1px solid #ebebeb;border-top:0}
 .salary_view_wrap .tab_avg_salary .wrap_average {float:left;width:420px}
 .salary_view_wrap .tab_avg_salary .info_title {color:#666;font-size:17px;font-weight:bold}
@@ -575,6 +575,50 @@
 .salary_view_wrap .tab_avg_salary .salaryinfo .average_currency {color:#5a71e1;font-size:24px;line-height:35px;text-align:center}
 .salary_view_wrap .tab_avg_salary .salaryinfo .average_currency em {margin-left:10px;color:#5a71e1;font-size:50px;font-weight:bold;letter-spacing:-1px}
 .salary_view_wrap .tab_avg_salary .salaryinfo .aver_bar {position:relative;margin:0 auto;padding-bottom:5px;width:300px;height:54px;font-size:0;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/bg_aver_bar.png) center no-repeat}
+.salary_view_wrap .content_gird.univ:after {display:table;clear:both;content:"";table-layout:fixed}
+.salary_view_wrap .content_gird.univ .wrap_bar {float:left;width:360px}
+.salary_view_wrap .content_gird.univ .salary_graph_info {float:right;width:360px;letter-spacing:-1px}
+.salary_view_wrap .content_gird.univ .salary_graph_info .company {color:#444;font-size:16px}
+.salary_view_wrap .content_gird.univ .wrap_bar .graph_wrap_legend {margin-bottom:20px;font-size:14px}
+.salary_view_wrap .content_gird.univ .wrap_bar .graph_wrap_legend:after {display:table;clear:both;content:"";table-layout:fixed}
+.salary_view_wrap .content_gird.univ .wrap_bar .graph_wrap_legend .graylegend {display:inline-block;margin:7px 7px 0 0;width:18px;height:7px;vertical-align:top;background-color:#cecece}
+.salary_view_wrap .content_gird.univ .wrap_bar .graph_wrap_legend li {float:left;color:#666;font-size:14px;font-weight:bold}
+.salary_view_wrap .content_gird.univ .wrap_bar .graph_wrap_legend .currency {float:right;color:#888;font-size:11px;font-weight:normal}
+
+
+.salary_view_wrap .graph_info {position:relative;padding:18px 0 0 48px;box-sizing:border-box}
+.salary_view_wrap .graph_info:after {display:table;clear:both;content:"";table-layout:fixed}
+.salary_view_wrap .graph_info .wrap_graph {float:left;position:relative;padding-bottom:34px;height:136px;text-align:center}
+.salary_view_wrap .graph_info .wrap_graph.high {color:#444;font-weight:bold}
+.salary_view_wrap .graph_info .wrap_graph.high .tit_graph {color:#444;font-weight:bold}
+.salary_view_wrap .graph_info .tit_graph {position:absolute;bottom:0;left:50%;margin-left:-30px;width:60px;height:29px;color:#888;font-size:12px;letter-spacing:0;line-height:14px} /* WMG-17802 */
+.salary_view_wrap .graph_info .graph {position:relative;margin:0 auto;width:24px;height:100%}
+.salary_view_wrap .graph_info .graph .inner_graph {position:absolute;bottom:0;left:0;width:100%;height:4px}
+.salary_view_wrap .graph_info .graph .inner_graph.color01 {background-color:#94a6ff}
+.salary_view_wrap .graph_info .graph .inner_graph.color02 {background-color:#a4d5ff}
+.salary_view_wrap .graph_info .graph .inner_graph.color03 {background-color:#999}
+.salary_view_wrap .graph_info .graph .txt_value {position:absolute;top:-18px;left:50%;margin-left:-45px;width:90px;height:18px;color:#666;font-size:12px;letter-spacing:0;line-height:18px}
+.salary_view_wrap .graph_info .grid_range {position:absolute;top:18px;right:0;left:0;z-index:0}
+.salary_view_wrap .graph_info .grid_range .range {display:block;margin-left:48px;border-top:1px solid #eee;box-sizing:border-box;text-align:left}
+.salary_view_wrap .graph_info .grid_range .range span {display:block;position:relative;top:-10px;left:-60px;width:40px;height:20px;color:#888;font-size:11px;letter-spacing:-0.5px;line-height:20px}
+.salary_view_wrap .wrap_bar .col3 .wrap_graph {width:33.33%}
+.salary_view_wrap .wrap_bar .graph_info {overflow:hidden;width:100%}
+.salary_view_wrap .wrap_bar .graph_info .wrap_graph {height:181px}
+.salary_view_wrap .wrap_bar .graph_info .graph {width:34px}
+.salary_view_wrap .wrap_bar .grid_range .range {height:45px}
+.salary_view_wrap .wrap_bar .grid_range .range span {left:-48px}
+.salary_view_wrap .wrap_bar .graph_info .max_line {display:block;position:absolute;left:82px;z-index:10;width:247px;height:2px;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/bg_max_line.png) left top repeat-x}
+
+.salary_view_wrap .content_gird .salary_graph_info .company+.title_years {margin-top:15px}
+.salary_view_wrap .content_gird .salary_graph_info .title_years {position:relative;margin-top:30px;margin-bottom:55px;color:#444;font-size:24px;letter-spacing:-1px;line-height:20px}
+.salary_view_wrap .content_gird .salary_graph_info .title_years:after {position:absolute;bottom:-25px;left:0;width:30px;height:1px;background-color:#666;content:""}
+.salary_view_wrap .content_gird .salary_graph_info .salary {margin-bottom:10px;color:#444;font-size:32px;line-height:34px}
+.salary_view_wrap .content_gird .salary_graph_info .salary em {color:#5a71e1;font-size:50px;font-weight:bold;letter-spacing:-2px;vertical-align:top}
+.salary_view_wrap .content_gird .salary_graph_info .expected {margin-bottom:20px;color:#666;font-size:16px}
+.salary_view_wrap .content_gird .salary_graph_info .expected strong {color:#444}
+.salary_view_wrap .content_gird .salary_graph_info .keypoint {color:#888;font-size:15px}
+
+
 .tab_avg_salary .salaryinfo .min {position:absolute;top:0;left:0;color:#888;font-size:13px}
 .tab_avg_salary .salaryinfo .max {position:absolute;top:0;right:0;color:#888;font-size:13px}
 .tab_avg_salary .salaryinfo .min_txt {position:absolute;bottom:0;left:0;color:#888;font-size:14px}
@@ -607,12 +651,25 @@
 .tab_avg_salary .graph_wrap_legend li {float:left;color:#666;font-size:14px;font-weight:bold}
 .tab_avg_salary .graph_wrap_legend li:first-child {margin-right:20px}
 .tab_avg_salary .graph_wrap_legend li.currency {float:right;font-size:12px}
-.tab_avg_salary .graph_wrap_legend li .legend {display:inline-block;width:18px;height:7px;background-color:#94a6ff}
-.tab_avg_salary .graph_wrap_legend li .legend.spr_salary {margin-top:4px;height:12px;background-color:#fff}
+.tab_avg_salary .graph_wrap_legend li .legend {display:inline-block;width:22px;height:10px;background-color:#94a6ff}
+.tab_avg_salary .graph_wrap_legend li .legend.spr_salary {margin-top:6px;height:10px;background-color:#fff}
 .tab_avg_salary .graph_wrap_legend:after {display:table;clear:both;content:"";table-layout:fixed}
 .tab_avg_salary .sri_graph .wrap_graph .info_txt {height:30px;color:#666;font-size:13px;letter-spacing:-1px;line-height:28px;text-align:center;background-color:#fafafa}
-.tab_avg_salary .sri_graph .wrap_graph .info_txt .uppoint {color:#ff5b63}
-.tab_avg_salary .sri_graph .wrap_graph .info_txt .downpoint {color:#5a71e1}
+.salary_view_wrap .uppoint {color:#ff5b63}
+.salary_view_wrap .downpoint {color:#5a71e1}
+.tab_avg_salary .sri_graph .wrap_graph {position:relative}
+.tab_avg_salary .sri_graph .wrap_graph .bar {cursor:pointer}
+.sri_graph .wrap_graph .graph_tooltip {display:none;position:absolute;padding:20px;width:206px;box-sizing:border-box;background:rgba(0,0,0,0.8)}
+.wrap_graph .graph_tooltip .title {float:none;width:auto;border-right:0;color:#fff;font-size:14px;font-weight:bold;text-align:center}
+.wrap_graph .graph_tooltip .graph_wrap_legend {color:#fff;font-size:12px}
+.wrap_graph .graph_tooltip .graph_wrap_legend li {float:none;margin-right:0}
+.wrap_graph .graph_tooltip .graph_wrap_legend li.company_diff01 {float:none;margin-top:10px;margin-bottom:5px;color:#94a6ff}
+.wrap_graph .stacked_area .graph_tooltip .graph_wrap_legend {text-align:center}
+.wrap_graph .stacked_area .graph_tooltip .graph_wrap_legend li.company_diff01 .salary {margin-left:10px}
+.wrap_graph .graph_tooltip .graph_wrap_legend li.company_diff02 {float:none;color:#ccc}
+.wrap_graph .graph_tooltip .graph_wrap_legend li .legend {margin-right:8px;width:22px;height:10px}
+.wrap_graph .graph_tooltip .graph_wrap_legend li .legend.spr_salary {width:22px;height:10px;background-color:inherit}
+.wrap_graph .graph_tooltip .graph_wrap_legend li .company {display:inline-block;overflow:hidden;margin-right:10px;width:65px;text-overflow:ellipsis;vertical-align:top;white-space:nowrap}
 
 
 .tab_avg_salary .combie_chart .grid .domain {visibility:hidden}
@@ -624,6 +681,7 @@
 
 .salary_view_wrap .content_gird .txt_notice01 {color:#444;font-size:20px;letter-spacing:-1px;text-align:center}
 .salary_view_wrap .content_gird .txt_notice02 {color:#666;font-size:14px;letter-spacing:-1px;text-align:center}
+.salary_view_wrap .content_gird .txt_notice01 strong {color:#5a71e1}
 .salary_view_wrap .content_gird .link {color:#444;font-weight:bold;text-decoration:underline;text-decoration-color:#818181}
 .salary_view_wrap .content_gird .notice_list {color:#888;font-size:12px}
 .salary_view_wrap .content_gird .notice_list strong {color:#444}
@@ -631,10 +689,27 @@
 .salary_view_wrap .content_gird .notice_list li:before {display:block;position:absolute;top:8px;left:0;width:2px;height:2px;background-color:#888;content:""}
 .salary_view_wrap .content_gird .redstar {margin-top:6px}
 .salary_view_wrap .content_gird .wrap_select {margin:23px 0 15px 0}
+.salary_view_wrap .content_gird .sri_input2 {position:relative}
 .salary_view_wrap .content_gird .sri_input2>select {width:172px;height:50px;border-color:#dbdbdb;background-position-y:-595px}
-.salary_view_wrap .content_gird .input_box {display:inline-block;width:172px;height:48px;border:1px solid #dbdbdb;background-color:#dbdbdb}
+.salary_view_wrap .content_gird .sri_input2:after {display:block;position:absolute;top:7px;left:7px;width:7px;height:7px;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/spr_salary.png) no-repeat;background-position:-40px -20px;content:""}
+.salary_view_wrap .content_gird .sri_input2:nth-child(3):after {display:none}
+.salary_view_wrap .content_gird .input_box {display:inline-block;position:relative;padding:0 7px;width:172px;height:50px;border:1px solid #dbdbdb;box-sizing:border-box}
+.salary_view_wrap .content_gird .input_box:after {display:block;position:absolute;top:7px;left:7px;width:7px;height:7px;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/spr_salary.png) no-repeat;background-position:-40px -20px;content:""}
+.salary_view_wrap .content_gird .input_box.disabled {background-color:#dbdbdb}
+.salary_view_wrap .content_gird .input_box.disabled:after {display:none}
 .salary_view_wrap .content_gird .input_box input[type="text"] {width:124px;height:48px;border:0;background:transparent}
-.salary_view_wrap .content_gird .input_box .btn_biggest_type02 {vertical-align:top}
+.salary_view_wrap .content_gird .btn_biggest_type02 {vertical-align:top}
+.salary_view_wrap .wrap_result_salary {padding:60px 60px 50px 60px;border:1px solid #ebebeb;border-top:0;box-sizing:border-box;background-color:#fafafa}
+.wrap_result_salary .title_result {color:#888;font-size:23px;letter-spacing:-1px;text-align:center}
+.wrap_result_salary .title_result em {color:#444}
+.wrap_result_salary p.title {margin:60px 0 15px 0;color:#444;font-size:20px}
+.wrap_result_salary .salary_matching_list {margin-bottom:0}
+.wrap_result_salary .salary_matching_list .item_list {margin-left:6px;width:275px;border:1px solid #ebebeb;background:#fff}
+.wrap_result_salary .salary_matching_list .item_list .company_name a {max-width:135px}
+.wrap_result_salary .salary_matching_list .item_list:first-child {margin-left:0}
+.salary_view_wrap .content_gird.univ.result {margin-top:40px;padding:50px 0 50px 60px;border-top:1px solid #ebebeb;box-sizing:border-box;background:#fff}
+.salary_view_wrap .content_gird.univ.result .prediction {display:inline-block;margin:7px 7px 0 0;width:18px;height:7px;vertical-align:top;background-color:#94a6ff}
+
 .salary_view_wrap .reliability {font-size:0}
 .salary_view_wrap .reliability .gauge {display:inline-block;padding-top:16px;width:71px;height:36px;box-sizing:border-box;color:#444;font-size:16px;letter-spacing:-1px;text-align:center;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/bg_salary_gauge.png) no-repeat}
 .salary_view_wrap .reliability .gauge.lower,
@@ -646,7 +721,7 @@
 .reliability .gauge.highest {background-position:-284px 0}
 
 .salary_view_wrap .fixed_tab {padding-bottom:52px}
-.salary_view_wrap .fixed_tab.on .tab {position:fixed;top:60px;z-index:10}
+.salary_view_wrap .fixed_tab.fixed .tab {position:fixed;top:60px;z-index:10}
 .salary_view_wrap .tab {position:absolute;border-bottom:1px solid #444;background-color:#fcfcfc}
 .salary_view_wrap .tab.sep_six li {width:160px}
 .salary_view_wrap .tab.sep_five li {width:192px}
@@ -689,8 +764,13 @@
 .category_contents .head_list_range {height:36px;border-bottom:1px solid #f0f0f0;box-sizing:border-box;line-height:34px}
 .category_contents .head_list_range .title {border-right:0;font-size:13px}
 .category_contents .head_list_range .index {border-right:0;font-size:13px}
-.category_contents .list_range .row {height:65px;border-bottom:1px solid #f0f0f0;box-sizing:border-box;line-height:63px}
+.category_contents .list_range .row {height:65px;border-bottom:1px solid #f0f0f0;box-sizing:border-box;line-height:63px;cursor:pointer}
 .category_contents .list_range .row:after {display:table;clear:both;content:"";table-layout:fixed}
+.category_contents .list_range .row.on {background:rgba(148,166,255,0.3)}
+.category_contents .list_range .row.on .title {font-size:15px;letter-spacing:-1px}
+.category_contents .list_range .row.on .index {font-size:17px;letter-spacing:-1px}
+.category_contents .list_range .row.on .title,
+.category_contents .list_range .row.on .index {font-weight:bold}
 .category_contents .title {float:left;width:130px;border-right:1px solid #f0f0f0;box-sizing:border-box;color:#666;font-size:14px;text-align:center}
 .category_contents .index {float:left;width:130px;border-right:1px solid #f0f0f0;box-sizing:border-box;color:#666;font-size:15px;text-align:center}
 .category_contents .average_salary {float:left;position:relative;padding:0 10px;width:578px;box-sizing:border-box}
@@ -699,18 +779,21 @@
 .category_contents .average_salary .statistics .ruler {display:inline-block;position:relative;width:20%;height:36px;font-size:10px;text-align:center}
 .category_contents .average_salary .statistics .ruler:after {display:block;position:absolute;bottom:0;left:50%;margin-left:-1px;width:1px;height:5px;background:#dbdbdb;content:""}
 .category_contents .row .wrap_animation {position:absolute;top:14px;left:64px;width:450px;height:35px;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/bg_salary_average.gif) bottom left repeat-x}
-.category_contents .row .wrap_animation .innerbar {opacity:0;position:absolute;bottom:0;height:8px;color:#888;font-size:13px;background:#a4d5ff;animation-duration: .5s}
-.category_contents .row .wrap_animation .innerbar.on {opacity:1;animation-name: fadeInUp;}
+.category_contents .row .wrap_animation .innerbar {position:absolute;bottom:0;height:8px;color:#888;font-size:13px;background:#a4d5ff;animation-duration:0.5s;opacity:0}
+.category_contents .row.on .wrap_animation .innerbar {background:#94a6ff}
+.category_contents .row .wrap_animation .innerbar.on {animation-name:fadeInUp;opacity:1}
 .category_contents .row .wrap_animation .innerbar em {display:block;color:#666;font-size:12px}
 .category_contents .row .wrap_animation .innerbar .min {position:absolute;bottom:11px;left:-28px;height:20px;font-size:10px;font-weight:bold;line-height:1;text-align:right}
 .category_contents .row .wrap_animation .innerbar .max {position:absolute;right:-28px;bottom:11px;height:20px;font-size:10px;font-weight:bold;line-height:1;text-align:left}
-.runningman {display:block;position:absolute;bottom:0;left:0;width:28px;height:37px;overflow:hidden;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/bg_run_start.png) no-repeat;background-position:0 0;}
-.runningman.run {background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/new_ani_run.png) no-repeat;background-position:0 0;}
-.category_slide .category_contents .stacked_area {width:100%;height:330px}
-.category_slide .category_contents .stacked_area .stack_chart .dot {fill:#fff;stroke:#7289f8;stroke-width:2px}
+.runningman {display:block;overflow:hidden;position:absolute;bottom:0;left:0;width:28px;height:37px;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/bg_run_start.png) no-repeat;background-position:0 0}
+.runningman.run {background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/new_ani_run.png) no-repeat;background-position:0 0}
+
+.category_slide .category_contents .stacked_area {position:relative;width:100%;height:330px}
+.category_slide .category_contents .stacked_area .stack_chart .dot {fill:#fff;stroke:#7289f8}
 .category_slide .category_contents .stacked_area .stack_chart .area {fill:#a4d5ff;fill-opacity:0.3}
 .category_slide .category_contents .stacked_area .stack_chart .line {fill:none;stroke:#7289f8;stroke-width:1px}
 .category_slide .category_contents .stacked_area .stack_chart .label_txt {font-size:13px;fill:#444}
+.category_slide .category_contents .stacked_area .stack_chart .tick.on text {font-weight:bold}
 .category_slide .category_contents .linechart_area {width:100%;height:330px}
 
 
@@ -861,28 +944,28 @@
 
 @-webkit-keyframes fadeInUp {
     from {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
+        -webkit-transform:translate3d(0, 100%, 0);
+        transform:translate3d(0, 100%, 0);
+        opacity:0
     }
 
     to {
-        opacity: 1;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
+        -webkit-transform:translate3d(0, 0, 0);
+        transform:translate3d(0, 0, 0);
+        opacity:1
     }
 }
 
 @keyframes fadeInUp {
     from {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
+        -webkit-transform:translate3d(0, 100%, 0);
+        transform:translate3d(0, 100%, 0);
+        opacity:0
     }
 
     to {
-        opacity: 1;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
+        -webkit-transform:translate3d(0, 0, 0);
+        transform:translate3d(0, 0, 0);
+        opacity:1
     }
 }

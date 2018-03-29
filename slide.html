@@ -436,14 +436,15 @@
     <link href="ios-app://739013038/http/m.saramin.co.kr/salaries/total-salary/view?scom_idx=12977" rel="alternate">
     <link href="http://m.saramin.co.kr/salaries/total-salary/view?scom_idx=12977" rel="alternate" type="text/html" title="mobile optimized version" media="only screen and (max-width: 640px)">
     <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20180227_2" media="all" rel="stylesheet" type="text/css">
-    <link href="components.css" media="all" rel="stylesheet" type="text/css"><!-- WMG-16700 -->
+    <link href="//www.saramin.co.kr/sri_css/components.css" media="all" rel="stylesheet" type="text/css"><!-- WMG-16700 -->
     <link href="salary.css" media="all" rel="stylesheet" type="text/css"><!-- WMG-16700 -->
     <link href="http://www.saramin.co.kr/zf_user/salaries/total-salary/view?scom_idx=12977" rel="canonical">
     <link href="//www.saraminimage.co.kr/favicon.ico" rel="favicon">
     <link href="//www.saraminimage.co.kr/favicon.ico" rel="icon" type="image/x-icon">
     <link href="//www.saraminimage.co.kr/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/prototype-1.6.1.js"></script>
-    <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/effects.js"></script>`
+    <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/effects.js"></script>
+    `
     <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery-1.11.1.min.js"></script>
     <script type="text/javascript">var $j = jQuery.noConflict()</script>
     <script type="text/javascript" src="//www.saramin.co.kr/js/libs/saramin/common.js?v=20180228"></script>
@@ -458,15 +459,19 @@
     <!--<script type="text/javascript" src="//www.saramin.co.kr/js/salaries/salaries.js?v=20180228"></script> wmg-16700 해당 js는 필요없음-->
     <!-- WMG-16700 -->
     <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/d3.v4.min.js"></script>
+    <script type="text/javascript" src="//www.saramin.co.kr/js/chart/sri_radar.js"></script>
+    <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/TweenMax.min.js"></script>
+    <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery.gsap.min.js"></script>
     <script type="text/javascript" src="sri_combination.js"></script>
     <script type="text/javascript" src="sri_stackedarea.js"></script>
     <script type="text/javascript" src="sri_line.js"></script>
+    <script type="text/javascript" src="sri_salary_view.js"></script>
     <script>
-        jQuery(document).ready(function(){
-            (function combinationChart() {
+        jQuery(document).ready(function () {
+            (function combinationChart () {
                 var width = 360,
                     height = 240,
-                    colorScheme = ["#acd9f8", "#acd9f8", "#4fa4f9"];
+                    colorScheme = ['#acd9f8', '#acd9f8', '#4fa4f9']
 
                 // Config for the Radar chart
                 var config = {
@@ -476,20 +481,20 @@
                     mRight: 0,
                     mBottom: 20,
                     mLeft: 22
-                };
+                }
 
                 var data = [
-                    {year: "2015", salary: 3500, aver: 3700},
-                    {year: "2016", salary: 4500, aver: 4000},
-                    {year: "2017", salary: 5100, aver: 4500}
-                ];
-                var dataRange = {min: 3000, max: 5500};
-                CombinationChart.draw('#combie', data, dataRange, config, colorScheme);
+                    {year: '2015', salary: 3500, aver: 3700},
+                    {year: '2016', salary: 4500, aver: 4000},
+                    {year: '2017', salary: 5100, aver: 4500}
+                ]
+                var dataRange = {min: 3000, max: 5500}
+                CombinationChart.draw('#combie', data, dataRange, config, colorScheme)
             }());
-            (function stackedChart() {
-                var width = 838,
+            (function stackedChart () {
+                var width = 828,
                     height = 330,
-                    colorScheme = ["#acd9f8", "#acd9f8", "#4fa4f9"];
+                    colorScheme = ['#acd9f8', '#acd9f8', '#4fa4f9']
 
                 // Config for the Radar chart
                 var config = {
@@ -499,27 +504,27 @@
                     mRight: 0,
                     mBottom: 20,
                     mLeft: 28
-                };
+                }
 
                 var data = [
-                    {year: "1년차", salary: 2500},
-                    {year: "2년차", salary: 3800},
-                    {year: "3년차", salary: 4000},
-                    {year: "4년차", salary: 4550},
-                    {year: "5년차", salary: 5210},
-                    {year: "6년차", salary: 5500},
-                    {year: "7년차", salary: 6500},
-                    {year: "8년차", salary: 7250},
-                    {year: "9년차", salary: 7595},
-                    {year: "10년차↑", salary: 9200}
-                ];
-                var dataRange = {min: 1000, max: 10000};
-                //StackedAreaChart.draw('#stacked_area', data, dataRange, config, colorScheme);
+                    {year: '1년차', salary: 2500},
+                    {year: '2년차', salary: 3800},
+                    {year: '3년차', salary: 4000},
+                    {year: '4년차', salary: 4550},
+                    {year: '5년차', salary: 5210},
+                    {year: '6년차', salary: 5500},
+                    {year: '7년차', salary: 6500},
+                    {year: '8년차', salary: 7250},
+                    {year: '9년차', salary: 7595},
+                    {year: '10년차↑', salary: 9200}
+                ]
+                var dataRange = {min: 1000, max: 10000}
+                StackedAreaChart.draw('#stacked_area', data, dataRange, config, colorScheme);
             }());
-            (function lineChart() {
+            (function lineChart () {
                 var width = 838,
                     height = 330,
-                    colorScheme = ["#acd9f8", "#acd9f8", "#4fa4f9"];
+                    colorScheme = ['#acd9f8', '#acd9f8', '#4fa4f9']
 
                 // Config for the Radar chart
                 var config = {
@@ -529,192 +534,49 @@
                     mRight: 0,
                     mBottom: 20,
                     mLeft: 28
-                };
+                }
                 var data = {
-                    "salary_2017" : [1900,2000,2200,2400,2600,2800,3000,3200,3400,3600,3800,4000,4200,4400,4600,4800,5000,5200,5400,5600,5800,6000,6200,6400,6600,6800,7000,7200,7400,7600,7800],
-                    "salary_2016" : [2100,2500,2700,2900,3100,3300,3500,3700,3900,4100,4300,4500,4700,4900,5100,5300,5500,5700,5900,6100,6300,6500,6700,6900,7100,7300,7500,7700,7900,8100,8300],
-                    "salary_2015" : [2200,3000,3250,3500,3750,4000,4250,4500,4750,5000,5250,5500,5750,6000,6250,6500,6750,7000,7250,7500,7750,8000,8250,8500,8750,9000,9250,9500,9750,10000,10250]
-                };
-                var dataRange = {min: 0, max: 10500};
-                //LineChart.draw('#linechart_area', data, dataRange, config, colorScheme);
+                    'salary_2017': [1900, 2000, 2200, 2400, 2600, 2800, 3000, 3200, 3400, 3600, 3800, 4000, 4200, 4400, 4600, 4800, 5000, 5200, 5400, 5600, 5800, 6000, 6200, 6400, 6600, 6800, 7000, 7200, 7400, 7600, 7800],
+                    'salary_2016': [2100, 2500, 2700, 2900, 3100, 3300, 3500, 3700, 3900, 4100, 4300, 4500, 4700, 4900, 5100, 5300, 5500, 5700, 5900, 6100, 6300, 6500, 6700, 6900, 7100, 7300, 7500, 7700, 7900, 8100, 8300],
+                    'salary_2015': [2200, 3000, 3250, 3500, 3750, 4000, 4250, 4500, 4750, 5000, 5250, 5500, 5750, 6000, 6250, 6500, 6750, 7000, 7250, 7500, 7750, 8000, 8250, 8500, 8750, 9000, 9250, 9500, 9750, 10000, 10250]
+                }
+                var dataRange = {min: 0, max: 10500}
+                LineChart.draw('#linechart_area', data, dataRange, config, colorScheme);
             }());
+            (function radarChart() {
+                var width = 170,
+                    height = 170,
+                    lineRange = ['#ebebeb'],
+                    colorRange = ['#788ef7', '#CA0D59'];
 
-            (function salaryViewEvent(){
-                var domClass = {
-                    body : jQuery('html, body'),
-                    snsList : jQuery('#expand_sns').next('.snslist'),
-                    wingWrap : jQuery('#wing-info-list'),
-                    sriSection : jQuery('#sri_section'),
-                    sri_banner : jQuery('#sri_banner'),
-                    btnTop : jQuery('#btn_go_top')
+                // Config for the Radar chart
+                var config = {
+                    w: width,
+                    h: height,
+                    maxValue: 8,
+                    levels: 5,
+                    TranslateX: 50,
+                    TranslateY: 55,
+                    ExtraWidthX: 120,
+                    ExtraWidthY: 100,
+                    lineColor : lineRange,
+                    color: colorRange
                 };
-
-                var expandTrue = false;
-                function expandWing(selector) {
-                    expandTrue = true;
-                    domClass.btnTop.hide();
-                    jQuery(selector).closest(domClass.wingWrap).addClass('on');
-                    domClass.sri_banner.css('z-index',150);
-                    domClass.sriSection.append("<div class='sri_wing_dimmed'></div>");
-                    return expandTrue;
-                }
-                function contractWing(selector) {
-                    expandTrue = false;
-                    domClass.btnTop.show();
-                    jQuery(selector).closest(domClass.wingWrap).removeClass('on');
-                    domClass.sri_banner.css('z-index',"");
-                    domClass.sriSection.find('.sri_wing_dimmed').remove();
-                    return expandTrue;
-                }
-                jQuery("#btn_expand").on('click', function() {
-                    if(!expandTrue) {
-                        expandWing(jQuery(this));
-                    }else if(expandTrue){
-                        contractWing(jQuery(this));
-                    }
-                });
-                jQuery('#expand_sns').on("click", function() {
-                    domClass.snsList.toggleClass('on');
-                });
-                function viewInit() {
-                    domClass.snsList.removeClass('on');
-                }
-
-
-                jQuery.fn.categoryCarosel = function() {
-                    return this.each(function(){
-                        var $this = jQuery(this),
-                            $slideWrap = jQuery('.slide',$this),
-                            $slide = jQuery('li',$slideWrap),
-                            $item = jQuery('>a',$slide),
-                            btnPrev = jQuery('.btn_prev', $this),
-                            btnNext = jQuery('.btn_next', $this),
-                            btnAll = jQuery('.btn_all',$this),
-                            currentIdx = 0,
-                            oldIdx = 0,
-                            pageNow = 0,
-                            pageTotal = 0,
-                            slideW = 109,
-                            totalW = 0;
-
-                        var calWidth = function () {
-                            var slideCount = $slide.length;
-                            totalW = slideW * slideCount;
-                            $slideWrap.width(totalW);
-                        }
-                        function slideInit() {
-                            calWidth();
-                        }
-                        $item.on("click",function(e){
-                            e.preventDefault();
-                            btnAll.removeClass('on');
-                            currentIdx = jQuery(this).closest($slide).index();
-                            console.log(currentIdx)
-                            $slide.eq(currentIdx).addClass('on').siblings().removeClass('on');
-                            if( currentIdx == 5 ) {
-                                moveRight();
-                            }else if ( currentIdx == 9 ) {
-                                moveRight();
-                            }
-                            return currentIdx;
-                        });
-                        function moveLeft(currentIdx) {
-                            $slideWrap.stop().animate({
-                                left: + slideW * (currentIdx-1) + "px"
-                            },{
-                                duration: 200,
-                                easing: 'linear',
-                                queue: false
-                            });
-                        }
-                        function moveRight() {
-                            $slideWrap.stop().animate({
-                                left: - slideW * (currentIdx-1) + "px"
-                            },{
-                                duration: 200,
-                                easing: 'linear',
-                                queue: false
-                            });
-                        }
-                        btnAll.on("click",function(e){
-                            e.preventDefault();
-                            $slide.removeClass('on');
-                            btnAll.addClass('on');
-                            $slideWrap.stop().animate({
-                                left: 0 + "px"
-                            },{
-                                duration: 200,
-                                easing: 'linear',
-                                queue: false
-                            });
-                        });
-
-
-                        slideInit();
-
-                    });
-                }
-                jQuery(".category_head").categoryCarosel();
-
-            }());
-
-            /*(function headerScrEvent(){
-                var html = jQuery('html');
-                var viewport = jQuery(window);
-                var viewportHeight = viewport.height();
-                var scrollWrap = jQuery('#spy_header');
-                var scrollMenu = jQuery('#spy_header .tab li');
-                /////// bind
-                var sectionsHeight = {},
-                    viewportheight, i = 0;
-                var scrollItem = jQuery('.spy_contents');
-                var bannerHeight;
-
-                function sectionListen() {
-                    viewportHeight = viewport.height();
-                    bannerHeight = (viewportHeight);
-                    scrollItem.each(function() {
-                        sectionsHeight[jQuery(this).data("title")] = jQuery(this).offset().top;
-                    });
-                }
-                sectionListen();
-                viewport.resize(sectionListen);
-
-
-
-                scrollMenu.find('a').click(function() {
-                    var href = jQuery.attr(this, 'href');
-                    jQuery('html').animate({
-                        scrollTop: jQuery(href).offset().top - 120
-                    },{
-                        duration: 500,
-                        easing: 'linear',
-                        queue: false
-                    });
-                    return false;
-                });
-
-                function menuListen() {
-                    var pos = jQuery(this).scrollTop();
-                    pos = pos + viewportHeight * 0.625;
-                    for (i in sectionsHeight) {
-                        if (sectionsHeight[i] < pos) {
-                            console.log('a',sectionsHeight[i],i,pos)
-                        } else {
-                            jQuery('#spy_header .tab li').eq(i).removeClass('on');
+                var data = [
+                    {
+                        "idx": "삼성",
+                        "area": {
+                            "평균연봉\n(전체)": 1,
+                            "자본금": 2,
+                            "연봉증감률": 1,
+                            "매출액": 2,
+                            "위치": 1
                         }
                     }
-                }
-                function scrollHandler() {
-                    menuListen();
-                }
-                scrollHandler();
-                viewport.on('scroll', function() {
-                    scrollHandler();
-                });
-
-            }());*/
-        });
+                ];
+                RadarChart.draw('#radar_graph', data, config);
+            }());
+        })
 
     </script>
 
@@ -3086,7 +2948,8 @@
                 <div class="salary_company_info">
                     <h1 class="title">(주)사람인에이치알</h1>
                     <div class="sri_layer_tooltip wrap_interested_corp">
-                        <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');" mcom_idx="7509705" del_fl="n"><span>관심기업 등록</span></button>
+                        <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');" mcom_idx="7509705" del_fl="n">
+                            <span>관심기업 등록</span></button>
                         <div class="sri_tooltip sri_tooltip_scrap" style="margin:-29px 0px 0px -29px; display:none;">
                             <span class="tail_bottom_center"></span>
                             <div class="tooltip_inner align_center">
@@ -3095,11 +2958,18 @@
                         </div>
                     </div>
                     <div class="sns_wrap">
-                        <button type="button" id="expand_sns" class="spr_salary btn_sns"><span class="blind">sns공유하기</span></button>
+                        <button type="button" id="expand_sns" class="spr_salary btn_sns">
+                            <span class="blind">sns공유하기</span></button>
                         <ul class="snslist">
-                            <li class="sns_facebook"><button type="button" class="sns"><span class="blind">facebook공유하기</span></button></li>
-                            <li class="sns_twitter"><button type="button" class="sns"><span class="blind">twitter공유하기</span></button></button></li>
-                            <li class="sns_copyurl"><button type="button" class="sns"><span class="blind">URL공유하기</span></button></button></li>
+                            <li class="sns_facebook">
+                                <button type="button" class="sns"><span class="blind">facebook공유하기</span></button>
+                            </li>
+                            <li class="sns_twitter">
+                                <button type="button" class="sns"><span class="blind">twitter공유하기</span></button>
+                                </button></li>
+                            <li class="sns_copyurl">
+                                <button type="button" class="sns"><span class="blind">URL공유하기</span></button>
+                                </button></li>
                         </ul>
                     </div>
                 </div>
@@ -3122,7 +2992,8 @@
                         <li><a href="#tab_age_salary" class="link">연령별</a></li>
                     </ul>
                 </div>
-                <div id="tab_avg_salary" class="tab_avg_salary spy_contents" data-title="spy_contents_01">
+
+                <div id="tab_avg_salary" class="tab_avg_salary check_tab_contents">
                     <div class="wrap_average">
                         <p class="info_title">2017년 평균연봉</p>
                         <div class="salaryinfo">
@@ -3137,7 +3008,8 @@
                         <div class="textinfo">
                             <dl class="info">
                                 <dt>2016년 대비</dt>
-                                <dd class="point"><span class="spr_salary downpoint"></span> <em>7.8</em>%</dd><!-- up일경우 uppoint -->
+                                <dd class="point"><span class="spr_salary downpoint"></span> <em>7.8</em>%
+                                </dd><!-- up일경우 uppoint -->
                             </dl>
                             <dl class="info">
                                 <dt>제조/화학업계</dt>
@@ -3146,17 +3018,22 @@
                             <dl class="info">
                                 <dt>
                                     연봉정보 신뢰도
-                                    <button type="button" class="spr_salary tooltip" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>연봉정보 신뢰도</span></button>
+                                    <button type="button" class="spr_salary tooltip" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');">
+                                        <span>연봉정보 신뢰도</span></button>
                                     <div class="sri_tooltip size_wide" style="width:294px;margin:-214px 0px 0px -189px; display:none;">
                                         <span class="tail_bottom_right"></span>
                                         <div class="tooltip_inner txt_left">
                                             <p class="tit">연봉정보 신뢰도 기준</p>
                                             <ul class="list">
-                                                <li><span class="legend highest">매우높음</span>: 등록 이력서 <strong>50건 이상</strong></li>
-                                                <li><span class="legend high">높음</span>: 등록 이력서 <strong>30건 이상 ~ 50건 미만</strong></li>
-                                                <li><span class="legend medium">보통</span>: 기초데이터 <strong>2건</strong></li>
+                                                <li><span class="legend highest">매우높음</span>: 등록 이력서
+                                                    <strong>50건 이상</strong></li>
+                                                <li><span class="legend high">높음</span>: 등록 이력서
+                                                    <strong>30건 이상 ~ 50건 미만</strong></li>
+                                                <li><span class="legend medium">보통</span>: 기초데이터 <strong>2건</strong>
+                                                </li>
                                                 <li><span class="legend low">낮음</span>: 기초데이터 <strong>1건</strong></li>
-                                                <li><span class="legend lower">매우낮음</span>: 기초데이터 <strong>없음</strong></li>
+                                                <li><span class="legend lower">매우낮음</span>: 기초데이터 <strong>없음</strong>
+                                                </li>
                                             </ul>
                                             <p class="noti">※ 기초데이터 : 국민연금, 고용보험, 금감원, 알리오 정보 등을
                                                 기반으로 한 데이터
@@ -3180,19 +3057,31 @@
                         </ul>
                         <div class="wrap_graph">
                             <div id="combie">
-
+                                <div id="combieTooltip" class="graph_tooltip">
+                                    <p class="title">평균연봉 / <span class="years">2015</span>년</p>
+                                    <ul class="graph_wrap_legend">
+                                        <li class="company_diff01"><span class="legend"></span><span class="company">(주)사람인에이치알</span><span class="salary">4,512</span>만원</li><!-- 기업명 개발 붙여주세요 -->
+                                        <li class="company_diff02"><span class="spr_salary legend"></span><span class="company">제조화학업수</span><span class="salary">3,850</span>만원</li><!-- 기업명 개발 붙여주세요 -->
+                                    </ul>
+                                </div>
                             </div>
                             <p class="info_txt">
-                              2017년 동종업계 평균 대비 <strong class="uppoint">21% 높은 수준</strong><!-- uppoint,downpoint-->
+                                2017년 동종업계 평균 대비 <strong class="uppoint">21% 높은 수준</strong><!-- uppoint,downpoint-->
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <h3 id="tab_custom_salary" class="title">맞춤 연봉정보</h3>
-                <div class="content_gird spy_contents" data-title="spy_contents_02">
+                <h3 id="tab_custom_salary" class="title check_tab_contents">맞춤 연봉정보</h3>
+                <div class="content_gird">
                     <p class="txt_notice01">연봉 통계 데이터를 분석하여 <em>맞춤 연봉정보</em>를 제공해드립니다.</p>
-                    <p class="txt_notice02">아래 정보를 입력하신 후 맞춤 연봉정보 보기를 눌러주세요. <a href="" class="link">로그인</a>하시면 저장된 정보를 불러옵니다.</p>
+                    <p class="txt_notice02">아래 정보를 입력하신 후 맞춤 연봉정보 보기를 눌러주세요.
+                        <a href="" class="link">로그인</a>하시면 저장된 정보를 불러옵니다.</p>
+
+                    <!-- 맞춤 연봉 설정후
+                    <p class="txt_notice01"><strong>김지호</strong>님의 정보를 기반으로 예상한 연봉입니다.</p>
+                    -->
+
                     <div class="wrap_select">
                         <span class="sri_input2">
                             <select title="경력">
@@ -3210,59 +3099,314 @@
                             </select>
                         </span>
                         <span class="input_box">
-                            <input type="text"> 만원
+                            <input type="text">만원
                         </span>
+                        <!-- disabled
+                        <span class="input_box disabled">
+                            <input type="text" disabled> 만원
+                        </span>
+                        -->
                         <button type="submit" class="btn_biggest_type02">맞춤 연봉정보 보기</button>
                     </div>
                     <ul class="notice_list">
                         <li>(<span class="spr_salary redstar"></span>) 표시는 맞춤 연봉정보 검색을 위한<strong>필수 입력값</strong>입니다</li>
-                        <li>맞춤 연봉정보는 해당 기업의 여러 연봉 자료를 기반으로 분석한 것으로 기업의 실제 연봉과는 차이가 있을 수 있으므로 참고용으로만  활용하시기 바랍니다.</li>
+                        <li>맞춤 연봉정보는 해당 기업의 여러 연봉 자료를 기반으로 분석한 것으로 기업의 실제 연봉과는 차이가 있을 수 있으므로 참고용으로만 활용하시기 바랍니다.</li>
                     </ul>
                 </div>
+                <!-- 맞춤연봉 설정시 -->
+                <div class="wrap_result_salary">
+                    <p class="title_result">검색조건 : <em>7년차, 대리, 마케팅/홍보</em></p>
+                    <div class="content_gird univ result">
+                        <div class="wrap_bar">
+                            <ul class="graph_wrap_legend">
+                                <li><span class="prediction"></span>예상연봉</li>
+                                <li class="currency">(단위:만원)</li>
+                            </ul>
+                            <div class="graph_info col3">
+                                <div class="grid_range">
+                                    <span class="range"><span>5,000</span></span>
+                                    <span class="range"><span>4,000</span></span>
+                                    <span class="range"><span>3,000</span></span>
+                                    <span class="range"><span>2,000</span></span>
+                                    <span class="range"><span>1,000</span></span>
+                                </div>
+                                <div class="wrap_graph">
+                                    <em class="tit_graph">2015</em>
+                                    <div class="graph">
+                                        <div class="inner_graph color01" style="height:60%"><span class="txt_value">6,000</span></div>
+                                    </div>
+                                </div>
+                                <div class="wrap_graph high"><!-- 가장 큰 수치일때-->
+                                    <em class="tit_graph">2016</em>
+                                    <div class="graph">
+                                        <div class="inner_graph color02" style="height:100%"><span class="txt_value">1억</span></div>
+                                    </div>
+                                </div>
+                                <div class="wrap_graph">
+                                    <em class="tit_graph">2017</em>
+                                    <div class="graph">
+                                        <div class="inner_graph color03" style="height:80%"><span class="txt_value">8,000</span></div>
+                                    </div>
+                                </div>
+                                <span class="max_line"></span>
+                            </div>
+                        </div>
+                        <div class="salary_graph_info">
+                            <p class="company">(주)사람인에이치알</p>
+                            <p class="title_years">입사시 예상 연봉</p>
+                            <p class="salary"><em>3,200</em>만원</p>
+                            <p class="expected">(예상 월 실수령액 <strong>2,560,000</strong>원)</p>
+                            <p class="keypoint">이 기업의 연봉은 마케팅 직무 상위 10%이며,<br />현재 나의 연봉 대비<strong class="uppoint">21% 상승</strong>했습니다.</p><!-- 하락시 downpoint -->
+                        </div>
+                    </div>
+                    <p class="title">마케팅/홍보 7년차 연봉 TOP 3</p>
+                    <div class="salary_matching_list">
+                        <div class="item_list">
+                            <div class="company_name">
+                                <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
+                                <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');">
+                                    <span>관심기업 등록</span></button>
+                                <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
+                                    <span class="tail_bottom_center"></span>
+                                    <div class="tooltip_inner align_center">
+                                        <strong class="title">관심기업 등록</strong>
+                                    </div>
+                                </div>
+                            </div>
 
-                <h3 id="tab_univ_salary" class="title">대졸초임</h3>
-                <div class="content_gird univ spy_contents" data-title="spy_contents_03">
-                    <div class="wrap_graph">
+                            <span class="business">제조/화학업</span>
+                            <span class="ava_salary">매출액 13조 8,927억원</span>
+                            <dl class="company_average">
+                                <dt>평균연봉</dt>
+                                <dd><em>4,000</em> 만원</dd>
+                            </dl>
+                        </div>
+                        <div class="item_list">
+                            <div class="company_name">
+                                <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
+                                <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');">
+                                    <span>관심기업 등록</span></button>
+                                <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
+                                    <span class="tail_bottom_center"></span>
+                                    <div class="tooltip_inner align_center">
+                                        <strong class="title">관심기업 등록</strong>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <span class="business">제조/화학업</span>
+                            <span class="ava_salary">매출액 13조 8,927억원</span>
+                            <dl class="company_average">
+                                <dt>평균연봉</dt>
+                                <dd><em>4,000</em> 만원</dd>
+                            </dl>
+                        </div>
+                        <div class="item_list">
+                            <div class="company_name">
+                                <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
+                                <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');">
+                                    <span>관심기업 등록</span></button>
+                                <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
+                                    <span class="tail_bottom_center"></span>
+                                    <div class="tooltip_inner align_center">
+                                        <strong class="title">관심기업 등록</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="business">제조/화학업</span>
+                            <span class="ava_salary">매출액 13조 8,927억원</span>
+                            <dl class="company_average">
+                                <dt>평균연봉</dt>
+                                <dd><em>4,000</em> 만원</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 id="tab_univ_salary" class="title check_tab_contents">대졸초임</h3>
+                <div class="content_gird univ">
+                    <div class="wrap_bar">
+                        <ul class="graph_wrap_legend">
+                            <li><span class="graylegend"></span>대졸초임</li>
+                            <li class="currency">(단위:만원)</li>
+                        </ul>
+                        <div class="graph_info col3">
+                            <div class="grid_range">
+                                <span class="range"><span>5,000</span></span>
+                                <span class="range"><span>4,000</span></span>
+                                <span class="range"><span>3,000</span></span>
+                                <span class="range"><span>2,000</span></span>
+                                <span class="range"><span>1,000</span></span>
+                            </div>
+                            <div class="wrap_graph">
+                                <em class="tit_graph">2015</em>
+                                <div class="graph">
+                                    <div class="inner_graph color01" style="height:60%"><span class="txt_value">6,000</span></div>
+                                </div>
+                            </div>
+                            <div class="wrap_graph high"><!-- 가장 큰 수치일때-->
+                                <em class="tit_graph">2016</em>
+                                <div class="graph">
+                                    <div class="inner_graph color02" style="height:100%"><span class="txt_value">1억</span></div>
+                                </div>
+                            </div>
+                            <div class="wrap_graph">
+                                <em class="tit_graph">2017</em>
+                                <div class="graph">
+                                    <div class="inner_graph color03" style="height:80%"><span class="txt_value">8,000</span></div>
+                                </div>
+                            </div>
+                            <span class="max_line"></span>
+                        </div>
                     </div>
                     <div class="salary_graph_info">
                         <p class="title_years">2017년 기준</p>
-                        <p><em>3,200</em>만원</p>
-                        <p>(예상 월 실수령액 <strong>2,560,000</strong>원)</p>
-                        <p>이기업의 대졸초임은 2016년 대비 <span class="up">21% 상승</span>했습니다.</p>
+                        <p class="salary"><em>3,200</em>만원</p>
+                        <p class="expected">(예상 월 실수령액 <strong>2,560,000</strong>원)</p>
+                        <p class="keypoint">이기업의 대졸초임은 2016년 대비 <strong class="uppoint">21% 상승</strong>했습니다.</p><!-- 하락시 downpoint -->
                     </div>
                 </div>
 
-                <h3 id="tab_rank_salary" class="title">직급별 연봉통계</h3>
-                <div class="category_slide spy_contents" data-title="spy_contents_04">
+                <h3 id="tab_rank_salary" class="title check_tab_contents">직급별 연봉통계</h3>
+                <div class="category_slide">
                     <div class="category_head">
                         <a href="##" class="btn_all on">전체</a>
                         <div class="wrap_slide">
                             <ul class="slide">
-                                <li><a href="">IT/인터넷</a></li>
-                                <li><a href="">경영/사무</a></li>
-                                <li><a href="">영업/제휴</a></li>
-                                <li><a href="">마케팅&middot;홍보</a></li>
-                                <li><a href="">마케팅&middot;홍보</a></li>
-                                <li><a href="">생산/제조</a></li>
-                                <li><a href="">IT/인터넷2</a></li>
-                                <li><a href="">경영/사무2</a></li>
-                                <li><a href="">영업/제휴2</a></li>
-                                <li><a href="">마케팅&middot;홍보</a></li>
-                                <li><a href="">마케팅/홍보2</a></li>
-                                <li><a href="">생산/제조2</a></li>
+                                <li><a href="">IT∙인터넷</a></li>
+                                <li><a href="">건축·설계</a></li>
+                                <li><a href="">경영∙기획</a></li>
+                                <li><a href="">고객상담</a></li>
+                                <li><a href="">교육</a></li>
+                                <li><a href="">디자인</a></li>
+                                <li><a href="">마케팅∙홍보</a></li>
+                                <li><a href="">미디어</a></li>
+                                <li><a href="">사무∙보조</a></li>
+                                <li><a href="">사회복지</a></li>
+                                <li><a href="">생산·제조</a></li>
+                                <li><a href="">서비스</a></li>
+                                <li><a href="">연구·R&D</a></li>
+                                <li><a href="">영업∙제휴</a></li>
+                                <li><a href="">유통·무역</a></li>
+                                <li><a href="">의료·의약</a></li>
+                                <li><a href="">전문·특수직</a></li>
                             </ul>
-                            <button type="button" class="btn_prev">&lt;</button>
-                            <button type="button" class="btn_next">&gt;</button>
                         </div>
+                        <button type="button" class="btn_prev">&lt;</button>
+                        <button type="button" class="btn_next">&gt;</button>
                     </div>
                     <div class="category_contents">
+                        <div class="wrap_graph">
+                            <ul class="graph_wrap_legend">
+                                <li><span class="spr_salary human"></span>평균연봉</li>
+                                <li><span class="range"></span>최저~최고 구간</li>
+                                <li class="currency">(단위:만원)</li>
+                            </ul>
+                            <div id="rank_run" class="list">
+                                <div class="head_list_range">
+                                    <dl class="row">
+                                        <dt class="title">직급</dt>
+                                        <dd class="index">평균연봉</dd>
+                                        <dd class="average_salary">
+                                            <div class="statistics">
+                                                <span class="ruler">2,000</span>
+                                                <span class="ruler">4,000</span>
+                                                <span class="ruler">6,000</span>
+                                                <span class="ruler">8,000</span>
+                                                <span class="ruler">10,000</span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="list_range">
+                                    <dl class="row">
+                                        <dt class="title">직급1</dt>
+                                        <dd class="index">3,250</dd>
+                                        <dd class="average_salary">
+                                            <div class="wrap_animation">
+                                                <div class="innerbar" style="left:0%;width:31.25%;"><!-- 기준값 구하기 (max - min)/100  left값 = (최저값(4000)- 총데이터의min(2000))/(max - min)/100 넓이는 해당 값의 비율 - left값 -->
+                                                    <span class="min"><em>최저</em> 2,000</span>
+                                                    <span class="max"><em>최고</em> 4,500</span>
+                                                </div>
+                                                <span class="runningman ready" data-average="15.625"></span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="title">직급2</dt>
+                                        <dd class="index">5,200</dd>
+                                        <dd class="average_salary">
+                                            <div class="wrap_animation">
+                                                <div class="innerbar" style="left:30%;width:20%;">
+                                                    <span class="min"><em>최저</em> 4,400</span>
+                                                    <span class="max"><em>최고</em> 6,000</span>
+                                                </div>
+                                                <span class="runningman" data-average="30.625"></span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="title">직급3</dt>
+                                        <dd class="index">5,700</dd>
+                                        <dd class="average_salary">
+                                            <div class="wrap_animation">
+                                                <div class="innerbar" style="left:37.8%;width:12.3%;">
+                                                    <span class="min"><em>최저</em> 5,020</span>
+                                                    <span class="max"><em>최고</em> 6,000</span>
+                                                </div>
+                                                <span class="runningman" data-average="41.625"></span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="title">직급4</dt>
+                                        <dd class="index">6,700</dd>
+                                        <dd class="average_salary">
+                                            <div class="wrap_animation">
+                                                <div class="innerbar" style="left:51.3%;width:11.3%;">
+                                                    <span class="min"><em>최저</em> 6,100</span>
+                                                    <span class="max"><em>최고</em> 7,000</span>
+                                                </div>
+                                                <span class="runningman" data-average="55.625"></span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="title">직급5</dt>
+                                        <dd class="index">7,250</dd>
+                                        <dd class="average_salary">
+                                            <div class="wrap_animation">
+                                                <div class="innerbar" style="left:56.3%;width:18.8%;">
+                                                    <span class="min"><em>최저</em> 6,500</span>
+                                                    <span class="max"><em>최고</em> 8,000</span>
+                                                </div>
+                                                <span class="runningman" data-average="65.625"></span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="title">직급6</dt>
+                                        <dd class="index">8,100</dd>
+                                        <dd class="average_salary">
+                                            <div class="wrap_animation">
+                                                <div class="innerbar" style="left:68.8%;width:31.3%;">
+                                                    <span class="min"><em>최저</em> 7,500</span>
+                                                    <span class="max"><em>최고</em> 10,000</span>
+                                                </div>
+                                                <span class="runningman" data-average="79.625"></span>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
 
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <h3  id="tab_years_salary" class="title">연차별 연봉통계</h3>
-                <div class="category_slide spy_contents" data-title="spy_contents_05">
+                <h3 id="tab_years_salary" class="title check_tab_contents">연차별 연봉통계</h3>
+                <div class="category_slide">
                     <div class="category_head">
                         <a href="##" class="btn_all on">전체</a>
                         <div class="wrap_slide">
@@ -3280,45 +3424,48 @@
                                 <li><a href="">마케팅/홍보2</a></li>
                                 <li><a href="">생산/제조2</a></li>
                             </ul>
-                            <button type="button" class="btn_prev">&lt;</button>
-                            <button type="button" class="btn_next">&gt;</button>
                         </div>
+                        <button type="button" class="btn_prev">&lt;</button>
+                        <button type="button" class="btn_next">&gt;</button>
                     </div>
-                    <div class="category_contents">
+                    <div class="category_contents sri_graph">
                         <div class="wrap_graph">
                             <ul class="graph_wrap_legend">
                                 <li><span class="spr_salary legend"></span>평균연봉</li>
                                 <li class="currency">(단위:만원)</li>
                             </ul>
-                            <div class="stacked_area" id="stacked_area">
-
+                            <div id="stacked_area" class="stacked_area">
+                                <div id="statckedTooltip" class="graph_tooltip">
+                                    <p class="title">연차별 / <span class="years"></span></p>
+                                    <ul class="graph_wrap_legend">
+                                        <li class="company_diff01">평균연봉<span class="salary">4,512</span>만원</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <h3 id="tab_age_salary" class="title">연령별 연봉통계</h3>
-                <div class="category_slide spy_contents" data-title="spy_contents_06">
+                <h3 id="tab_age_salary" class="title check_tab_contents">연령별 연봉통계</h3>
+                <div class="category_slide">
                     <div class="category_head">
                         <a href="##" class="btn_all on">전체</a>
                         <div class="wrap_slide">
                             <ul class="slide">
-                                <li><a href="">IT/인터넷</a></li>
-                                <li><a href="">경영/사무</a></li>
-                                <li><a href="">영업/제휴</a></li>
+                                <li><a href="">IT∙인터넷</a></li>
+                                <li><a href="">건축·설계</a></li>
                                 <li><a href="">경영∙기획</a></li>
-                                <li><a href="">마케팅/홍보</a></li>
-                                <li><a href="">생산/제조</a></li>
-                                <li><a href="">IT/인터넷</a></li>
-                                <li><a href="">경영/사무</a></li>
-                                <li><a href="">영업/제휴</a></li>
-                                <li><a href="">경영∙기획</a></li>
-                                <li><a href="">마케팅/홍보2</a></li>
-                                <li><a href="">생산/제조2</a></li>
+                                <li><a href="">고객상담</a></li>
+                                <li><a href="">의료·의약</a></li>
+                                <li><a href="">전문·특수직</a></li>
                             </ul>
+                        </div>
+                        <!-- list가 6개일경우는 해당 버튼 없어야함 -->
+                        <!--
                             <button type="button" class="btn_prev">&lt;</button>
                             <button type="button" class="btn_next">&gt;</button>
-                        </div>
+                        -->
+                        <!-- //list가 6개일경우는 해당 버튼 없어야함 -->
                     </div>
                     <div class="category_contents">
                         <div class="wrap_graph">
@@ -3359,7 +3506,9 @@
                         <tr>
                             <td class="notification_info">
                                 <div class="job_tit">
-                                    <a class="str_tit" title="2018년 상반기 신입사원 공채" rel="nofollow" href="/zf_user/jobs/public/view?rec_idx=33255191&amp;t_ref=public-recruit" target="_blank"><span>2018년 상반기 신입사원 공채</span></a>                         <a title="스크랩" style="cursor:pointer" onmousedown="try{n_trackEvent('public-recruit', 'scrap_btn' , '', '');}catch(e){}" onclick="Saramin.btnJob('scrap',this,'','list');" scraped="n" rec_idx="33255191" bbs_fl="y" imgtype="default" class="btn_scrap scrap-33255191"><img src="//www.saraminimage.co.kr/common/bul_sri_star.png"></a>        </div>
+                                    <a class="str_tit" title="2018년 상반기 신입사원 공채" rel="nofollow" href="/zf_user/jobs/public/view?rec_idx=33255191&amp;t_ref=public-recruit" target="_blank"><span>2018년 상반기 신입사원 공채</span></a>
+                                    <a title="스크랩" style="cursor:pointer" onmousedown="try{n_trackEvent('public-recruit', 'scrap_btn' , '', '');}catch(e){}" onclick="Saramin.btnJob('scrap',this,'','list');" scraped="n" rec_idx="33255191" bbs_fl="y" imgtype="default" class="btn_scrap scrap-33255191"><img src="//www.saraminimage.co.kr/common/bul_sri_star.png"></a>
+                                </div>
                                 <div class="job_sector">
                                     <span>기획·전략·경영</span>
                                 </div>
@@ -3376,14 +3525,17 @@
                             <td class="support_info">
                                 <p class="deadlines">~ 03/12(월)</p>
                                 <p class="support_type">
-                                    <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다."><span class="sri_btn_immediately">즉시지원</span></button>
+                                    <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다.">
+                                        <span class="sri_btn_immediately">즉시지원</span></button>
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <td class="notification_info">
                                 <div class="job_tit">
-                                    <a class="str_tit" title="2018년 상반기 신입사원 공채" rel="nofollow" href="/zf_user/jobs/public/view?rec_idx=33255191&amp;t_ref=public-recruit" target="_blank"><span>2018년 상반기 신입사원 공채</span></a>                         <a title="스크랩" style="cursor:pointer" onmousedown="try{n_trackEvent('public-recruit', 'scrap_btn' , '', '');}catch(e){}" onclick="Saramin.btnJob('scrap',this,'','list');" scraped="n" rec_idx="33255191" bbs_fl="y" imgtype="default" class="btn_scrap scrap-33255191"><img src="//www.saraminimage.co.kr/common/bul_sri_star.png"></a>        </div>
+                                    <a class="str_tit" title="2018년 상반기 신입사원 공채" rel="nofollow" href="/zf_user/jobs/public/view?rec_idx=33255191&amp;t_ref=public-recruit" target="_blank"><span>2018년 상반기 신입사원 공채</span></a>
+                                    <a title="스크랩" style="cursor:pointer" onmousedown="try{n_trackEvent('public-recruit', 'scrap_btn' , '', '');}catch(e){}" onclick="Saramin.btnJob('scrap',this,'','list');" scraped="n" rec_idx="33255191" bbs_fl="y" imgtype="default" class="btn_scrap scrap-33255191"><img src="//www.saraminimage.co.kr/common/bul_sri_star.png"></a>
+                                </div>
                                 <div class="job_sector">
                                     <span>기획·전략·경영</span>
                                 </div>
@@ -3400,14 +3552,17 @@
                             <td class="support_info">
                                 <p class="deadlines">~ 03/12(월)</p>
                                 <p class="support_type">
-                                    <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다."><span class="sri_btn_immediately">즉시지원</span></button>
+                                    <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다.">
+                                        <span class="sri_btn_immediately">즉시지원</span></button>
                                 </p>
                             </td>
                         </tr>
                         <tr>
                             <td class="notification_info">
                                 <div class="job_tit">
-                                    <a class="str_tit" title="2018년 상반기 신입사원 공채" rel="nofollow" href="/zf_user/jobs/public/view?rec_idx=33255191&amp;t_ref=public-recruit" target="_blank"><span>2018년 상반기 신입사원 공채</span></a>                         <a title="스크랩" style="cursor:pointer" onmousedown="try{n_trackEvent('public-recruit', 'scrap_btn' , '', '');}catch(e){}" onclick="Saramin.btnJob('scrap',this,'','list');" scraped="n" rec_idx="33255191" bbs_fl="y" imgtype="default" class="btn_scrap scrap-33255191"><img src="//www.saraminimage.co.kr/common/bul_sri_star.png"></a>        </div>
+                                    <a class="str_tit" title="2018년 상반기 신입사원 공채" rel="nofollow" href="/zf_user/jobs/public/view?rec_idx=33255191&amp;t_ref=public-recruit" target="_blank"><span>2018년 상반기 신입사원 공채</span></a>
+                                    <a title="스크랩" style="cursor:pointer" onmousedown="try{n_trackEvent('public-recruit', 'scrap_btn' , '', '');}catch(e){}" onclick="Saramin.btnJob('scrap',this,'','list');" scraped="n" rec_idx="33255191" bbs_fl="y" imgtype="default" class="btn_scrap scrap-33255191"><img src="//www.saraminimage.co.kr/common/bul_sri_star.png"></a>
+                                </div>
                                 <div class="job_sector">
                                     <span>기획·전략·경영</span>
                                 </div>
@@ -3424,7 +3579,8 @@
                             <td class="support_info">
                                 <p class="deadlines">~ 03/12(월)</p>
                                 <p class="support_type">
-                                    <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다."><span class="sri_btn_immediately">즉시지원</span></button>
+                                    <button class="sri_btn_xs" title="클릭하면 입사지원할 수 있는 창이 뜹니다.">
+                                        <span class="sri_btn_immediately">즉시지원</span></button>
                                 </p>
                             </td>
                         </tr>
@@ -3437,7 +3593,8 @@
                     <div class="item_list">
                         <div class="company_name">
                             <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
-                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');">
+                                <span>관심기업 등록</span></button>
                             <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
                                 <span class="tail_bottom_center"></span>
                                 <div class="tooltip_inner align_center">
@@ -3456,7 +3613,8 @@
                     <div class="item_list">
                         <div class="company_name">
                             <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
-                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');">
+                                <span>관심기업 등록</span></button>
                             <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
                                 <span class="tail_bottom_center"></span>
                                 <div class="tooltip_inner align_center">
@@ -3475,7 +3633,8 @@
                     <div class="item_list">
                         <div class="company_name">
                             <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
-                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');">
+                                <span>관심기업 등록</span></button>
                             <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
                                 <span class="tail_bottom_center"></span>
                                 <div class="tooltip_inner align_center">
@@ -3497,7 +3656,8 @@
                     <div class="item_list">
                         <div class="company_name">
                             <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
-                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');">
+                                <span>관심기업 등록</span></button>
                             <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
                                 <span class="tail_bottom_center"></span>
                                 <div class="tooltip_inner align_center">
@@ -3516,7 +3676,8 @@
                     <div class="item_list">
                         <div class="company_name">
                             <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
-                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');">
+                                <span>관심기업 등록</span></button>
                             <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
                                 <span class="tail_bottom_center"></span>
                                 <div class="tooltip_inner align_center">
@@ -3535,7 +3696,8 @@
                     <div class="item_list">
                         <div class="company_name">
                             <a href="">두산중공업두산중공업두산중공업</a><span class="rounde_badge red">채용중</span>
-                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');"><span>관심기업 등록</span></button>
+                            <button type="button" class="interested_corp" onclick="Saramin.btnJob('favor', this, '', 'list');" onmouseover="Saramin.favorTooltip(this, 'on');" onmouseout="Saramin.favorTooltip(this, 'off');">
+                                <span>관심기업 등록</span></button>
                             <div class="sri_tooltip sri_tooltip_scrap" style="margin:-67px 0px 0px 203px; display:none;">
                                 <span class="tail_bottom_center"></span>
                                 <div class="tooltip_inner align_center">
@@ -3738,7 +3900,7 @@
                         <span class="tail_top_right"></span>
                         <div class="tooltip_inner txt_left">
                             <p>
-                                기업지수는 현재 사람인 연봉정보의 기업 내에서 항목별 상위 비례를 5점 만점으로 변환하여  부여하는 점수입니다.
+                                기업지수는 현재 사람인 연봉정보의 기업 내에서 항목별 상위 비례를 5점 만점으로 변환하여 부여하는 점수입니다.
                                 해당 지수는 절대적인 기준이 아니므로 참고용으로만 활용하시기 바랍니다.
                             </p>
                         </div>
@@ -3835,7 +3997,9 @@
                             <div class="grid_txtinfo">
                                 <div class="title">
                                     <strong>기업지수 비교</strong>
-                                    <button type="reset" class="btn_smaller_type01"><span class="spr_salary reset"></span> 비교 해제</button>
+                                    <button type="reset" class="btn_smaller_type01">
+                                        <span class="spr_salary reset"></span> 비교 해제
+                                    </button>
                                 </div>
                                 <div class="company_name">
                                     <dl class="company1">

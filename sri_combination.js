@@ -7,7 +7,8 @@ var CombinationChart = {
             mRight: 20,
             mBottom: 20,
             mLeft: 40,
-            barwidth: 30
+            barwidth: 30,
+            ticks: 4
         };
         if ('undefined' !== typeof options) {
             for (var i in options) {
@@ -18,8 +19,8 @@ var CombinationChart = {
         }
         // set width,height
 
-        var width = cfg.w - cfg.mRight - cfg.mLeft,
-            height = cfg.h - cfg.mTop - cfg.mBottom;
+        var width = cfg.w - (cfg.mRight + cfg.mLeft),
+            height = cfg.h - (cfg.mTop + cfg.mBottom);
 
         // set the ranges
         var x = d3.scaleBand()
@@ -41,7 +42,7 @@ var CombinationChart = {
 
         // Axis 선 만들기
         var xAxis = d3.axisBottom(x);
-        var yAxis = d3.axisLeft(y).ticks(4).tickSize(-width);
+        var yAxis = d3.axisLeft(y).ticks(cfg.ticks).tickSize(-width);
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")
             .classed("xAxis",true)
@@ -66,68 +67,69 @@ var CombinationChart = {
         }
 
         // Bar 그리기
-        function drawBar() {
-            svg.append("g")
-                .classed('bargroup',true)
-                .selectAll('.bar')
-                .data(data)
-                .enter()
-                .append('rect')
-                .attr('x', function (d) { return x(d.year); })
-                .attr('height',0)
-                .attr("fill", function(d,i) { return color[i]})
-                .attr('width', cfg.barwidth)
-                .attr('y', height)
-                .transition()
-                .ease(d3.easeSinOut)
-                .duration(500)
-                .delay(function(d,i){ return i*200})
-                .attr('y', function(d) { return y(d.salary)})
-                .attr('height', function (d) { return height - y(d.salary); })
-                .call(shortUpdate);
-        }
+        var bar = svg.append("g")
+                    .classed('bargroup',true)
+                    .selectAll('.bar')
+                    .data(data)
+                    .enter()
+                    .append('rect')
+                    .classed('bar',true)
+                    .attr('x', function (d) { return x(d.year); })
+                    .attr('height',0)
+                    .attr("fill", function(d,i) { return color[i]})
+                    .attr('width', cfg.barwidth)
+                    .attr('y', function(d) { return y(d.salary)})
+                    .attr('height', function (d) { return height - y(d.salary); });
 
-        function labelTxt() {
-            svg.selectAll('.label_txt')
-                .data(data)
-                .enter()
-                .append('text')
-                .text(function (d) {
-                    var formatComma = d3.format(",");
-                    return formatComma(d.salary);
-                })
-                .classed('label_txt', true)
-                .attr('x', function (d) { return x(d.year)})
-                .attr('y', function (d) { return y(d.salary) - 5});
-        }
-        function drawPath() {
-            var valueline = d3.line()
-                .x(function (d) { return x(d.year) + 30 / 2; })
-                .y(function (d) { return y(d.aver); });
-            svg.append('path')
-                .data([data])
-                .classed('avgline', true)
-                .attr('d', valueline);
-        }
-        function drawDot() {
-            svg.selectAll('.dot')
-                .data(data)
-                .enter()
-                .append('circle')
-                .classed('dot', true)
-                .attr('cx', function (d) { return x(d.year) + 30 / 2 })
-                .attr('cy', function (d) { return y(d.aver) })
-                .attr('r', 3);
-        }
+        var labelTxt = svg.selectAll('.label_txt')
+                        .data(data)
+                        .enter()
+                        .append('text')
+                        .text(function (d) {
+                        var formatComma = d3.format(",");
+                            return formatComma(d.salary);
+                        })
+                        .classed('label_txt', true)
+                        .attr('x', function (d) { return x(d.year)})
+                        .attr('y', function (d) { return y(d.salary) - 5});
 
-        drawBar();
-        function shortUpdate() {
-            var t = setTimeout(function(){
-                labelTxt();
-                drawPath();
-                drawDot();
-            },600);
-        }
+        var valueline = d3.line()
+                        .x(function (d) { return x(d.year) + 30 / 2; })
+                        .y(function (d) { return y(d.aver); });
+                        svg.append('path')
+                        .data([data])
+                        .classed('avgline', true)
+                        .attr('d', valueline);
 
+        svg.selectAll('.dot')
+            .data(data)
+            .enter()
+            .append('circle')
+            .classed('dot', true)
+            .attr('cx', function (d) { return x(d.year) + cfg.barwidth / 2 })
+            .attr('cy', function (d) { return y(d.aver) })
+            .attr('r', 3);
+
+        // tooltip
+        var $tooltip = jQuery('#combieTooltip'),
+            $yeasTxt = jQuery('.years', $tooltip),
+            $salery = jQuery('.company_diff01').find('.salary'),
+            $aver = jQuery('.company_diff02').find('.salary');
+
+        bar.on("mouseenter", function(d) {
+            jQuery('#combieTooltip').css({
+                "display" :'block',
+                'left' : d3.select(this).attr("x") - 63 +  'px',
+                'top' : d3.select(this).attr("y") - 80 + 'px'
+            });
+            $yeasTxt.html(d.year);
+            $salery.html(d.salary);
+            $aver.html(d.aver);
+        });
+        bar.on("mouseout", function(d) {
+            jQuery('#combieTooltip').css({
+                "display" :'none'
+            });
+        });
     }
 };
