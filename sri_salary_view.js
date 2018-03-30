@@ -231,9 +231,23 @@ jQuery(document).ready(function(){
 
                 slideInit()
 
+            });
+        }
+        jQuery('.category_head').categoryCarosel();
+
+        jQuery.fn.maxLineChk = function () {
+            return this.each(function () {
+                var $this = jQuery(this),
+                    maxLine = jQuery('.max_line',$this),
+                    high = jQuery('.high',$this),
+                    addTop = high.find('.graph .inner_graph').height();
+                maxLine.css({
+                    'bottom': (addTop + 34) + "px",
+                    'display' : "block"
+                });
             })
         }
-        jQuery('.category_head').categoryCarosel()
+        jQuery('.salary_bar').maxLineChk();
 
     }());
 

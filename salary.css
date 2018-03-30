@@ -607,8 +607,7 @@
 .salary_view_wrap .wrap_bar .graph_info .graph {width:34px}
 .salary_view_wrap .wrap_bar .grid_range .range {height:45px}
 .salary_view_wrap .wrap_bar .grid_range .range span {left:-48px}
-.salary_view_wrap .wrap_bar .graph_info .max_line {display:block;position:absolute;left:82px;z-index:10;width:247px;height:2px;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/bg_max_line.png) left top repeat-x}
-
+.salary_view_wrap .wrap_bar .graph_info .max_line {display:none;position:absolute;left:82px;z-index:10;width:247px;height:2px;background:url(//www.saraminimage.co.kr/sri/person/jobs_salary/bg_max_line.png) left top repeat-x}
 .salary_view_wrap .content_gird .salary_graph_info .company+.title_years {margin-top:15px}
 .salary_view_wrap .content_gird .salary_graph_info .title_years {position:relative;margin-top:30px;margin-bottom:55px;color:#444;font-size:24px;letter-spacing:-1px;line-height:20px}
 .salary_view_wrap .content_gird .salary_graph_info .title_years:after {position:absolute;bottom:-25px;left:0;width:30px;height:1px;background-color:#666;content:""}
