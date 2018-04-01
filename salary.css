@@ -939,7 +939,21 @@
 .list_wing_count .expand_contents .view_type01 .spec_point dt {text-align:left}
 .list_wing_count .expand_contents .view_type01 .spec_point dd .company1 {position:absolute;right:30px;left:auto}
 #sri_section .sri_wing_dimmed {position:fixed;top:0;right:0;bottom:0;left:0;z-index:100;background-color:rgba(0,0,0,0.5)}
+.line_chart line {
+    stroke: lightgrey;
+    stroke-opacity: 0.7;
+}
 
+.line_chart .lineChart {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.line_chart .lineChart:hover {
+    stroke: black;
+    stroke-width: 3px;
+}
 
 @-webkit-keyframes fadeInUp {
     from {

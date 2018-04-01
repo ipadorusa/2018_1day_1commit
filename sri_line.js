@@ -1,5 +1,5 @@
 var LineChart = {
-    draw: function(selector, data, dataRange, options, color) {
+    draw: function(selector, series, dataset, dataRange, options, colorScheme) {
         var cfg = {
             width: 360,
             height: 240,
@@ -19,6 +19,12 @@ var LineChart = {
             }
         }
         // set width,height
+        var keys = d3.keys(dataset[0]);
+        var data = [];
+        dataset.forEach(function(d, i) {
+            data[i] = keys.map(function(key) { return {x: key, y: d[key]}; })
+        });
+
 
         var width = cfg.w - (cfg.mRight + cfg.mLeft),
             height = cfg.h - (cfg.mTop + cfg.mBottom);
@@ -32,55 +38,43 @@ var LineChart = {
 
         d3.select(selector).select("svg").remove();
         var svg = d3.select(selector).append("svg")
-            .classed("stack_chart", true)
+            .classed("line_chart", true)
             .attr("width", width + cfg.mLeft + cfg.mLeft)
             .attr("height", height + cfg.mTop + cfg.mBottom )
             .append("g")
             .attr("transform", "translate(" + cfg.mLeft + "," + cfg.mTop + ")");
 
-        x.domain([20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50]);
+            
+        x.domain(keys);
         y.domain([dataRange.min,dataRange.max]);
-
-        var finaldata = [];
-        for(keys in data) {
-            var tmp = {};
-            for(i = 0;i < data[keys].length ; i++) {
-                var key = i + 20;
-                Object.defineProperty(tmp, key, {
-                    value : data[keys][i]
-                });
-            }
-            finaldata.push(tmp);
-        }
-
-        var keys = d3.keys(finaldata[0]);
-
-        var realFinalData = [];
-        finaldata.forEach(function(d, i) {
-            realFinalData[i] = keys.map(function(key) {
-                return {x: key, y: d[key]};
-            })
-        });
-
-        console.log(finaldata);
+        var color = d3.scaleOrdinal()
+            .range(colorScheme);
+        
         var line = d3.line()
-            .x(function(d) {
-                return x(d.x);
-            })
-            .y(function(d) {
-                return y(d.y);
-            });
+            .curve(d3.curveLinear)
+            .x(function(d) { return x(d.x); })
+            .y(function(d) { return y(d.y); });
+            
+        var lineG = svg.append("g")
+            .selectAll("g")
+            .data(data)
+            .enter().append("g");
 
-
-        svg.append("path")
-            .data(realFinalData)
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-linejoin", "round")
-            .attr("stroke-linecap", "round")
-            .attr("stroke-width", 1.5)
+        lineG.append("path")
+            .attr("class", "lineChart")
+            .style("stroke", function(d, i) { return color(series[i]); })
             .attr("d", line);
-
+        var drawDot =
+            svg.selectAll('.dot')
+                .data(data)
+                .enter()
+                .append('circle')
+                .classed('dot', true)
+                .attr('cx', function (d) { return x(d.x)})
+                .attr('cy', function (d) { return y(d.y) })
+                .attr('r', cfg.circleR)
+                .attr('stroke-width', 2);
+        
         // Axis 선 만들기
         var xAxis = d3.axisBottom(x);
         var yAxis = d3.axisLeft(y).ticks(cfg.ticks).tickSize(-width);
