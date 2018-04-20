@@ -187,10 +187,12 @@
     <link href="m_salary.css" media="screen" rel="stylesheet" type="text/css"><!-- WMG-16700 -->
     <link href="//m.saramin.co.kr/css/sri_m_common.css?v=20180405_2" media="screen" rel="stylesheet" type="text/css">
     <link href="//m.saramin.co.kr/css/m_default_sub.css?v=20180405_2" media="screen" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery-1.8.3.min.js"></script>
     <!-- WMG-16700 사용안함
-        <script type="text/javascript" src="//m.saramin.co.kr/js/salary_ui.js?v=20180405_2"></script>
+    <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery-1.8.3.min.js"></script>
+
+    <script type="text/javascript" src="//m.saramin.co.kr/js/salary_ui.js?v=20180405_2"></script>
     -->
+    <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="//m.saramin.co.kr/js/mobile-common.js?20180405_1"></script>
     <!-- WMG-16700 -->
     <script type="text/javascript" src="//www.saraminimage.co.kr/js/libs/d3.v4.min.js"></script>
@@ -355,7 +357,7 @@
                 </div>
             </div>
         </section>
-        <section id="tab_custom_salary" class="content_grid custom_grid">
+        <section id="tab_custom_salary" class="content_grid tab_custom_salary">
             <div class="title_wrap">
                 <h3 class="title">맞춤 연봉정보</h3>
                 <button type="reset" class="btn_reset"><span class="spr_salary reset"></span> 적용해제</button>
@@ -419,10 +421,176 @@
                     <li>맞춤 연봉정보는 해당 기업의 여러 연봉 자료를 기반으로 분석한 것으로 기업의 실제 연봉과는 차이가 있을 수 있으므로 참고용으로만 활용하시기 바랍니다.</li>
                 </ul>
             </div>
+            <div class="wrap_result_salary"><!-- 검색후 나오는페이지에요 기본 안보이게 해주세요-->
+                <div class="resultbox">
+                    <p class="business">마케팅/홍보, 7년차, 대리</p>
+                    <p class="info"><em class="company">(주)사람인에이치알</em>입사시 예상 연봉</p>
+                    <p class="salaryinfo"><em>4,112</em>만원</p>
+                    <p class="salaryinfo2">(예상 월 실수령액 <em>3,120,000</em>원)</p>
+                    <div class="wrap_bar">
+                        <ul class="graph_wrap_legend">
+                            <li><span class="prediction"></span>예상연봉</li>
+                            <li class="currency">(만원)</li>
+                        </ul>
+                        <div class="graph_info col3 salary_bar">
+                            <div class="grid_range">
+                                <span class="range"><span>5,000</span></span>
+                                <span class="range"><span>4,000</span></span>
+                                <span class="range"><span>3,000</span></span>
+                                <span class="range"><span>2,000</span></span>
+                                <span class="range"><span>1,000</span></span>
+                            </div>
+                            <div class="wrap_graph">
+                                <em class="tit_graph">2015</em>
+                                <div class="graph">
+                                    <div class="inner_graph color01" style="height:60%"><span class="txt_value">6,000</span></div>
+                                </div>
+                            </div>
+                            <div class="wrap_graph high"><!-- 가장 큰 수치일때-->
+                                <em class="tit_graph">2016</em>
+                                <div class="graph">
+                                    <div class="inner_graph color02" style="height:100%"><span class="txt_value">1억</span></div>
+                                </div>
+                            </div>
+                            <div class="wrap_graph">
+                                <em class="tit_graph">2017</em>
+                                <div class="graph">
+                                    <div class="inner_graph color03" style="height:80%"><span class="txt_value">8,000</span></div>
+                                </div>
+                            </div>
+                            <span class="max_line" style="bottom: 215px; display: block;"></span>
+                        </div>
+                    </div>
+                    <p class="keypoint">이 기업의 대졸초임은 2016년대비 <br><strong class="uppoint">21% 상승</strong>하였습니다.</p>
+                </div>
+                <section class="salary_matching_wrap">
+                    <h3 class="title">마케팅/홍보 7년차 연봉 TOP3</h3>
+                    <div class="slide_wrap">
+                        <ul class="list_slide swiper-wrapper">
+                            <li class="item_list swiper-slide">
+                                <a href="" class="link"></a>
+                                <strong class="company_name">(주)사람인에이치알1</strong>
+                                <span class="business">제조/화학업</span>
+                                <span class="ava_salary">매출액 13조 8,927억원</span>
+                                <dl class="company_average">
+                                    <dt>평균연봉</dt>
+                                    <dd><em>4,000</em> 만원</dd>
+                                </dl>
+                                <button type="button" class="interested_corp" onmousedown="" onclick="" mcom_idx="" del_fl="">
+                                    <span>관심기업 등록</span>
+                                </button>
+                            </li>
+                            <li class="item_list swiper-slide">
+                                <a href="" class="link"></a>
+                                <strong class="company_name">(주)사람인에이치알2</strong>
+                                <span class="business">제조/화학업</span>
+                                <span class="ava_salary">매출액 13조 8,927억원</span>
+                                <dl class="company_average">
+                                    <dt>평균연봉</dt>
+                                    <dd><em>4,000</em> 만원</dd>
+                                </dl>
+                                <button type="button" class="interested_corp" onmousedown="" onclick="" mcom_idx="" del_fl="">
+                                    <span>관심기업 등록</span>
+                                </button>
+                            </li>
+                            <li class="item_list swiper-slide">
+                                <a href="" class="link"></a>
+                                <strong class="company_name">(주)사람인에이치알3</strong>
+                                <span class="business">제조/화학업</span>
+                                <span class="ava_salary">매출액 13조 8,927억원</span>
+                                <dl class="company_average">
+                                    <dt>평균연봉</dt>
+                                    <dd><em>4,000</em> 만원</dd>
+                                </dl>
+                                <button type="button" class="interested_corp" onmousedown="" onclick="" mcom_idx="" del_fl="">
+                                    <span>관심기업 등록</span>
+                                </button>
+                            </li>
+                            <li class="item_list swiper-slide">
+                                <a href="" class="link"></a>
+                                <strong class="company_name">(주)사람인에이치알4</strong>
+                                <span class="business">제조/화학업</span>
+                                <span class="ava_salary">매출액 13조 8,927억원</span>
+                                <dl class="company_average">
+                                    <dt>평균연봉</dt>
+                                    <dd><em>4,000</em> 만원</dd>
+                                </dl>
+                                <button type="button" class="interested_corp" onmousedown="" onclick="" mcom_idx="" del_fl="">
+                                    <span>관심기업 등록</span>
+                                </button>
+                            </li>
+                            <li class="item_list swiper-slide">
+                                <a href="" class="link"></a>
+                                <strong class="company_name">(주)사람인에이치알5</strong>
+                                <span class="business">제조/화학업</span>
+                                <span class="ava_salary">매출액 13조 8,927억원</span>
+                                <dl class="company_average">
+                                    <dt>평균연봉</dt>
+                                    <dd><em>4,000</em> 만원</dd>
+                                </dl>
+                                <button type="button" class="interested_corp" onmousedown="" onclick="" mcom_idx="" del_fl="">
+                                    <span>관심기업 등록</span>
+                                </button>
+                            </li>
+                            <li class="item_list swiper-slide">
+                                <a href="" class="link"></a>
+                                <strong class="company_name">(주)사람인에이치알6</strong>
+                                <span class="business">제조/화학업</span>
+                                <span class="ava_salary">매출액 13조 8,927억원</span>
+                                <dl class="company_average">
+                                    <dt>평균연봉</dt>
+                                    <dd><em>4,000</em> 만원</dd>
+                                </dl>
+                                <button type="button" class="interested_corp" onmousedown="" onclick="" mcom_idx="" del_fl="">
+                                    <span>관심기업 등록</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
         </section>
-        <section id="tab_univ_salary" class="content_grid">
+        <section id="tab_univ_salary" class="content_grid tab_univ_salary">
             <h3 class="title">대졸초임</h3>
-            <div class="inner"></div>
+            <div class="inner">
+                <p class="noti_01">2017년 기준 <span><em>3,200</em>만원</span></p>
+                <p class="noti_02">(예상 월 실수령액 <em>2,560,000</em>원)</p>
+                <div class="wrap_bar">
+                    <ul class="graph_wrap_legend">
+                        <li><span class="prediction"></span>예상연봉</li>
+                        <li class="currency">(만원)</li>
+                    </ul>
+                    <div class="graph_info col3 salary_bar">
+                        <div class="grid_range">
+                            <span class="range"><span>5,000</span></span>
+                            <span class="range"><span>4,000</span></span>
+                            <span class="range"><span>3,000</span></span>
+                            <span class="range"><span>2,000</span></span>
+                            <span class="range"><span>1,000</span></span>
+                        </div>
+                        <div class="wrap_graph">
+                            <em class="tit_graph">2015</em>
+                            <div class="graph">
+                                <div class="inner_graph color01" style="height:60%"><span class="txt_value">6,000</span></div>
+                            </div>
+                        </div>
+                        <div class="wrap_graph high"><!-- 가장 큰 수치일때-->
+                            <em class="tit_graph">2016</em>
+                            <div class="graph">
+                                <div class="inner_graph color02" style="height:100%"><span class="txt_value">1억</span></div>
+                            </div>
+                        </div>
+                        <div class="wrap_graph">
+                            <em class="tit_graph">2017</em>
+                            <div class="graph">
+                                <div class="inner_graph color03" style="height:80%"><span class="txt_value">8,000</span></div>
+                            </div>
+                        </div>
+                        <span class="max_line" style="bottom: 215px; display: block;"></span>
+                    </div>
+                </div>
+                <p class="keypoint">이 기업의 대졸초임은 2016년대비 <br><strong class="uppoint">21% 상승</strong>하였습니다.</p>
+            </div>
         </section>
         <section id="tab_rank_salary" class="content_grid">
             <h3 class="title">직급별 연봉통계</h3>
@@ -2230,6 +2398,72 @@
         ];
         var dataRange = {min: 1000, max: 10000};
         StackedAreaChart.draw('#stacked_area', data, dataRange, config, colorScheme);
+    }());
+
+    // 스크롤 스크립트
+
+    (function headerScrEvent(){
+        var $spy_header = jQuery('#spy_header'),
+            navBtn = jQuery('.tab li a',$spy_header),
+            definedH = $spy_header.offset().top + $spy_header.outerHeight(),
+            lastId,
+            scrollItems = navBtn.map(function(){
+                var item = jQuery(jQuery.attr(this, 'href'));
+                if(item.length) {
+                    return item;
+                }
+            });
+
+        navBtn.click(function(e) {
+            var href = jQuery.attr(this, 'href');
+            jQuery('html').animate({
+                scrollTop: jQuery(href).offset().top - 90
+            },{
+                duration: 400,
+                easing: 'linear',
+                queue: false
+            });
+            e.preventDefault();
+        });
+
+        function scrollSpy() {
+            var scrollTop = jQuery(window).scrollTop(),
+                fromTop = (jQuery(window).scrollTop() + definedH) + 64,
+                cur = scrollItems.map(function(){
+                    if (jQuery(this).offset().top < fromTop)
+                        return this;
+                });
+
+            cur = cur[cur.length-1];
+            var id = cur && cur.length ? cur[0].id : "";
+
+
+
+            if(scrollTop >= 40 ) {
+                $spy_header.addClass('fixed');
+            } else {
+                $spy_header.removeClass('fixed');
+            }
+
+            if(cur == undefined || fromTop == 200) {
+                navBtn.eq(0).parent().addClass('on');
+            }else if (lastId !== id) {
+                lastId = id;
+                navBtn
+                    .parent()
+                    .removeClass('on')
+                    .end()
+                    .filter('[href="#'+id+'"]')
+                    .parent()
+                    .addClass("on");
+            }
+
+        }
+        scrollSpy();
+        jQuery(window).on('scroll', function () {
+            scrollSpy();
+        });
+
     }());
 
 
