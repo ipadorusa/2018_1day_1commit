@@ -34,6 +34,12 @@
         "url" : "https://evilmartians.com/chronicles/scroll-to-the-future-modern-javascript-css-scrolling-implementations",
         "category" : "scroll",
         "title" : "scroll-to-the-future-modern-javascript-css-scrolling-implementations"
+    },
+    {
+        "date" : "20180423",
+        "url" : "https://medium.com/@ljs0705/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%9B%B9-react-%ED%8F%AC%ED%8C%85-%ED%9B%84%EA%B8%B0-76402cc5e031",
+        "category" : "react",
+        "title" : "카카오페이지 웹 React 포팅 후기"
     }
 
 ]
