@@ -40,6 +40,24 @@
         "url" : "https://medium.com/@ljs0705/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%9B%B9-react-%ED%8F%AC%ED%8C%85-%ED%9B%84%EA%B8%B0-76402cc5e031",
         "category" : "react",
         "title" : "카카오페이지 웹 React 포팅 후기"
+    },
+    {
+        "date" : "20180425",
+        "url" : "https://standardjs.com/rules-kokr.html",
+        "category" : ["javascript", "standard", "lint"],
+        "title" : "javascriptstandard"
+    },
+    {
+        "date" : "20180425",
+        "url" : "http://denvycom.com/blog/d3-js-version-4-x-examples-and-changes-from-version-3-x/",
+        "category" : ["d3", "d3vsd4"],
+        "title" : "d3vsd4차이점"
+    },
+    {
+        "date" : "20180425",
+        "url" : "http://rankedin.kr/users",
+        "category" : ["Github 한국 사용자 순위"],
+        "title" : "Github 한국 사용자 순위"
     }
-
+    
 ]
