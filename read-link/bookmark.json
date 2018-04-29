@@ -2,43 +2,43 @@
     {
         "date" : "20180418",
         "url" : "https://codeburst.io/top-javascript-vscode-extensions-for-faster-development-c687c39596f5",
-        "category" : "addon",
+        "category" : ["addon"],
         "title" : "Top JavaScript VSCode Extensions for Faster Development"
     },
     {
         "date" : "20180418",
         "url" : "https://www.json.org/json-ko.html",
-        "category" : "json",
+        "category" : ["json"],
         "title" : "json개요"
     },
     {
         "date" : "20180419",
         "url" : "https://slides.com/sdrasner/svg-can-do-that#/",
-        "category" : "svg",
+        "category" : ["svg"],
         "title" : "SVG can do THAT?!"
     },
     {
         "date" : "20180419",
         "url" : "https://developers.google.com/web/fundamentals/design-and-ux/animations/css-vs-javascript?hl=ko",
-        "category" : "css,animations",
+        "category" : ["css,animations"],
         "title" : "CSS와 자바스크립트 애니메이션"
     },
     {
         "date" : "20180420",
         "url" : "https://www.reddit.com/r/javascript/comments/2t6riw/a_frontend_developer_interview_question_thats/",
-        "category" : "webfrontend",
+        "category" : ["webfrontend"],
         "title" : "frontend-interview"
     },
     {
         "date" : "20180421",
         "url" : "https://evilmartians.com/chronicles/scroll-to-the-future-modern-javascript-css-scrolling-implementations",
-        "category" : "scroll",
+        "category" : ["scroll"],
         "title" : "scroll-to-the-future-modern-javascript-css-scrolling-implementations"
     },
     {
         "date" : "20180423",
         "url" : "https://medium.com/@ljs0705/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%9B%B9-react-%ED%8F%AC%ED%8C%85-%ED%9B%84%EA%B8%B0-76402cc5e031",
-        "category" : "react",
+        "category" : ["react"],
         "title" : "카카오페이지 웹 React 포팅 후기"
     },
     {
@@ -58,6 +58,23 @@
         "url" : "http://rankedin.kr/users",
         "category" : ["Github 한국 사용자 순위"],
         "title" : "Github 한국 사용자 순위"
+    },
+    {
+        "date" : "20180429",
+        "url" : "https://medium.mybridge.co/vue-js-top-10-open-source-of-the-month-v-apr-2018-bdaf78698818",
+        "category" : ["vue,open Source"],
+        "title" : "Vue.js Top 10 Open Source of the Month (v.Apr 2018)"
+    },
+    {
+        "date" : "20180429",
+        "url" : "https://medium.mybridge.co/node-js-top-10-open-source-of-the-month-v-apr-2018-6f209d974ee6",
+        "category" : ["Node,open Source"],
+        "title" : "Node.js Top 10 Open Source of the Month"
+    },
+    {
+        "date" : "20180430",
+        "url" : "https://github.com/nhnent/tui.chart?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more",
+        "category" : ["Graph,open Source"],
+        "title" : "Toast UI Chart"
     }
-    
 ]
