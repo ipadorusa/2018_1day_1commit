@@ -78,16 +78,15 @@
         "title" : "Toast UI Chart"
     },
     {
-<<<<<<< HEAD
         "date" : "20180501",
         "url" : "https://medium.freecodecamp.org/check-out-these-useful-ecmascript-2015-es6-tips-and-tricks-6db105590377",
         "category" : ["ECMAScript, javascript"],
         "title" : "Check out these useful ECMAScript 2015 (ES6) tips and tricks"
-=======
+    },
+    {
         "date" : "20180506",
         "url" : "https://stackblitz.com/",
         "category" : ["Online IDE"],
         "title" : "StackBlitz"
->>>>>>> d2061705cef2adeb8ec6d8768a6f5571aa4c8ab0
     }
 ]
