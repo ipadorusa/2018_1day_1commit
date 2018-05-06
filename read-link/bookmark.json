@@ -62,19 +62,25 @@
     {
         "date" : "20180429",
         "url" : "https://medium.mybridge.co/vue-js-top-10-open-source-of-the-month-v-apr-2018-bdaf78698818",
-        "category" : ["vue,open Source"],
+        "category" : ["vue, open Source"],
         "title" : "Vue.js Top 10 Open Source of the Month (v.Apr 2018)"
     },
     {
         "date" : "20180429",
         "url" : "https://medium.mybridge.co/node-js-top-10-open-source-of-the-month-v-apr-2018-6f209d974ee6",
-        "category" : ["Node,open Source"],
+        "category" : ["Node, open Source"],
         "title" : "Node.js Top 10 Open Source of the Month"
     },
     {
         "date" : "20180430",
         "url" : "https://github.com/nhnent/tui.chart?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more",
-        "category" : ["Graph,open Source"],
+        "category" : ["Graph, open Source"],
         "title" : "Toast UI Chart"
+    },
+    {
+        "date" : "20180501",
+        "url" : "https://medium.freecodecamp.org/check-out-these-useful-ecmascript-2015-es6-tips-and-tricks-6db105590377",
+        "category" : ["ECMAScript, javascript"],
+        "title" : "Check out these useful ECMAScript 2015 (ES6) tips and tricks"
     }
 ]
