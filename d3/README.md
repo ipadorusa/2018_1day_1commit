@@ -4,9 +4,13 @@
 
 ### D3로 차트 그린 이유
 
-디자인 UI 가 거의 기존 Chart library에서 사용할 수 없었다. 벤치 된 사이트는 중국 사이트로 가져다가 쓸 수도 있었지만 한번에 통합 할 수 없었고 영어 사이트가 아니여서 사용 할 수 없었다.
+UI가 많이 쓰는 Chart library에서 사용할 수 없었다.
+
+벤치 된 사이트는 중국 사이트로 가져다가 쓸 수도 있었지만 한번에 통합하여 사용하기 힘들었고 영어 사이트가 아니여서 사용 할 수 없었다.
 
 
+
+### D3장단점
 
 - #### 장점
 
@@ -34,12 +38,14 @@
 
 
 - [ ] 합격스펙
-      - [ ] 방사형 차트 ( Radar Chart )
-      - [ ] 파이 차트 ( Pie Chart )
+
+      방사형 차트 ( Radar Chart )
+      파이 차트 ( Pie Chart )
 
 
 - [ ] 연봉정보
-      - [ ] 막대차트 ( Bar Chart )
-      - [ ] 콤비차트 ( Combbie Chart )
-      - [ ] 선차트 ( Line Chart )
-      - [ ] 다중선차트 ( Multi Line Char )
+
+      막대차트 ( Bar Chart )
+      콤비차트 ( Combbie Chart )
+      선차트 ( Line Chart )
+      다중선차트 ( Multi Line Char )
