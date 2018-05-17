@@ -1,103 +1,54 @@
 <!DOCTYPE html>
-<html lang="ko">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
-    <link href="//www.saramin.co.kr/sri_css/layout.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
-    <link href="//www.saramin.co.kr/sri_css/common_ui_keeping.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
-    <link href="//www.saramin.co.kr/sri_css/components.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
-    <link href="//www.saramin.co.kr/sri_css/salary.css?v=20171228_1" media="all" rel="stylesheet" type="text/css">
-    <script src="//www.saraminimage.co.kr/js/libs/jquery-1.11.1.min.js"></script>
-    <script src="//www.saraminimage.co.kr/js/libs/d3.v4.min.js"></script>
-    <script src="sri_combie_barline.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
     <style>
-        .bar00 {
-            fill: #dfdfdf;
-        }
-
-        .bar01 {
-            fill: #70ddcc;
-        }
-
-        .bar02 {
-            fill: #a6b3f7;
-        }
-
-        .curreny {
-            font-size: 11px;
-        }
-
-        .grid line {
-            stroke: #ebebeb;
-            stroke-opacity: 0.5;
-            shape-rendering: crispEdges;
-        }
-
-        .axis_yline line {
-            visibility: hidden;
-        }
-
-        .axis_xline line {
-            visibility: hidden;
-        }
-
-        .axis_xline .domain,
-        .axis_yline .domain,
-        .grid .domain {
-            visibility: hidden;
-        }
-
-        .avgline {
-            fill: none;
-            stroke: #afafaf;
-            stroke-width: 1px;
-        }
-
-        .dot {
-            fill: #fff;
-            stroke: #6e6e6e;
-            stroke-width: 2px;
-        }
-        .label_txt {
-            font-size: 11px;
-            fill: #000;
-            text-anchor: middle;
-        }
+        svg {border:1px solid #ddd}
     </style>
 </head>
-
 <body>
-<div id="wrapper">
-    <div id="bar"></div>
-</div>
-<script>
-    (function($, window) {
-        (function barcombieChart() {
-            var width = 558,
-                height = 215,
-                colorScheme = ["#868bb2", "#7289f8", "#c5cae9", "#81d4fa"];
+    <h1>막대그래프</h1>
+    <svg id="barchart" width="300" height="300"></svg>
+    <script>
+        var dataset = [ 15, 30, 43, 58, 73, 125 ];        
+        var svgHeight = document.getElementById('barchart').getBoundingClientRect().height;
 
-            // Config for the Radar chart
-            var config = {
-                w: width,
-                h: height,
-                TranslateX: 239,
-                TranslateY: 100
-            };
+        console.log(svgHeight)
+        
+        // var svg = d3.select('#barchart')
+        //             .selectAll('rect')
+        //             .data(dataset)
+        //             .enter()
+        //             .append('rect')
+        //             .attr('width', '30')
+        //             .attr('height', '20')
+        //             .attr('x', '1')
+        //             .attr('y', '1');
 
-            var data1 = [
-                {year: "2015", salary: 3000, ave: 3400 },
-                {year: "2016", salary: 4000, ave: 4400 },
-                {year: "2017", salary: 5000, ave: 4890 }
-            ];
-            BarCombieChart.draw('#bar', data1, config, colorScheme);
-        }());
-    })(jQuery, window);
-</script>
+
+        // var svg = d3.select("#barchart")
+        //             .selectAll('rect')
+        //             .data(dataset)
+        //             .enter()
+        //             .append('rect')
+        //             .attr('width', '30')
+        //             .attr('height', function(d) {
+        //                 return d;
+        //             })
+        //             .attr('x', function(d,i) {
+        //                 return i * 35
+        //             })
+        //             .attr('y', function(d) {
+        //                 return svgHeight - d;
+        //             });
+                        
+
+		
+
+    </script>
 </body>
-
 </html>
