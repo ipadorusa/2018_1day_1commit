@@ -88,5 +88,17 @@
         "url" : "https://stackblitz.com/",
         "category" : ["Online IDE"],
         "title" : "StackBlitz"
+    },
+    {
+        "date" : "20180516",
+        "url" : "https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a",
+        "category" : ["cheatsheets"],
+        "title" : "The best front-end hacking cheatsheets — all in one place."
+    },
+    {
+        "date" : "20180516",
+        "url" : "https://codeburst.io/best-courses-to-learn-javascript-in-2017-fc3a254638cc",
+        "category" : ["javascript"],
+        "title" : "Best courses to learn Javascript in 2017"
     }
 ]
