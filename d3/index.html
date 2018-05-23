@@ -22,24 +22,25 @@
 
         d3.selectAll("svg").remove();
         var svg = d3.select('#bowling')
-            .attr('width', 500)
-            .attr('height', 500)
-            .append('g');
-        d3.csv('/d3/member.csv', function (error, data) {
+                    .attr('width', 500)
+                    .attr('height', 500)
+                    .append('g');
+        d3.csv('/d3/member.csv', function(error, data) {
             if(error) {
                 throw error;
             }
             data.forEach(function(d) {
                 d.division = d.division;
                 d.division = d.division;
-
-            })
+            });
             var entries = d3.nest()
-                .key(function(d) { return d.division; })
-                .entries(data);
+            .key(function(d) {
+                return d.division;
+            })
+            .entries(data);
 
-            console.log(entries)
-        })
+            console.log(entries);
+        });
 
     </script>
 </body>
