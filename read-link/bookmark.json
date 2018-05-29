@@ -106,5 +106,11 @@
         "url" : "https://codeburst.io/best-courses-to-learn-javascript-in-2017-fc3a254638cc",
         "category" : ["javascript"],
         "title" : "Best courses to learn Javascript in 2017"
+    },
+    {
+        "date" : "20180529",
+        "url" : "https://medium.com/@kyuwoo.choi/%EC%9B%B9-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-3-%EC%89%90%EB%8F%84%EC%9A%B0-%EB%8F%94-shadow-dom-5057b2dc7960",
+        "category" : ["ShadowDom"],
+        "title" : "웹 컴포넌트(3) — 쉐도우 돔"
     }
 ]
