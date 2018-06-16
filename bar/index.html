@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,43 +8,49 @@
     <title>Document</title>
     <script src="http://www.saraminimage.co.kr/js/libs/d3.v4.min.js"></script>
     <style>
-        #barchart {border:1px solid #ddd}
+        #barchart {
+            border: 1px solid #ddd
+        }
     </style>
 </head>
+
 <body>
     <h1>막대그래프</h1>
     <svg id="barchart" width="300" height="300"></svg>
     <script>
-        var dataSet = [15,30,150,300,600];
+        var dataSet = [15, 30, 150, 300, 600];
         var svgHeight = document.getElementById('barchart').getBoundingClientRect().height;
-        
-        var barchart = d3.select("#barchart")
-                        .selectAll('rect')
-                        .data(dataSet)
-                        .enter()
-                        .append('rect')
-                        .attr('width', '30')
-                        .attr('height', '20')
-                        .attr('x', '1')
-                        .attr('y', '1');
 
-                        
-        // var svg = d3.select("#barchart")
-        //             .selectAll('rect')
-        //             .data(dataset)
-        //             .enter()
-        //             .append('rect')
-        //             .attr('width', '30')
-        //             .attr('height', function(d) {
-        //                 return d;
-        //             })
-        //             .attr('x', function(d,i) {
-        //                 return i * 35
-        //             })
-        //             .attr('y', function(d) {
-        //                 return svgHeight - d;
-        //             });
+        // var barchart = d3.select("#barchart")
+        //     .selectAll('rect')
+        //     .data(dataSet)
+        //     .enter()
+        //     .append('rect')
+        //     .attr('width', '30')
+        //     .attr('height', function (d,i) {
+        //         console.log(d,i)
+        //     })
+        //     .attr('x', '1')
+        //     .attr('y', '1');
+
+
+        var svg = d3.select("#barchart")
+                    .selectAll('rect')
+                    .data(dataSet)
+                    .enter()
+                    .append('rect')
+                    .attr('width', '30')
+                    .attr('height', function(d) {
+                        return d;
+                    })
+                    .attr('x', function(d,i) {
+                        return i * 35
+                    })
+                    .attr('y', function(d) {
+                        return svgHeight - d;
+                    });
 
     </script>
 </body>
+
 </html>

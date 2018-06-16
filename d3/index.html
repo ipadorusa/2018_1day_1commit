@@ -34,10 +34,10 @@
                 d.division = d.division;
             });
             var entries = d3.nest()
-            .key(function(d) {
-                return d.division;
-            })
-            .entries(data);
+                            .key(function(d) {
+                                return d.division;
+                            })
+                            .entries(data);
 
             console.log(entries);
         });
