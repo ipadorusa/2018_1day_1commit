@@ -112,5 +112,17 @@
         "url" : "https://medium.com/@kyuwoo.choi/%EC%9B%B9-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-3-%EC%89%90%EB%8F%84%EC%9A%B0-%EB%8F%94-shadow-dom-5057b2dc7960",
         "category" : ["ShadowDom"],
         "title" : "웹 컴포넌트(3) — 쉐도우 돔"
+    },
+    {
+        "date" : "20180604",
+        "url" : ["https://www.inflearn.com/course/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/","https://github.com/Functional-JavaScript/FunctionalES","https://medium.com/@indongyoo"],
+        "category" : ["유인동","함수형자바스크립트"],
+        "title" : "함수형 자바스크립트 (유인동)"
+    },
+    {
+        "date" : "20180618",
+        "url" : ["https://github.com/reactkr/learn-react-in-korean"],
+        "category" : ["react모음"],
+        "title" : "react모음"
     }
 ]
