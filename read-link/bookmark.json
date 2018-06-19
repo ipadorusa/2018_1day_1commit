@@ -124,5 +124,71 @@
         "url" : ["https://github.com/reactkr/learn-react-in-korean"],
         "category" : ["react모음"],
         "title" : "react모음"
+    },
+    {
+        "date" : "20180619",
+        "url" : ["http://tech.kakao.com/"],
+        "category" : ["기술블로그"],
+        "title" : "카카오 기술블로그"
+    },
+    {
+        "date" : "20180619",
+        "url" : ["https://tech.lezhin.com/"],
+        "category" : ["기술블로그"],
+        "title" : "레진 기술블로그"
+    },
+    {
+        "date" : "20180619",
+        "url" : ["http://readme.skplanet.com/"],
+        "category" : ["기술블로그"],
+        "title" : "sk플래닛 기술브로그"
+    },
+    {
+        "date" : "20180619",
+        "url" : ["https://d2.naver.com/helloworld"],
+        "category" : ["기술블로그"],
+        "title" : "네이버 기술블로그"
+    },
+    {
+        "date" : "20180619",
+        "url" : ["https://engineering.linecorp.com/ko"],
+        "category" : ["기술블로그"],
+        "title" : "라인 기술블로그"
+    },
+    {
+        "date" : "20180619",
+        "url" : ["https://medium.com/styleshare"],
+        "category" : ["기술블로그"],
+        "title" : "스타일쉐어 기술블로그"
+    },
+    {
+        "date" : "20180619",
+        "url" : ["https://dailyhotel.io/"],
+        "category" : ["기술블로그"],
+        "title" : "데일리호텔 기술블로그"
+    },
+    {
+        "date" : "20180619",
+        "url" : ["https://tmondev.blog.me/"],
+        "category" : ["기술블로그"],
+        "title" : "티몬 기술블로그"
+    },
+    {
+        "date" : "20180619",
+        "url" : ["http://meetup.toast.com/"],
+        "category" : ["기술블로그"],
+        "title" : "TOAST 기술블로그"
+    },
+    {
+        "date" : "20180619",
+        "url" : ["http://wit.nts-corp.com/"],
+        "category" : ["기술블로그"],
+        "title" : "NTS 기술블로그"
+    },
+    {
+        "date" : "20180619",
+        "url" : ["http://woowabros.github.io/"],
+        "category" : ["기술블로그"],
+        "title" : "우아한형제들 기술블로그"
     }
 ]
