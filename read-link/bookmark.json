@@ -190,5 +190,11 @@
         "url" : ["http://woowabros.github.io/"],
         "category" : ["기술블로그"],
         "title" : "우아한형제들 기술블로그"
-    }
+    },
+    {
+        "date" : "20180620",
+        "url" : ["https://joshua1988.github.io/es6-online-book/"],
+        "category" : ["Vue.js 개발자를 위한 ES6 입문서(무료)"],
+        "title" : "joshua1988 기술블로그"
+    }    
 ]
