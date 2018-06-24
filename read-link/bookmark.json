@@ -196,5 +196,11 @@
         "url" : ["https://joshua1988.github.io/es6-online-book/"],
         "category" : ["Vue.js 개발자를 위한 ES6 입문서(무료)"],
         "title" : "joshua1988 기술블로그"
-    }    
+    },
+    {
+        "date" : "20180625",
+        "url" : ["https://github.com/svg/svgo"],
+        "category" : ["svg"],
+        "title" : "svg불필요 없애기"
+    }
 ]
