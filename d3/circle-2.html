@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <script src="//www.saraminimage.co.kr/js/libs/d3.v4.min.js"></script>
+    <style>
+        /*bas stuff*/
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            min-height: 100%;
+            display: flex;
+        }
+
+        .chart-row {
+            width:300px;
+            height:300px;
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .donut {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chart-row">
+        <div class="donut">
+            <!-- Donut chart div will be directive in production code. -->
+        </div>
+    </div>
+    <script src="./circle-2.js"></script>
+</body>
+
+</html>

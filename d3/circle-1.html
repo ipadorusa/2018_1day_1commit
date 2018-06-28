@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <style>
+        /*bas stuff*/
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+}
+
+.chart-row {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.donut {
+  flex: 1;
+}
+
+/*graph specific stuff */
+.icon {
+  font-family: 'Roboto','Myriad Set Pro', 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+  font-size: 2rem;
+  align: right;
+}
+
+.goal, .completed {
+  font-family: 'Roboto','Myriad Set Pro', 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+  fill: black;
+  text-anchor: middle;
+}
+
+.goal {
+  font-size: 30px;
+}
+
+.completed {
+  font-size: 95px;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="chart-row">
+        <div class="donut">
+            <!-- Donut chart div will be directive in production code. -->
+        </div>
+    </div>
+    <script src="./circle-1.js"></script>
+</body>
+
+</html>
