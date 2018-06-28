@@ -3,8 +3,8 @@
     //Function to return the data for the inset rings.
     //Probably won't need to use a funciton could just set this to a variable
     var triRadialData = [
-            { index: 0, name: 'Funded', icon: "", percentage: 100 },
-            { index: 1, name: 'Worked', icon: "", percentage: 64 }
+            { index: 0, name: 'Funded', icon: "", percentage: 60 },
+            { index: 1, name: 'Worked', icon: "", percentage: 44 }
     ];
 
 
@@ -12,8 +12,8 @@
     //Colors array.
     var colors = ["#938df9", "#71b5fc"];
     var config = {
-        innerRadius : [100],
-        outerRadius : [94]
+        innerRadius : [100, 86],
+        outerRadius : [94, 61]
     };
 
     //build function that creates the visuals
@@ -98,7 +98,7 @@
                 });
 
             //Animation to paint the bars one by one
-            field.select("path.progress").transition().duration(750).delay(function (d, i) {
+            field.selectAll("path.progress").transition().duration(750).delay(function (d, i) {
                 return i * 500
             })
                 .ease(d3.easeSin)
