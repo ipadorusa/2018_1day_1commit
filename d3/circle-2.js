@@ -32,13 +32,9 @@
                         return d.percentage / 100 * tau;
                     })
                     .innerRadius(function (d) {
-                        /*return innerRadius - d.index * (30 + gap)*/
-                        console.log('a-1',d.index)
                         return config.innerRadius[d.index];
                     })
                     .outerRadius(function (d) {
-                        /*return outterRadius - d.index * (30 + gap)*/
-                        console.log('a-2',d.index)
                         return config.outerRadius[d.index];
                     });
 
@@ -85,7 +81,7 @@
 
 
 
-        d3.transition().duration(1750).each(update);
+        d3.transition().duration(100).each(update);
 
         function update() {
             field = field
