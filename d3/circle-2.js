@@ -87,6 +87,13 @@
             .attr('dy', '25px');
 
 
+<<<<<<< HEAD
+=======
+
+
+        d3.transition().duration(100).each(update);
+
+>>>>>>> d552c6707482fc37d30430e1aa112c6d7bd5de95
         function update() {
             field = field
                     .each(function (d) {
