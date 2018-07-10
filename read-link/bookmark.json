@@ -238,7 +238,12 @@
         "url" : ["https://youtu.be/ME-GQ-mAB2k"],
         "category" : ["vue, react"],
         "title" : "React vs Vue"
+    },
+    {
+        "date" : "20180710",
+        "url" : ["https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a"],
+        "category" : ["cheat sheet"],
+        "title" : "The best front-end hacking cheatsheets — all in one place."
     }
-
     
 ]
