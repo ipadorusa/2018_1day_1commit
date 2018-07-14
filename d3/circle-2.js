@@ -1,13 +1,8 @@
 (function () {
 
     var triRadialData = [
-<<<<<<< HEAD
         { index: 0, name: 'Funded', icon: "", percentage: 60 },
         { index: 1, name: 'Worked', icon: "", percentage: 44 }
-=======
-            { index: 0, name: 'Funded', percentage: 60 },
-            { index: 1, name: 'Worked', percentage: 44 }
->>>>>>> 026062100f228dc0414fa28f9cc074076aa5b1a3
     ];
 
 
@@ -29,7 +24,6 @@
 
         var data = dataset;
         var arc = d3.arc()
-<<<<<<< HEAD
             .startAngle(0)
             .endAngle(function (d) {
                 return d.percentage / 100 * tau;
@@ -40,18 +34,6 @@
             .outerRadius(function (d) {
                 return config.outerRadius[d.index];
             });
-=======
-                    .startAngle(0)
-                    .endAngle(function (d) {
-                        return d.percentage / 100 * tau;
-                    })
-                    .innerRadius(function (d) {
-                        return config.innerRadius[d.index];
-                    })
-                    .outerRadius(function (d) {
-                        return config.outerRadius[d.index];
-                    });
->>>>>>> 026062100f228dc0414fa28f9cc074076aa5b1a3
 
         //Create the opaque background ring
         var background = d3.arc()
