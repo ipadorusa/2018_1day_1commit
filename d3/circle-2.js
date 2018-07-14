@@ -3,8 +3,8 @@
     //Function to return the data for the inset rings.
     //Probably won't need to use a funciton could just set this to a variable
     var triRadialData = [
-            { index: 0, name: 'Funded', icon: "", percentage: 60 },
-            { index: 1, name: 'Worked', icon: "", percentage: 44 }
+        { index: 0, name: 'Funded', icon: "", percentage: 60 },
+        { index: 1, name: 'Worked', icon: "", percentage: 44 }
     ];
 
 
@@ -12,46 +12,42 @@
     //Colors array.
     var colors = ["#938df9", "#71b5fc"];
     var config = {
-        innerRadius : [100, 86],
-        outerRadius : [94, 61]
+        innerRadius: [100, 86],
+        outerRadius: [94, 61]
     };
 
     //build function that creates the visuals
-    function build(dataset, elementToBind,cfg) {
+    function build(dataset, elementToBind, cfg) {
         var container = d3.select(elementToBind),
             width = container.node().getBoundingClientRect().width,
             height = container.node().getBoundingClientRect().height,
             tau = 2 * Math.PI;
 
-
+        
 
         var data = dataset;
         var arc = d3.arc()
-                    .startAngle(0)
-                    .endAngle(function (d) {
-                        return d.percentage / 100 * tau;
-                    })
-                    .innerRadius(function (d) {
-                        /*return innerRadius - d.index * (30 + gap)*/
-                        console.log('a-1',d.index)
-                        return config.innerRadius[d.index];
-                    })
-                    .outerRadius(function (d) {
-                        /*return outterRadius - d.index * (30 + gap)*/
-                        console.log('a-2',d.index)
-                        return config.outerRadius[d.index];
-                    });
+            .startAngle(0)
+            .endAngle(function (d) {
+                return d.percentage / 100 * tau;
+            })
+            .innerRadius(function (d) {                
+                return config.innerRadius[d.index];
+            })
+            .outerRadius(function (d) {
+                return config.outerRadius[d.index];
+            });
 
         //Create the opaque background ring
         var background = d3.arc()
-                            .startAngle(0)
-                            .endAngle(tau)
-                            .innerRadius(function (d, i) {
-                                return config.innerRadius[i];
-                            })
-                            .outerRadius(function (d, i) {
-                                return config.outerRadius[i];
-                            });
+            .startAngle(0)
+            .endAngle(tau)
+            .innerRadius(function (d, i) {
+                return config.innerRadius[i];
+            })
+            .outerRadius(function (d, i) {
+                return config.outerRadius[i];
+            });
 
         //Append the background ring to the body
         var svg = d3.select(elementToBind).append("svg")
@@ -79,14 +75,9 @@
             .style("fill", function (d) {
                 return colors[d.index];
             });
-
-
-
-
-
-
-        d3.transition().duration(1750).each(update);
-
+        
+        // d3.transition().duration(1750).each(update);
+        
         function update() {
             field = field
                 .each(function (d) {
@@ -109,9 +100,9 @@
             })
                 .attr("transform", function (d) {
                     return "translate(5," + -((innerRadius + 7) - d.index * (30 + gap)) + ")"
-
+    
                 });
-
+    
             field.select("text.completed").text(function (d) {
                 return Math.round(d.percentage / 100 * 10);
             });*/
@@ -124,6 +115,7 @@
                 return arc(d);
             };
         }
+        update();
     }
 
     //Call the build function
