@@ -73,11 +73,9 @@
             .style("fill", function (d) {
                 return colors[d.index];
             });
-<<<<<<< HEAD
         
         // d3.transition().duration(1750).each(update);
         
-=======
 
         var description1 = field.append('text')
             .attr('text-anchor', 'middle')
@@ -91,15 +89,6 @@
             .attr('dx', '4px')
             .attr('dy', '25px');
 
-
-<<<<<<< HEAD
-=======
-
-
-        d3.transition().duration(100).each(update);
-
->>>>>>> d552c6707482fc37d30430e1aa112c6d7bd5de95
->>>>>>> 026062100f228dc0414fa28f9cc074076aa5b1a3
         function update() {
             field = field
                     .each(function (d) {
@@ -117,7 +106,6 @@
                 .delay(50)
                 .ease(d3.easeSin)
                 .attrTween("d", arcTween);
-<<<<<<< HEAD
 
             /*field.select("text.icon").text(function (d) {
                 return d.icon;
@@ -130,8 +118,6 @@
             field.select("text.completed").text(function (d) {
                 return Math.round(d.percentage / 100 * 10);
             });*/
-=======
->>>>>>> 026062100f228dc0414fa28f9cc074076aa5b1a3
         }
 
         function arcTween(d) {
