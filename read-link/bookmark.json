@@ -244,6 +244,19 @@
         "url" : ["https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a"],
         "category" : ["cheat sheet"],
         "title" : "The best front-end hacking cheatsheets — all in one place."
+    },
+    {
+        "date" : "20180718",
+        "url" : ["https://vuex.vuejs.org/kr/"],
+        "category" : ["vue,vuex"],
+        "title" : "Vuex가 무엇인가요?"
+    },
+    {
+        "date" : "20180718",
+        "url" : ["https://vuex.vuejs.org/kr/api/"],
+        "category" : ["vue,vuex"],
+        "title" : "vuex api레퍼런스"
     }
+
     
 ]
