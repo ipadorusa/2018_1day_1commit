@@ -248,15 +248,40 @@
     {
         "date" : "20180718",
         "url" : ["https://vuex.vuejs.org/kr/"],
-        "category" : ["vue,vuex"],
+        "category" : ["vue","vuex"],
         "title" : "Vuex가 무엇인가요?"
     },
     {
         "date" : "20180718",
         "url" : ["https://vuex.vuejs.org/kr/api/"],
-        "category" : ["vue,vuex"],
+        "category" : ["vue","vuex"],
         "title" : "vuex api레퍼런스"
+    },
+    {
+        "date" : "20180718",
+        "url" : ["http://vuejs.kr/update/2017/01/04/http-request-with-axios/"],
+        "category" : ["axios"],
+        "title" : "vue axios"
+    },
+    {
+        "date" : "20180718",
+        "url" : ["https://github.com/stefanpenner/es6-promise"],
+        "category" : ["javascirpt"],
+        "title" : "es6-promise"
+    },
+    {
+        "date" : "20180718",
+        "url" : ["https://router.vuejs.org/kr/"],
+        "category" : ["vue","Vue Router"],
+        "title" : "Vue Router"
+    },
+    {
+        "date" : "20180718",
+        "url" : ["https://router.vuejs.org/kr/api/"],
+        "category" : ["vue","router-link"],
+        "title" : "reouter-link"
     }
+
 
     
 ]
