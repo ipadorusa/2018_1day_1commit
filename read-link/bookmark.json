@@ -280,8 +280,12 @@
         "url" : ["https://router.vuejs.org/kr/api/"],
         "category" : ["vue","router-link"],
         "title" : "reouter-link"
+    },
+    {
+        "date" : "20180722",
+        "url" : ["http://stackoverflow.com/questions/24266313/using-foreach-on-an-array-from-getelementsbyclassname-results-in-typeerror-und"],
+        "category" : ["javasciprt", "stackoverflow"],
+        "title" : "array-like"
     }
-
-
     
 ]
