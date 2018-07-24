@@ -29,15 +29,31 @@
     <script>
         var chkArry = [];
         var $list1 = $('#list1');
-        var $result_box = $('#result_box > ul');
+        var $result_box = $('#result_box ul');
         $('.chklabel').on('click', function(e){
             e.preventDefault();
-            $(this).find('.chk').prop('checked', function(i, val){
-                if(!val) {
-                    chkArry.push($(this).val());
-                }
-                result_box.append('<li> ' + $(this).val() + '</li>');
-            });
+            var mpcheck = $(this).find('.chk');
+            if(mpcheck.is(':checked')) {
+                mpcheck.prop('checked', false);
+                chkArry = chkArry.filter(function(obj){
+                    if(obj !== mpcheck.val()) {
+                        return true;
+                    }
+                });
+                                
+                
+            }else {
+                mpcheck.prop('checked', true);
+                chkArry.push(mpcheck.val());
+                $result_box.append('<li data-index="' + mpcheck.val() +'">' + mpcheck.val() + '</li>');
+                console.log(chkArry)
+            }
+            
+
+            // $(this).find('.chk').prop('checked', function(i, val){
+            //     return !val;
+            // });
+            // console.log(val)
         });
 
     </script>
