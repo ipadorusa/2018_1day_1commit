@@ -11,8 +11,8 @@
             margin: 0;
             padding: 0
         }
-
-
+        .blind {overflow:hidden;clip:rect(1px,1px,1px,1px);position:absolute !important;width:1px;height:1px}
+        button {border:0;background:transparent;cursor:pointer}
         .chk {
             position: relative;
             z-index: 0;
@@ -50,7 +50,13 @@
         input[type='checkbox']:checked+.lbl:before {
             background: red;
         }
-        .btnarea {position: absolute;left:100px;top:200px;background:blue}
+
+        .btnarea {
+            position: absolute;
+            left: 100px;
+            top: 200px;
+            background: blue
+        }
     </style>
     <script src="https://code.jquery.com/jquery-1.8.3.min.js" integrity="sha256-YcbK69I5IXQftf/mYD8WY0/KmEDCv1asggHpJk1trM8="
         crossorigin="anonymous"></script>
@@ -105,60 +111,67 @@
         <ul></ul>
     </div>
     <div id="btnarea" class="btnarea">
-            <button type="reset">리셋이여</button>
-        </div>
-    
-    <script>        
-        var chkArray = [];
-        var $list1 = $('#list1');
-        var $result_box = $('#result_box ul');
-        var item_lbl = $('.chklabel').find('.chk');
-        $('.chklabel').on('change', function (event) {
-            var mpcheck = $(event.target);
-            if (mpcheck.prop('checked')) {
-                chkArray.push([mpcheck.data('value'),mpcheck.data('code')]);
-                if (chkArray.length > 0 && chkArray.length < 6) {                    
-                    bindDomEvnet(chkArray);
-                    console.log('aaaa',chkArray)
-                }else {
-                    mpcheck.prop('checked', false);
-                    alert('최대 선택수가 늘어났습니다.');
-                }
-            } else {
-                chkArray.splice(chkArray.indexOf(mpcheck.data('value')),1);
-                bindDomEvnet(chkArray);
-            }
-        });
-        $(document).on('click', '.btn_del', function(e){
-            event.preventDefault();
-            domDelEvent();
-        });
+        <button type="reset">리셋이여</button>
+    </div>
 
-        var bindDomEvnet = function(objArray) {
-            var valArray = objArray;
-            var StrDom = '';
-            for(var k=0;k<valArray.length;k++) {
-                StrDom += '<li>' + valArray[k][0] + '<button type="button" class="btn_del" data-code="' + valArray[k][1] + '"><span class="blind">삭제하기</span></button></li>';
-            }
-            $result_box.html(StrDom);
-        };
-        var domDelEvent = function() {            
-            var self = $(event.target);
-            var selfValue = $(event.target).parent().data('code');
-            chkArray.splice(chkArray.indexOf(selfValue,1));
-            item_lbl.each(function(){
-                item_lbl.find(item_lbl.data('code'));
+    <script>        
+        (function ($, window) {
+            var PANEL = function () {
+                this.init.apply(this, arguments);
+            };
+
+            PANEL.prototype = {
+                init: function () {
+                    this.initVariables();
+                    this.bindEvents();
+                    $(window).trigger('resize');
+                },
+
+                initVariables: function () {
+                    this.$list = $("#list1");
+                    this.$resultBoxList = $("#result_box > ul");
+                },
+
+                toggleItems: function (e) {
+                    var $item = $(e.currentTarget),
+                        isChecked = $item.is(':checked'),
+                        itemName = $item.data('value'),
+                        itemCode = $item.data('code');
+                    (isChecked) ? this.appendItem(itemName, itemCode) : this.removeItem(itemCode);
+                },
+
+                appendItem: function (itemName, itemCode) {
+                    var li = $('<li\>'),
+                        button = $('<button><span class="blind">선택항목삭제</span></button>');
+
+                    li.attr('data-code', itemCode).text(itemName).append(button);
+
+                    this.$resultBoxList.append(li);
+                },
+
+                removeItem: function (itemCode) {
+                    this.$resultBoxList.find('[data-code="' + itemCode + '"]').remove();
+                },
+
+                removeItemByButton: function (e) {
+                    var $item = $(e.currentTarget).parents('li'),
+                        code = $item.data('code');
+
+                    this.$list.find('[data-code="' + code + '"]').trigger('click');
+                },
+                
+                bindEvents: function () {
+                    this.$list.on('change', 'input[type="checkbox"]', $.proxy(this.toggleItems, this));
+                    this.$resultBoxList.on('click', 'button', $.proxy(this.removeItemByButton, this));
+                }
+
+            };
+
+            $(document).ready(function () {
+                window.Panel = new PANEL();
             });
-            console.log('ddd')
-            // if(item_lbl.data('code') === selfValue) {
-            //     console.log('df', item_lbl.data('code'),selfValue)
-            //     $(this).prop('checked', false);
-            //     self.closest('li').remove();
-            // }
-            
-            
-            
-        };
+
+        })(jQuery, window);
 
     </script>
 </body>
