@@ -1,0 +1,50 @@
+.mobile_wrap_search.search_add_panel {background-color:#fff}
+.mobile_wrap_search.search_add_panel.open {display:block}
+.mobile_wrap_search .search_check_list {height:100%;overflow-y:auto}
+.mobile_wrap_search .category_button {padding:0 16px 0 12px;width:100%;height:42px;line-height:41px;border-bottom:1px solid #dcdcde;background-color:#fff;box-sizing:border-box}
+.mobile_wrap_search .category_button .category {position:relative;float:left;color:#666;font-size:14px;padding:0 4px}
+.mobile_wrap_search .category_button .category.on span::after {position:absolute;left:0;bottom:-1px;display:block;content:'';width:100%;height:2px;background:#4672ff}
+.mobile_wrap_search .category_button .category:first-of-type {margin-right:17px}
+.mobile_wrap_search .category_button .category:last-of-type {float:right}
+.mobile_wrap_search .category_button .category.total span:after {margin:18px 0 0 9px;display:inline-block;content:'';width:0;height:0;border-style:solid;border-width:0 4px 5px 4px;border-color:transparent transparent #a5a5a5 transparent;vertical-align:top}
+.mobile_wrap_search .category_button .category.total.on {font-weight:bold;color:#5b76f5}
+.mobile_wrap_search .category_button .category.total.on span::after {position:relative;left:auto;bottom:auto;background:none;margin-left:9px;display:inline-block;content:'';width:0;height:0;border-style:solid;border-width: 5px 4px 0 4px;border-color:#5b76f5 transparent transparent transparent}
+.mobile_wrap_search .category_button:after {display:block;clear:both;content:""}
+.mobile_wrap_search .box_depth {width:100%;background-color:#fff;overflow:hidden}
+.mobile_wrap_search .box_depth:after {display:block;clear:both;content:""}
+.box_depth .category_depth {float:left;height:100%;overflow-y:scroll;box-sizing:border-box;-webkit-overflow-scrolling:touch}
+.box_depth .category_depth li .inpChk {position:relative;display:inline-block;width:100%;padding-left:14px;box-sizing:border-box}
+.box_depth .category_depth li .inpChk .lbl {width:80%;height:41px;line-height:41px;color:#222;font-size:14px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.box_depth .category_depth li .inpChk .lbl:before {margin:0;position:absolute;right:14px;top:15px}
+.box_depth .category_depth li .inpChk input:checked + .lbl {color:#5b76f5}
+.box_depth .depth_first {width:44.4%;background-color:#f2f2f4}
+.box_depth .depth_first li {height:42px;line-height:42px}
+.box_depth .depth_first li .btn_cate {position:relative;width:100%;padding-right:22px;display:block;padding-left:14px;color:#888;background:transparent;font-size:14px;box-sizing:border-box;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.box_depth .depth_first li .btn_cate:after {display:none;position:absolute;right:15px;top:15px;content:"";width:7px;height:12px;background:url(//www.saraminimage.co.kr/sri/mobile/ico/ico_more_popular.png) 0 0 no-repeat;background-size:7px auto;}
+.box_depth .depth_first li.on .btn_cate {background:#fff;color:#5b76f5}
+.box_depth .depth_first li.on .btn_cate:after {display:block}
+.box_depth .depth_second {width:55.6%;background-color:#fff;border-left:1px solid #ededef}
+.box_depth .depth_second li {height:42px;line-height:41px;border-bottom:1px solid #f9f9fa;color:#222;font-size:14px;box-sizing:border-box}
+.mobile_wrap_search .laeyr_select_status {display:none;position:fixed;left:0;bottom:0;width:100%;padding:15px 10px 0 10px;background:#5b76f5;box-sizing:border-box;z-index:10}
+.mobile_wrap_search .laeyr_select_status.on {display:block}
+.mobile_wrap_search .laeyr_select_status .txt {display:block;margin:0 0 9px 5px;color:#dbe1ff;font-size:13px;letter-spacing:-0.5px}
+.laeyr_select_status .wrap_select_slide.swiper-container {margin:0 5px}
+.laeyr_select_status .wrap_select_slide .list_item {height:33px}
+.laeyr_select_status .wrap_select_slide li {width:auto;margin-left:8px;float:left;height:33px;line-height:33px;border-radius:16px;padding:0 0 0 15px;color:#fff;font-size:13px;font-weight:bold;background:#425de9;box-sizing:border-box;}
+.laeyr_select_status .wrap_select_slide li:first-child {margin-left:0}
+.laeyr_select_status .wrap_select_slide li .btn_select_del {display:inline-block;width:33px;height:33px;background:url(//www.saraminimage.co.kr/sri/mobile/ico/ico_snb_del.png) 11px 12px no-repeat;background-size:10px auto;}
+.laeyr_select_status .wrap_select_slide:after {display:block;clear:both;content:""}
+.laeyr_select_status .wrap_btn {margin-top:15px;height:50px;line-height:49px;border-top:1px solid #6d82f4;box-sizing:border-box}
+.laeyr_select_status .wrap_btn:after {display:block;clear:both;content:""}
+.laeyr_select_status .wrap_btn .btn_reset {float:left;color:#dbe1ff;font-size:13px}
+.laeyr_select_status .wrap_btn .btn_reset:before {display:inline-block;margin:-5px 4px 0 5px;width:12px;height:14px;background:url(//www.saraminimage.co.kr/sri/mobile/ico/ico_snb_category_reset.png) no-repeat;background-size:12px auto;content:'';vertical-align:middle}
+.laeyr_select_status .wrap_btn .btn_confirm {margin-right:8px;float:right;color:#ffffff;font-size:16px;font-weight:bold}
+.mobile_wrap_search .wrap_search_input.panel {margin-top:11px}
+.mobile_wrap_search .list_search_panel {height:100%;overflow-y:auto;background-color:#fff}
+.mobile_wrap_search .list_search_panel .layer_auto_search {display:block;position:relative;top:auto;}
+.search_add_panel .no_result {height:100px;background:#fff;padding-top:37px;color:#888;font-size:14px;letter-spacing:-0.5px;text-align:center;box-sizing:border-box}
+.alram_notice.type_gray_box {margin:10px 15px 0 15px;padding-top:34px;height:160px;background-color:#f2f2f4;box-sizing:border-box}
+.alram_notice.type_gray_box .keyword {margin-bottom:5px;color:#888;font-size:12px;}
+.alram_notice.type_gray_box .notice {color:#444;font-size:14px;color:#444;}
+.alram_notice.type_gray_box .notice .keypoint {font-weight:normal;color:#5b76f5}
+.alram_notice.type_gray_box .ic_plus {margin-left:8px;display:inline-block;width:11px;height:11px;background:url(//www.saraminimage.co.kr/sri/mobile/ico/ico_snb_category_plus.png) no-repeat;background-size:11px auto}
