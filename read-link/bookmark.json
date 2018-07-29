@@ -286,6 +286,23 @@
         "url" : ["http://stackoverflow.com/questions/24266313/using-foreach-on-an-array-from-getelementsbyclassname-results-in-typeerror-und"],
         "category" : ["javasciprt", "stackoverflow"],
         "title" : "array-like"
-    }
-    
+    },
+    {
+        "date" : "20180730",
+        "url" : ["https://airbnb.design/"],
+        "category" : ["javasciprt", "design"],
+        "title" : "air-bnb"
+    },
+    {
+        "date" : "20180730",
+        "url" : ["https://airbnb.design/lottie/#get-started"],
+        "category" : ["javasciprt", "animation"],
+        "title" : "air-bnb"
+    },
+    {
+        "date" : "20180730",
+        "url" : ["https://hackernoon.com/10-javascript-animation-libraries-to-follow-in-2018-50ff1d905f43"],
+        "category" : ["javasciprt", "animation"],
+        "title" : "javascript-animation"
+    }    
 ]
