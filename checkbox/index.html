@@ -11,9 +11,8 @@
             margin: 0;
             padding: 0
         }
-        .blind {overflow:hidden;clip:rect(1px,1px,1px,1px);position:absolute !important;width:1px;height:1px}
-        button {border:0;background:transparent;cursor:pointer}
-        
+
+
         .chk {
             position: relative;
             z-index: 0;
@@ -59,39 +58,44 @@
             background: blue
         }
     </style>
-    <script src="https://code.jquery.com/jquery-1.8.3.min.js" integrity="sha256-YcbK69I5IXQftf/mYD8WY0/KmEDCv1asggHpJk1trM8="
-        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
 </head>
 
 <body>
+    <!-- 
+	요건 1. 체크박스에 체크가 true 면 빨간박스안에 리스트 생성
+			 1.1 체크박스 체크가 false 면 빨간박스안에 리스트 제거
+       2. 빨간박스안에 리스트에 삭제 버튼 누르면 빨간박스안에 삭제가 되고
+          왼쪽 체크에서도 해당 리스트아이템에 false를 만들어서 체크를 풀어야함
+-->
     <ul id="list1">
         <li>
             <label for="lable01" class="chklabel">
-                <input id="lable01" class="chk" type="checkbox" data-code="00100" data-value="서울">
+                <input id="lable01" class="chk" type="checkbox" data-code="10100" data-value="서울">
                 <span class="lbl">서울</span>
             </label>
         </li>
         <li>
             <label for="lable02" class="chklabel">
-                <input id="lable02" class="chk" type="checkbox" data-code="00101" data-value="노원">
+                <input id="lable02" class="chk" type="checkbox" data-code="10101" data-value="노원">
                 <span class="lbl">노원</span>
             </label>
         </li>
         <li>
             <label for="lable03" class="chklabel">
-                <input id="lable03" class="chk" type="checkbox" data-code="00111" data-value="구로">
+                <input id="lable03" class="chk" type="checkbox" data-code="10111" data-value="구로">
                 <span class="lbl">구로</span>
             </label>
         </li>
         <li>
             <label for="lable04" class="chklabel">
-                <input id="lable04" class="chk" type="checkbox" data-code="01111" data-value="하계">
+                <input id="lable04" class="chk" type="checkbox" data-code="51111" data-value="하계">
                 <span class="lbl">하계</span>
             </label>
         </li>
         <li>
             <label for="lable05" class="chklabel">
-                <input id="lable05" class="chk" type="checkbox" data-code="01200" data-value="구로디지털단지역">
+                <input id="lable05" class="chk" type="checkbox" data-code="61200" data-value="구로디지털단지역">
                 <span class="lbl">구로디지털단지역</span>
             </label>
         </li>
@@ -114,66 +118,64 @@
     <div id="btnarea" class="btnarea">
         <button type="reset">리셋이여</button>
     </div>
+    <script>
+        var func = {
+            init: function () {
+                this.cachedElements();
+                this.bindEvents();
+            },
 
-    <script>        
-        (function ($, window) {
-            var PANEL = function () {
-                this.init.apply(this, arguments);
-            };
+            cachedElements: function () {
+                this.$list = $("#list1");
+                this.$resultBoxList = $("#result_box > ul");
+                this.checkCount = 0;
+            },
 
-            PANEL.prototype = {
-                init: function () {
-                    this.initVariables();
-                    this.bindEvents();
-                    $(window).trigger('resize');
-                },
+            bindEvents: function () {
+                this.$list.on('change', 'input[type="checkbox"]', $.proxy(this.toggleItems, this));
+                this.$resultBoxList.on('click', 'button', $.proxy(this.removeItemByButton, this));
+            },
 
-                initVariables: function () {
-                    this.$list = $("#list1");
-                    this.$resultBoxList = $("#result_box > ul");
-                },
+            toggleItems: function (e) {
+                var $item = $(e.currentTarget),
+                    isChecked = $item.is(':checked'),
+                    itemName = $item.data('value'),
+                    itemCode = $item.data('code');
+                /*	
+                if(isChecked) {
+                    this.appendItem(itemName, itemCode);
+                    this.checkCount++;
+                }else {
+                    this.removeItem(itemCode, this.checkCount);
+                } */
+                (isChecked) ? this.appendItem(itemName, itemCode) : this.removeItem(itemCode, this.checkCount);
+            },
 
-                toggleItems: function (e) {
-                    var $item = $(e.currentTarget),
-                        isChecked = $item.is(':checked'),
-                        itemName = $item.data('value'),
-                        itemCode = $item.data('code');
-                    (isChecked) ? this.appendItem(itemName, itemCode) : this.removeItem(itemCode);
-                },
+            appendItem: function (itemName, itemCode, checkCount) {
+                var li = $('<li\>'),
+                    button = $('<button\>').text('삭제');
 
-                appendItem: function (itemName, itemCode) {
-                    var li = $('<li\>'),
-                        button = $('<button><span class="blind">선택항목삭제</span></button>');
+                li.attr('data-code', itemCode).text(itemName).append(button);
+                this.$resultBoxList.append(li);
+            },
 
-                    li.attr('data-code', itemCode).text(itemName).append(button);
+            removeItem: function (itemCode, checkCount) {
+                this.$resultBoxList.find('[data-code="' + itemCode + '"]').remove();
+                this.checkCount--;
+                console.log('remove', this.checkCount);
+            },
 
-                    this.$resultBoxList.append(li);
-                },
+            removeItemByButton: function (e) {
+                var $item = $(e.currentTarget).parents('li'),
+                    code = $item.data('code');
 
-                removeItem: function (itemCode) {
-                    this.$resultBoxList.find('[data-code="' + itemCode + '"]').remove();
-                },
+                this.$list.find('[data-code="' + code + '"]').trigger('click');
+            }
+        };
 
-                removeItemByButton: function (e) {
-                    var $item = $(e.currentTarget).parents('li'),
-                        code = $item.data('code');
-
-                    this.$list.find('[data-code="' + code + '"]').trigger('click');
-                },
-                
-                bindEvents: function () {
-                    this.$list.on('change', 'input[type="checkbox"]', $.proxy(this.toggleItems, this));
-                    this.$resultBoxList.on('click', 'button', $.proxy(this.removeItemByButton, this));
-                }
-
-            };
-
-            $(document).ready(function () {
-                window.Panel = new PANEL();
-            });
-
-        })(jQuery, window);
-
+        $(function () {
+            func.init();
+        });
     </script>
 </body>
 
