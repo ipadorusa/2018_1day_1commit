@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title>Site Bookmarker</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+      .list_bookmark li {
+        position: relative;
+        line-height: 34px;
+        margin-bottom:10px
+      }
+      .list_bookmark li .btn {
+        position: absolute;
+        right:0;
+        top:0;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <h3 class="text-muted">Bookmarker</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h2>Bookmark Your Favorite Sites</h2>
+      </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ol id="list" class="list_bookmark">
+                </ol>
+            </div>
+        </div>
+
+      <footer class="footer">
+        <p>&copy; Bookmarker, inc</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+
+        var _list = document.getElementById('list');
+        let jsonRepo = 'bookmark.json';
+        function render() {
+            axios.get(jsonRepo)
+              .then((res) => {
+                  var data = res.data;
+                  _list.innerHTML = '';
+                  data.forEach(function(date) {
+                      _list.innerHTML += '<li>' + date.title + '<a href="' + date.url + '" class="btn btn-default" target="_blank">Site Link</a></li>';
+                  })
+              })
+              .catch((err) => {
+                  console.log(err);
+              });
+        }
+        render();
+    </script>
+
+  </body>
+</html>
+ 
