@@ -51,20 +51,23 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
+        function renderList(res) {
+            var data = res.data;
+            var _list = document.getElementById('list');
+            _list.innerHTML = '';
+            data.forEach(function(date) {
+                _list.innerHTML += '<li>' + date.title + '<a href="' + date.url + '" class="btn btn-default" target="_blank">Site Link</a></li>';
+            })
+        };
 
-        var _list = document.getElementById('list');
         let jsonRepo = 'bookmark.json';
         function render() {
             axios.get(jsonRepo)
-              .then((res) => {
-                  var data = res.data;
-                  _list.innerHTML = '';
-                  data.forEach(function(date) {
-                      _list.innerHTML += '<li>' + date.title + '<a href="' + date.url + '" class="btn btn-default" target="_blank">Site Link</a></li>';
-                  })
+              .then(function(res) {
+                  renderList(res);
               })
-              .catch((err) => {
-                  console.log(err);
+              .catch(function(err) {
+                  alert('error');
               });
         }
         render();
