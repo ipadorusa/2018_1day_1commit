@@ -310,6 +310,12 @@
         "url" : ["https://stackoverflow.com/questions/4326845/how-can-i-determine-the-direction-of-a-jquery-scroll-event"],
         "category" : ["scrollEvent"],
         "title" : "How can I determine the direction of a jQuery scroll event?"
-    }  
+    },
+    {
+        "date" : "20180805",
+        "url" : ["https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C"],
+        "category" : ["HTTP"],
+        "title" : "HTTP 상태코드"
+    }
 
 ]
