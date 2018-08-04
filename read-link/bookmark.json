@@ -304,5 +304,12 @@
         "url" : ["https://hackernoon.com/10-javascript-animation-libraries-to-follow-in-2018-50ff1d905f43"],
         "category" : ["javasciprt", "animation"],
         "title" : "javascript-animation"
-    }    
+    },
+    {
+        "date" : "20180804",
+        "url" : ["https://stackoverflow.com/questions/4326845/how-can-i-determine-the-direction-of-a-jquery-scroll-event"],
+        "category" : ["scrollEvent"],
+        "title" : "How can I determine the direction of a jQuery scroll event?"
+    }  
+
 ]
