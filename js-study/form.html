@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form  action="/" method="post" id="test">
+        <span>
+            <label for="tel">전화번호</label>
+            <input type="number" id="tel" name="tel">
+        </span>
+        <span>
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name">
+        </span>
+        <button type="button" id="btn_submit" value="Submit" onclick="zzz()">전송하기</button>
+    </form>
+    
+    <script>
+        function zzz() {
+            var formId = document.getElementById('test');
+            var data = new FormData(formId);
+            console.log(data)
+        }
+        
+    </script>
+</body>
+</html>

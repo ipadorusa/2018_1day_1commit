@@ -26,3 +26,14 @@ var ggg = sentence.match(regExp);
 console.log(ggg);
 console.log(typeof ggg);
 console.log(typeof sentence);
+
+
+var kimTxt = 'kimwoosuk';
+if(~kimTxt.indexOf("su")) {
+    console.log("찾았다");
+}
+console.log(~kimTxt.indexOf("gg"));
+console.log(!~kimTxt.indexOf("gg"));
+if(!~kimTxt.indexOf("gg")) {
+    console.log('못찾았네')
+}
