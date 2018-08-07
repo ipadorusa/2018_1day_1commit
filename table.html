@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {margin:0;padding:0;}
+        ul,ol {list-style:none}
+        table {table-layout:fixed;border-collapse:0;border-spacing:0}
+        td {width:100px;height:100px;}
+    </style>
+</head>
+<body>
+    <section>
+        <h1>테이블</h1>
+        <table id="inner_table">
+
+        </table>
+    </section>
+    <script>
+        var list = ['#5F9EA0','#00008B','#00BFFF','#FF00FF', '#00CED1', '#ADFF2F', '#800000', '#FFDAB9', '#2E8B57', '#FFF0F5'];
+        var wrapTable = document.getElementById('inner_table');
+        var member = [];
+        var str = '';
+        for (let i = 0; i < 10; i++) {
+            var select = Math.floor(Math.random() * list.length);
+            member[i] = list.splice(select, 1)[0];
+        }
+        for(let i=0;i<10;i++) {
+            var str = `<tr>`;
+            for(let k=0;k<10;k++) {
+                console.log('b',k)
+                str += `<td style="background-color:${member[k]}">${member[k]}</td>`;
+            }
+            str += `</tr>`;
+        }
+        wrapTable.innerHTML = str;
+        
+    </script>
+</body>
+</html>
