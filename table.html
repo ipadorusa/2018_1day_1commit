@@ -8,33 +8,38 @@
     <style>
         * {margin:0;padding:0;}
         ul,ol {list-style:none}
-        table {table-layout:fixed;border-collapse:0;border-spacing:0}
-        td {width:100px;height:100px;}
+        ul {width:100px;float:left;}
+        li {width:100px;height:50px;border:1px solid #000}
     </style>
 </head>
 <body>
     <section>
         <h1>테이블</h1>
-        <table id="inner_table">
+        <div id="inner_table" class="inner_table">
 
         </table>
     </section>
     <script>
-        var list = ['#5F9EA0','#00008B','#00BFFF','#FF00FF', '#00CED1', '#ADFF2F', '#800000', '#FFDAB9', '#2E8B57', '#FFF0F5'];
+        //var list = ['#5F9EA0','#00008B','#00BFFF','#FF00FF', '#00CED1', '#ADFF2F', '#800000', '#FFDAB9', '#2E8B57', '#FFF0F5'];
         var wrapTable = document.getElementById('inner_table');
         var member = [];
         var str = '';
-        for (let i = 0; i < 10; i++) {
-            var select = Math.floor(Math.random() * list.length);
-            member[i] = list.splice(select, 1)[0];
+        function randomEvt() {
+            var list = ['#5F9EA0','#00008B','#00BFFF','#FF00FF', '#00CED1', '#ADFF2F', '#800000', '#FFDAB9', '#2E8B57', '#FFF0F5'];
+            for (let i = 0; i < 10; i++) {
+                var select = Math.floor(Math.random() * list.length);
+                member[i] = list.splice(select, 1)[0];
+            }
+            console.log(member)
         }
         for(let i=0;i<10;i++) {
-            var str = `<tr>`;
+            randomEvt();
+            str += `<ul>`;
             for(let k=0;k<10;k++) {
                 console.log('b',k)
-                str += `<td style="background-color:${member[k]}">${member[k]}</td>`;
+                str += `<li style="background-color:${member[k]}">${member[k]}</li>`;
             }
-            str += `</tr>`;
+            str += `</ul>`;
         }
         wrapTable.innerHTML = str;
         
