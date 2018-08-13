@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+	* { margin: 0; padding: 0; }
+	html, body { width: 100%; height: 100%; }
+
+	table { vertical-align: middle; border-collapse: collapse; }
+	table th { padding: 5px 10px; border-bottom: solid #ddd 1px; border-right: solid #ddd 1px; }
+	table td { padding: 10px 20px; font-size: 24px; font-weight: 100; border: solid rgba(0, 0, 0, .1) 1px; }
+	table td.label { color: #333; border-bottom: solid #ddd 1px; }
+	table td.value { color: #fff; }
+</style>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
+	
+// 전역 변수
+var people = [
+	{ name: "A", value: "#1abc9c" },
+	{ name: "B", value: "#f1c40f" },
+	{ name: "C", value: "#2ecc71" },
+	{ name: "D", value: "#e67e22" },
+	{ name: "E", value: "#3498db" },
+	{ name: "F", value: "#e74c3c" },
+	{ name: "G", value: "#9b59b6" },
+	{ name: "H", value: "#95a5a6" },
+	{ name: "I", value: "#34495e" },
+	{ name: "J", value: "#333" },
+];
+
+var days = [
+	{ name: "", value: "월" },
+	{ name: "", value: "화" },
+	{ name: "", value: "수" },
+	{ name: "", value: "목" },
+	{ name: "", value: "금" },
+];
+
+var times = [
+	{ name: "", value: "과학" },
+	{ name: "", value: "수학" },
+	{ name: "", value: "물리" },
+	{ name: "", value: "체육" },
+	{ name: "", value: "미술" },
+];
+
+// 함수
+function shuffle(d){
+	for (var c = d.length - 1; c > 0; c--){
+		var b = Math.floor(Math.random() * (c + 1));
+		var a = d[c]; d[c] = d[b]; d[b] = a;
+	}
+
+	return d
+};
+
+function shift(d, x) {
+	for (var i = 0; i < x; i++)
+		d.push(d[i]);
+	d.splice(0, x);
+
+	return d;
+}
+
+// 계산
+var table = [];
+var shuffles = shuffle(people);
+
+for (var y = 0; y < days.length; y++) {
+	table[y] = shuffles;
+	shuffles = $.extend([], shift(shuffles, 2));
+}
+
+// 돔 렌더링
+$(function() {
+	var $result = $("#result");
+	var $trTimes = $("<tr></tr>");
+
+	for (var i = -1, timesLen = times.length; i < timesLen; i++) {
+		var $thTimes = $("<th></th>");
+			if (i != -1)
+				$thTimes.addClass("times").text(times[i].value).attr("colspan", 2);
+			else
+				$thTimes.addClass("empty");
+		$trTimes.append($thTimes);
+	}
+
+	for (var y = 0, yLen = table.length; y < yLen; y++) {
+		var $tr = $("<tr></tr>");
+		var $tdLabel = $("<td></td>");
+			$tdLabel.addClass("label").text(days[y].value);
+
+		$tr.append($tdLabel);
+
+		for (var x = 0, xLen = table[y].length; x < xLen; x++) {
+			var $td = $("<td></td>");
+				$td.addClass("value").css({ background: table[y][x].value }).text(table[y][x].name);
+				$tr.append($td);
+		}
+
+		$result.children("thead").append($trTimes);
+		$result.children("tbody").append($tr);
+	}
+});
+
+</script>
+</head>
+<body>
+
+<table id="result">
+	<thead>
+	</thead>
+	<tbody>
+	</tbody>
+</table>
+
+</body>
+</html>
