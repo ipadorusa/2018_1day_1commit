@@ -1,4 +1,4 @@
-x``ㅓconst sum = function(...x) {
+const sum = function(...x) {
     let Num = arguments;
     console.log(Num);
 }
