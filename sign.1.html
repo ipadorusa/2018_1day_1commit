@@ -1,0 +1,36 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>design-code work_sim index</title>
+</head>
+<body>
+<div id="mailSig">
+    <div id="mailSigInput">
+        <p><label for="personname">성명</label> <input type="text" id="personname" placeholder="심재욱" /></p>
+        <p><label for="title">직급</label> <input type="text" id="title" placeholder="연구원" /></p>
+        <p><label for="team">팀</label> <input type="text" id="team" placeholder="UI개발팀" /></p>
+        <p><label for="org">조직</label> <input type="text" id="org" placeholder="IT연구소" /></p>
+        <p><label for="room">사무실</label> <input type="text" id="room" placeholder="308" maxlength="3" />호</p>
+        <p><label for="tel">내선</label> <input type="text" id="tel" placeholder="4791" maxlength="4" /></p>
+        <p><label for="mobile1">모바일</label> <input type="text" id="mobile1" placeholder="010" /> - <input type="text" id="mobile2" placeholder="0000" /> - <input type="text" id="mobile3" placeholder="0000" /></p>
+        <p><label for="email">이메일</label> <input type="text" id="email" placeholder="joaquin" />@saramin.co.kr</p>
+    </div>
+    <p><button id="mailSigGen" type="button">코드 생성</button></p>
+    <div><textarea id="mailSigOutput" class="textArea" readonly ></textarea></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#mailSig',
+        data: {
+            message: '안녕하세요 Vue!'
+        }
+    })
+</script>
+</body>
+</html>
+
+
+
