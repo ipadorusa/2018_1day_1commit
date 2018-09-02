@@ -42,6 +42,7 @@
         }
 
         $input.on('keyup', function() {
+            console.log(this);
             check(this);
 
         });
@@ -54,6 +55,7 @@
 
 
         $input.each(function() {
+            
             check(this);
         });
 
