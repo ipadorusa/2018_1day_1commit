@@ -2,7 +2,8 @@
  * dom control
  */
 console.group('before');
-var lis = document.getElementsByTagName('li');
+//var lis = document.getElementsByTagName('li');
+var lis = document.querySelectorAll('li');
 for(var i = 0; i <lis.length; i++) {
 	console.log(lis[i])
 }
@@ -13,3 +14,4 @@ for(var i = 0; i <lis.length; i++) {
 	console.log(lis[i])
 }
 console.groupEnd();
+console.log('b',lis)
