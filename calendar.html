@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {margin:0;padding:0;}
+        .calendar {border-collapse:0;border-spacing:0;table-layout:fixed}
+        .calendar thead th {border:1px solid #ddd}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <form name="searchForm">
+            <div class="row">
+                <span>start</span>
+                <label for="startDay">
+                    <input type="text" name="startday" id="startDay" placeholder="2018-10-15">
+                </label>
+                <span>end</span>
+                <label for="endDay">
+                    <input type="text" name="endday" id="endDay" placeholder="2018-10-15">
+                </label>
+                <button type="button" id="btn_calendar">검색하기</button>
+            </div>
+            <table id="calendar" class="calendar">
+
+            </table>
+        </form>
+    </div>
+    <script src="./moment.min.js"></script>
+    <script>
+        var boardCalendar = function(checkDate,endDate) {
+            const numSpaceHash = {
+                'Sunday': 0,
+                'Monday': 1,
+                'Tuesday': 2,
+                'Wednesday': 3,
+                'Thursday': 4,
+                'Friday': 5,
+                'Saturday': 6
+            };
+            checkDate = moment(checkDate);
+            endDate = moment(endDate);
+            const wrapDom = document.getElementById('calendar');
+
+            const startWeek = moment(checkDate).startOf('month').week();
+            const endWeek = moment(endDate).endOf('month').week();
+            let date = checkDate.clone().subtract(1, 'day');
+            let calendar = [];
+
+            for(let week = startWeek; week<endWeek;week++) {
+                calendar.push({
+                    week: week,
+                    days: Array(7).fill(0).map(
+                        function(n, i) {
+                            return {date: date.add(1, 'day').date()};
+                        }
+                    )
+                });
+            }
+            function rendar() {
+                let shell = '<tbody>';
+                shell += '<tr><td>';
+                for(let i=0,max=calendar.length;i<max;i++) {
+                    shell += `calendar${[i]}}.days`;
+                }
+                shell += '</tr></td></tbody>';
+                wrapDom.append(shell);
+            }
+            rendar();
+
+
+
+        };
+
+        function dayCal() {
+            const searchForm = document.forms['searchForm'];
+            const startDay = searchForm['startday'].value;
+            const endDay = searchForm['endday'].value;
+            const codereviewSch = new boardCalendar(startDay, endDay);
+        }
+        document.getElementById('btn_calendar').addEventListener('click',dayCal)
+
+
+    </script>
+</body>
+</html>
