@@ -13,6 +13,6 @@ var obj3 = {
 var obj2 = obj
 obj2.a = 'b';
 obj3.a = 'new'
-obj
-obj2
+
+console.log('obj2', obj2);
 obj3

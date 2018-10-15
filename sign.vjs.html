@@ -1,0 +1,77 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>design-code work_sim index</title>
+    <style>
+        .textArea {width:200px;height:100px;resize: none}
+    </style>
+</head>
+<body>
+<div id="mailSig">
+    <div id="mailSigInput">
+        <p><label for="personname">성명</label> <input type="text" id="personname" placeholder="심재욱" /></p>
+        <p><label for="title">직급</label> <input type="text" id="title" placeholder="연구원" /></p>
+        <p><label for="team">팀</label> <input type="text" id="team" placeholder="UI개발팀" /></p>
+        <p><label for="org">조직</label> <input type="text" id="org" placeholder="IT연구소" /></p>
+        <p><label for="room">사무실</label> <input type="text" id="room" placeholder="308" maxlength="3" />호</p>
+        <p><label for="tel">내선</label> <input type="text" id="tel" placeholder="4791" maxlength="4" /></p>
+        <p><label for="mobile1">모바일</label> <input type="text" id="mobile1" placeholder="010" /> - <input type="text" id="mobile2" placeholder="0000" /> - <input type="text" id="mobile3" placeholder="0000" /></p>
+        <p><label for="email">이메일</label> <input type="text" id="email" placeholder="joaquin" />@saramin.co.kr</p>
+    </div>
+    <div id="mailSigPreview"></div>
+    <p><button id="mailSigGen" type="button">코드 생성</button></p>
+    <div><textarea id="mailSigOutput" class="textArea" readonly ></textarea></div>
+</div>
+
+<script type="text/javascript">
+    (function(window) {
+        var $input = document.querySelectorAll('input[type=text]');
+        var $preview = document.getElementById('mailSigPreview');
+        var $gen = document.getElementById('mailSigGen');
+        var $output = document.getElementById('mailSigOutput');
+        var code;
+        var info = {
+            personname:'--',
+            title:'--',
+            team:'--',
+            org:'--',
+            room:'--',
+            tel:'--',
+            mobile1:'--',
+            mobile2:'--',
+            mobile3:'--',
+            email:'--'
+        };
+        function check(el) {
+            info[el.id] = el.value;
+            console.log(info,el.value)
+            preView();
+        }
+        function preView() {
+            var str ='<div style="margin:0;padding:0;font-size:0;line-height:0"><table border="0" cellspacing="0" cellpadding="0" style="font-size:0;width:800px;height:3px"><tr><td width="800" height="3" style="margin:0;padding:0;font-size:0;line-height:0;background:#4876ef">&nbsp;</td></tr></table><table border="0" cellspacing="0" cellpadding="0" style="border-width:0 1px 1px;border-style:solid;border-color:#ececec;width:800px"><tr><td width="192" style="margin:0;padding:0;font-size:0;line-height:0"><a target="_blank" href="https://www.saramin.co.kr/"><img src="http://www.saraminimage.co.kr/email/logo_saram2018.png" alt="사람인" width="192" height="108" border="0" style="border:0;vertical-align:top"></a></td><td width="35" style="margin:0;padding:0;font-size:0;line-height:0">&nbsp;</td><td align="left" style="margin:0;padding:0"><table border="0" cellspacing="0" cellpadding="0" style="width:568px"><tr><td height="18" colspan="4" style="margin:0;padding:0;font-size:0;line-height:0">&nbsp;</td></tr><tr><td width="568" height="26" colspan="4" valign="top" style="margin:0;padding:0;word-break:break-all"><strong style="color:#444;font-family:Malgun Gothic, sans-serif;font-size:18px;letter-spacing:-1px;line-height:normal;font-weight:bold">' + info.personname + ' ' + info.title + '</strong></td></tr><tr><td width="568" height="22" colspan="4" style="margin:0;padding:0;word-break:break-all"><strong style="color:#444;font-family:Malgun Gothic, sans-serif;font-size:14px;font-weight:bold;letter-spacing:-1px;line-height:normal">' + info.team + '&nbsp;</strong>&nbsp;&nbsp;<span style="color:#444;font-family:Malgun Gothic, sans-serif;font-size:14px;letter-spacing:-1px;line-height:normal">' + info.org + '&nbsp;&nbsp;(주)사람인HR</span></td></tr><tr><td height="10" colspan="4" style="margin:0;padding:0;font-size:0;line-height:0">&nbsp;</td></tr><tr><td width="16" height="18" style="margin:0;padding:0;text-align:center;color:#4876ef;font-family:Malgun Gothic, sans-serif;font-size:12px;font-weight:bold;line-height:normal">T</td><td width="208" style="margin:0;padding:0 0 0 6px;word-break:break-all;color:#777;font-family:Malgun Gothic, sans-serif;font-size:12px;line-height:normal">02-2025-' + info.tel + '</td><td width="16" style="margin:0;padding:0;text-align:center;color:#4876ef;font-family:Malgun Gothic, sans-serif;font-size:12px;font-weight:bold;line-height:normal">F</td><td width="260" style="margin:0;padding:0 0 0 6px;word-break:break-all;color:#777;font-family:Malgun Gothic, sans-serif;font-size:12px;line-height:normal">02-2025-0039</td></tr><tr><td width="16" height="18" style="margin:0;padding:0;text-align:center;color:#4876ef;font-family:Malgun Gothic, sans-serif;font-size:12px;font-weight:bold;line-height:normal">M</td><td width="208" style="margin:0;padding:0 0 0 6px;word-break:break-all;color:#777;font-family:Malgun Gothic, sans-serif;font-size:12px;line-height:normal">' + info.mobile1 + '-' + info.mobile2 + '-' + info.mobile3 + '</td><td width="16" style="margin:0;padding:0;text-align:center;color:#4876ef;font-family:Malgun Gothic, sans-serif;font-size:12px;font-weight:bold;line-height:normal">E</td><td width="260" style="margin:0;padding:0 0 0 6px;word-break:break-all;color:#777;font-family:Malgun Gothic, sans-serif;font-size:12px;line-height:normal">' + info.email + '@saramin.co.kr</td></tr><tr><td height="18" style="margin:0;padding:0;text-align:center;color:#4876ef;font-family:Malgun Gothic, sans-serif;font-size:12px;font-weight:bold;line-height:normal">A</td><td colspan="3" style="margin:0;padding:0 0 0 6px;word-break:break-all;color:#777;font-family:Malgun Gothic, sans-serif;font-size:12px;letter-spacing:-1px;line-height:normal">(08378) 서울특별시 구로구 디지털로 34길 43 코오롱 싸이언스밸리 1차 ' + info.room + '호 (구로동)</td></tr><tr><td height="18" colspan="4" style="margin:0;padding:0;font-size:0;line-height:0">&nbsp;</td></tr></table></td></tr></table></div>';
+            $preview.innerHTML = '';
+            $preview.innerHTML = str;
+            $output.value = '';
+            code = str;
+        }
+        $gen.addEventListener('click', function(){
+            $output.value = code;
+        });
+        
+        Array.from($input).forEach(input => {
+            input.addEventListener('keyup', function(){
+                check(this);
+            });
+        })
+
+        preView();
+
+    })(window);
+</script>
+</body>
+</html>
+
+
+
