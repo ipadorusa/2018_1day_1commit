@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="aaa">
+        <li class="li on"><button class="menu">메뉴1</button></li>
+        <li class="li on"><button class="menu">메뉴2</button></li>
+        <li class="li on"><button class="menu">메뉴3</button></li>
+        <li class="li on"><button class="menu">메뉴4</button></li>
+        <li class="li on"><button class="menu">메뉴5</button></li>
+        <li class="li on"><button class="menu">메뉴6</button></li>
+      </ul>
+      <script>
+          var ul = document.getElementById('aaa');
+        var li = ul.querySelectorAll('li');
+        var aa = ul.querySelectorAll('.li button');
+
+
+
+
+        Array.from(aa).forEach(function(el) {
+        el.addEventListener('click', function() {
+        for(var i=0,max=li.length;i<max;i++) {
+            li[i].classList.remove('on');
+            }
+            el.parentNode.classList.add('on');
+        });
+        });
+      </script>
+</body>
+</html>
