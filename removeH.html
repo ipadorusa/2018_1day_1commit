@@ -1,36 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        li.on {
+            color: red
+        }
+    </style>
 </head>
+
 <body>
     <ul id="aaa">
-        <li class="li on"><button class="menu">메뉴1</button></li>
-        <li class="li on"><button class="menu">메뉴2</button></li>
-        <li class="li on"><button class="menu">메뉴3</button></li>
-        <li class="li on"><button class="menu">메뉴4</button></li>
-        <li class="li on"><button class="menu">메뉴5</button></li>
-        <li class="li on"><button class="menu">메뉴6</button></li>
-      </ul>
-      <script>
-          var ul = document.getElementById('aaa');
+        <li class="li"><a href="" class="menu">메뉴1</a></li>
+        <li class="li"><a href="" class="menu">메뉴2</a></li>
+        <li class="li on"><a href="" class="menu">메뉴3</a></li>
+        <li class="li"><a href="" class="menu">메뉴4</a></li>
+        <li class="li"><a href="" class="menu">메뉴5</a></li>
+        <li class="li"><a href="" class="menu">메뉴6</a></li>
+    </ul>
+    <script>
+        var ul = document.getElementById('aaa');
         var li = ul.querySelectorAll('li');
-        var aa = ul.querySelectorAll('.li button');
+        var aa = ul.querySelectorAll('.li a');
+        
+        var selAll = function selAll(v) {
+            var el = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
+            return el.querySelectorAll(v);
+        };
+        var toggleMenu = function (el, a, target) {
+            return Array.prototype.forEach.call(el,function(obj){
+                return obj.addEventListener(a,function(e){
+                    e.preventDefault();
+                    for (var i = 0, max = target.length; i < max; i++) {
+                        target[i].classList.remove('on');
+                    }
+                    this.parentNode.classList.add('on');
+                });
+            });
+        };
+        toggleMenu(selAll('.li a'),'click',selAll('.li'));
 
-
-
-
-        Array.from(aa).forEach(function(el) {
-        el.addEventListener('click', function() {
-        for(var i=0,max=li.length;i<max;i++) {
-            li[i].classList.remove('on');
-            }
-            el.parentNode.classList.add('on');
-        });
-        });
-      </script>
+        /* Array.prototype.forEach.call(aa,function (el) {
+            el.addEventListener('click', function (e) {
+                e.preventDefault();
+                for (var i = 0, max = li.length; i < max; i++) {
+                    li[i].classList.remove('on');
+                }
+                el.parentNode.classList.add('on');
+                
+            });
+        }); */
+    </script>
 </body>
+
 </html>
