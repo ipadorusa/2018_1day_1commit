@@ -1,4 +1,4 @@
-[
+[    
     {
         "date" : "20180418",
         "url" : "https://codeburst.io/top-javascript-vscode-extensions-for-faster-development-c687c39596f5",
@@ -238,96 +238,5 @@
         "url" : ["https://youtu.be/ME-GQ-mAB2k"],
         "category" : ["vue, react"],
         "title" : "React vs Vue"
-    },
-    {
-        "date" : "20180710",
-        "url" : ["https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a"],
-        "category" : ["cheat sheet"],
-        "title" : "The best front-end hacking cheatsheets — all in one place."
-    },
-    {
-        "date" : "20180718",
-        "url" : ["https://vuex.vuejs.org/kr/"],
-        "category" : ["vue","vuex"],
-        "title" : "Vuex가 무엇인가요?"
-    },
-    {
-        "date" : "20180718",
-        "url" : ["https://vuex.vuejs.org/kr/api/"],
-        "category" : ["vue","vuex"],
-        "title" : "vuex api레퍼런스"
-    },
-    {
-        "date" : "20180718",
-        "url" : ["http://vuejs.kr/update/2017/01/04/http-request-with-axios/"],
-        "category" : ["axios"],
-        "title" : "vue axios"
-    },
-    {
-        "date" : "20180718",
-        "url" : ["https://github.com/stefanpenner/es6-promise"],
-        "category" : ["javascirpt"],
-        "title" : "es6-promise"
-    },
-    {
-        "date" : "20180718",
-        "url" : ["https://router.vuejs.org/kr/"],
-        "category" : ["vue","Vue Router"],
-        "title" : "Vue Router"
-    },
-    {
-        "date" : "20180718",
-        "url" : ["https://router.vuejs.org/kr/api/"],
-        "category" : ["vue","router-link"],
-        "title" : "reouter-link"
-    },
-    {
-        "date" : "20180722",
-        "url" : ["http://stackoverflow.com/questions/24266313/using-foreach-on-an-array-from-getelementsbyclassname-results-in-typeerror-und"],
-        "category" : ["javasciprt", "stackoverflow"],
-        "title" : "array-like"
-    },
-    {
-        "date" : "20180730",
-        "url" : ["https://airbnb.design/"],
-        "category" : ["javasciprt", "design"],
-        "title" : "air-bnb"
-    },
-    {
-        "date" : "20180730",
-        "url" : ["https://airbnb.design/lottie/#get-started"],
-        "category" : ["javasciprt", "animation"],
-        "title" : "air-bnb"
-    },
-    {
-        "date" : "20180730",
-        "url" : ["https://hackernoon.com/10-javascript-animation-libraries-to-follow-in-2018-50ff1d905f43"],
-        "category" : ["javasciprt", "animation"],
-        "title" : "javascript-animation"
-    },
-    {
-        "date" : "20180804",
-        "url" : ["https://stackoverflow.com/questions/4326845/how-can-i-determine-the-direction-of-a-jquery-scroll-event"],
-        "category" : ["scrollEvent"],
-        "title" : "How can I determine the direction of a jQuery scroll event?"
-    },
-    {
-        "date" : "20180805",
-        "url" : ["https://ko.wikipedia.org/wiki/HTTP_%EC%83%81%ED%83%9C_%EC%BD%94%EB%93%9C"],
-        "category" : ["HTTP"],
-        "title" : "HTTP 상태코드"
-    },
-    {
-        "date" : "20180814",
-        "url" : ["https://github.com/trekhleb/javascript-algorithms"],
-        "category" : ["javascript-algorithms"],
-        "title" : "javascript-algorithms"
-    },
-    {
-        "date" : "20180814",
-        "url" : ["https://30secondsofinterviews.org/"],
-        "category" : ["interview"],
-        "title" : "interview"
     }
-    
 ]
