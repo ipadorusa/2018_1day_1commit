@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="wrap">
+    <div class="c-1">
+      Hello
+      <div class="c-1-1">Welcome</div>
+      <div class="c-1-2">to my</div>
+    </div>
+    <div class="c-2">
+      Home.
+      <div class="c-2-1">
+        I
+        <div class="c-2-1-1">feel</div>
+      </div>
+    </div>
+    <div class="c-3">
+      Happy
+      <div class="c-3-1">Today.</div>
+    </div>
+    <div class="c-4">
+      Thanks
+      <div class="c-4-1">Guys!</div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script>
+      var printStr = function(str1, str2) {
+        var str1 = $(str1).text().replace(/\s+/g,' ').trim(),
+            str2 = $(str2).text().replace(/\s+/g,' ').trim();
+        var str3 = str1 +" "+ str2;
+        console.log(str3);
+      };
+      printStr('.c-2', '.c-3');
+    </script>
+</body>
+
+</html>
