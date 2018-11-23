@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <span>
+    <input type="checkbox" name="" id="a" class="inp">
+    <label for="a">1</label>
+  </span>
+  <span>
+    <input type="checkbox" name="" id="b" class="inp">
+    <label for="b">2</label>
+  </span>
+  <span>
+    <input type="checkbox" name="" id="c" class="inp">
+    <label for="c">3</label>
+  </span>
+  <script type="module" src="help_js.js"></script>
+  <script>
+    import {query} from './help_js';
+    query('.inp').forEach((item) => {
+      item.addEventListener('click', function() {
+        console.log(item)
+      });
+    });
+  
+  </script>
+</body>
+</html>
