@@ -17,13 +17,24 @@
   <div id="wrap">asdf</div>
   <button type="button" id="bttn">^^dd</button>
   <script>
-    function expandHeight(obj,event) {
-      var _height = document.getElementById(obj).offsetHeight;
-      console.log(event)
+
+    function expandHeight(obj) {
+      this.height = document.getElementById(obj).offsetHeight;
     }
-    document.getElementById('bttn').addEventListener('click', a);
-    var a = new expandHeight('wrap',event);
+    function fncC(e) {
+      var wrap = document.getElementById('wrap');
+      if(e.target.classList == 'on') {
+        e.target.classList.remove('on');                
+        wrap.style.height = checka.height + 'px';
+      }else {
+        e.target.classList.add('on');
+        wrap.style.height = 'auto';
+      }
+      
+    }
     
+    var checka = new expandHeight('wrap');
+    document.getElementById('bttn').addEventListener('click', fncC);
     
   </script>
 </body>
