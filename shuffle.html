@@ -9,7 +9,9 @@
 </head>
 
 <body>
+  <div id="wrap"></div>
   <script>
+    
     function shuffle(o) {
       o.sort(function () { return 0.5 - Math.random() });
       return o;
@@ -28,7 +30,13 @@
     ];
     var newArr = shuffle(arr);
     
-    
+    for(let i=0,max=newArr.length;i<max;i++) {
+      const table = '';
+      table += `<table><tbody><tr><td>${newArr[i].name}</td>`;
+      table += `</td></tr></tbody>`;
+      document.getElementById('wrap').appendChild(table);
+    }
+
   </script>
 </body>
 
