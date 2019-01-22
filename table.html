@@ -1,48 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        * {margin:0;padding:0;}
-        ul,ol {list-style:none}
-        ul {width:100px;float:left;}
-        li {width:100px;height:50px;border:1px solid #000}
+        html,body,header,nav,aside,main,article,section,footer,h1,h2,h3,h4,ul,ol,li,dl,dt,dd,p,em,address,blockquote,q,form,fieldset,input,textarea,select,button,iframe{margin:0;padding:0}body{line-height:1}header,nav,aside,main,article,section,footer{display:block}input,textarea,select,button{border-radius:0;box-sizing:border-box;font-family:inherit}ul,ol{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:""}img,fieldset,iframe{border:none}hr{display:none}table{border-collapse:collapse;border-spacing:0}em,address{font-style:normal}a{text-decoration:none}button{border:none;border-radius:0;background:none;cursor:pointer}input[type=text]::-ms-clear{display:none}
+
+        .table {table-layout:fixed;}
+        .table thead th {font-size:13px;height:30px;border-top:1px solid #ddd;border-right:1px solid #ddd}
+        .table thead th:first-child {border-left:1px solid #ddd}
+        .table tbody td {text-align:center;border-bottom:1px solid #ddd;border-top:1px solid #ddd;border-right:1px solid #ddd}
+        .table thead td:first-child {border-left:1px solid #ddd}
     </style>
 </head>
 <body>
-    <section>
-        <h1>테이블</h1>
-        <div id="inner_table" class="inner_table">
-
+    <div id="app">
+        <button type="button" class="btn_create">생성생성생성</button>
+        <br><br><br><br>
+        <table class="table">
+            <colgroup>
+                <col style="width:43px">
+                <col style="width:54px">
+                <col style="width:152px">
+                <col style="width:150px">
+                <col style="width:150px">
+            </colgroup>
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>
+                    <span class="adm_chk">
+                        <input type="checkbox" id="chk1">
+                        <label class="lbl" for="chk1"></label>
+                    </span>
+                </th>
+                <th>이름</th>
+                <th>지원분야</th>
+                <th>휴대폰 번호</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    <span class="adm_chk">
+                        <input type="checkbox" id="chk2">
+                        <label class="lbl" for="chk2"></label>
+                    </span>
+                </td>
+                <td>홍길동</td>
+                <td>기획</td>
+                <td>010-5171-8377</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>
+                    <span class="adm_chk">
+                        <input type="checkbox" id="chk2">
+                        <label class="lbl" for="chk2"></label>
+                    </span>
+                </td>
+                <td>홍길동</td>
+                <td>기획</td>
+                <td>010-5171-8377</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>
+                    <span class="adm_chk">
+                        <input type="checkbox" id="chk2">
+                        <label class="lbl" for="chk2"></label>
+                    </span>
+                </td>
+                <td>홍길동</td>
+                <td>기획</td>
+                <td>010-5171-8377</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>
+                    <span class="adm_chk">
+                        <input type="checkbox" id="chk2">
+                        <label class="lbl" for="chk2"></label>
+                    </span>
+                </td>
+                <td>홍길동</td>
+                <td>기획</td>
+                <td>010-5171-8377</td>
+            </tr>
+            </tbody>
         </table>
-    </section>
-    <script>
-        //var list = ['#5F9EA0','#00008B','#00BFFF','#FF00FF', '#00CED1', '#ADFF2F', '#800000', '#FFDAB9', '#2E8B57', '#FFF0F5'];
-        var wrapTable = document.getElementById('inner_table');
-        var member = [];
-        var str = '';
-        function randomEvt() {
-            var list = ['#5F9EA0','#00008B','#00BFFF','#FF00FF', '#00CED1', '#ADFF2F', '#800000', '#FFDAB9', '#2E8B57', '#FFF0F5'];
-            for (let i = 0; i < 10; i++) {
-                var select = Math.floor(Math.random() * list.length);
-                member[i] = list.splice(select, 1)[0];
-            }
-            console.log(member)
-        }
-        for(let i=0;i<10;i++) {
-            randomEvt();
-            str += `<ul>`;
-            for(let k=0;k<10;k++) {
-                console.log('b',k)
-                str += `<li style="background-color:${member[k]}">${member[k]}</li>`;
-            }
-            str += `</ul>`;
-        }
-        wrapTable.innerHTML = str;
-        
-    </script>
+    </div>
+<script src="quickES.js"></script>
+<script>
+    /*const excelTmp = _ => `
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>
+                    <span class="adm_chk">
+                        <input type="checkbox" id="chk1">
+                        <label class="lbl" for="chk1">가나다라 Checkbox</label>
+                    </span>
+                </th>
+                <th>이름</th>
+                <th>지원분야</th>
+                <th>휴대폰 번호</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    <span class="adm_chk">
+                        <input type="checkbox" id="chk2">
+                        <label class="lbl" for="chk2">가나다라 Checkbox</label>
+                    </span>
+                </td>
+                <td>홍길동</td>
+                <td>기획</td>
+                <td>010-5171-8377</td>
+            </tr>
+            </tbody>
+        </table>
+    `;
+    addEvent('click', '.btn_create', () => {
+    	var $appDom = sel('#app');
+        appendHtml($appDom, excelTmp())
+    });*/
+
+</script>
 </body>
 </html>
