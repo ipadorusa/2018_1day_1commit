@@ -51,12 +51,10 @@ const onEvent = (delegateTarget='body') => (
 	}))
 );
 
-const removeClass = (el, className) => {
-	const sections = selAll(el);
+const removeClass = (v, className) => {
+	const sections = selAll(v);
 	for (let i=0;i<sections.length;i++){
 		sections[i].classList.remove(className);
 	}
 };
-const parentTheClass = (el, className) => {
-	return el.parentNode.classList.value === className ? true : false;
-}
+const parentTheClass = (v, className) => el.parentNode.classList.value === className ? true : false;
